@@ -1705,7 +1705,7 @@ mcp	0	1f521ff41af04c00	mcp-call	getLanguage {"index": "primordial"}
 mcp	0	170d4ccb65330a1e	mcp-call	getLanguage {"index": "sylvan"}
 mcp	0	90ae109b7894000e	mcp-call	getLanguage {"index": "undercommon"}
 rest	200	3f8e7588ec259e29	http	/api/levels
-rest	200	8319d330c8873ae5	http	/api/levels?size=2000
+rest	200	c0550019f224d074	http	/api/levels?size=2000
 rest	200	8504a0393c01e375	http	/api/levels?page=1&size=3
 rest	200	04efad963d92baef	http	/api/levels?size=5&sort=name%2Cdesc
 rest	200	3f8e7588ec259e29	http	/api/levels?size=abc
@@ -1713,7 +1713,7 @@ rest	200	3f8e7588ec259e29	http	/api/levels?page=-1
 rest	200	3f8e7588ec259e29	http	/api/levels?size=0
 rest	200	28e1de6c75776b3e	http	/api/levels?sort=nonexistent
 rest	404	12ae32cb1ec02d01	http	/api/levels/not-found
-rest	200	a6d59b33c3e7faee	http	/api/levels?level=1&size=2000
+rest	200	c5a212aa7fa60bf0	http	/api/levels?level=1&size=2000
 rest	500	unchecked	http	/api/levels?level=__no_such_value__
 rest	200	b1e985dcfd1567e1	http	/api/levels/barbarian-1
 rest	200	7f0875e5b103c6f2	http	/api/levels/barbarian-2
@@ -1735,66 +1735,66 @@ rest	200	552f1093bac9b828	http	/api/levels/barbarian-17
 rest	200	d38d6be26194a2a2	http	/api/levels/barbarian-18
 rest	200	990c6d2a145d5659	http	/api/levels/barbarian-19
 rest	200	c4217b29c5b63dfd	http	/api/levels/barbarian-20
-rest	200	2fd7b41410908eaa	http	/api/levels/bard-1
-rest	200	bcde435a20bfc4cf	http	/api/levels/bard-2
-rest	200	4f37678dbced05b9	http	/api/levels/bard-3
-rest	200	be0457c998f4fcae	http	/api/levels/bard-4
-rest	200	0d305dbb182ce2f8	http	/api/levels/bard-5
-rest	200	d4e1febc73c8e9b2	http	/api/levels/bard-6
-rest	200	df9fab8dcc906234	http	/api/levels/bard-7
-rest	200	606520bf0ab02e08	http	/api/levels/bard-8
-rest	200	b05bc74f32b6036c	http	/api/levels/bard-9
-rest	200	d2b7471db6a31bf1	http	/api/levels/bard-10
-rest	200	ead91cbfa7d73625	http	/api/levels/bard-11
-rest	200	cf374b8ada07b210	http	/api/levels/bard-12
-rest	200	c903c89e2a87d961	http	/api/levels/bard-13
-rest	200	cda97876c13f43c6	http	/api/levels/bard-14
-rest	200	2c1aa26722ac5130	http	/api/levels/bard-15
-rest	200	856d32ce063deed2	http	/api/levels/bard-16
-rest	200	9bcdbd41acc77c12	http	/api/levels/bard-17
-rest	200	1cc0140fa3d017d1	http	/api/levels/bard-18
-rest	200	01549b81b88482a7	http	/api/levels/bard-19
-rest	200	bde089cbb04c867a	http	/api/levels/bard-20
-rest	200	55f6116b9e4537c4	http	/api/levels/cleric-1
-rest	200	7293da159cdc27b0	http	/api/levels/cleric-2
-rest	200	105e45dd9fa42894	http	/api/levels/cleric-3
-rest	200	06eafda08875c110	http	/api/levels/cleric-4
-rest	200	de536a2b67ca3d42	http	/api/levels/cleric-5
-rest	200	d769cd536fe76def	http	/api/levels/cleric-6
-rest	200	b14fdc13dacbbd85	http	/api/levels/cleric-7
-rest	200	9c13080eb0bd4efe	http	/api/levels/cleric-8
-rest	200	93d3217eeaa7590a	http	/api/levels/cleric-9
-rest	200	c381dd7947909d81	http	/api/levels/cleric-10
-rest	200	396fc6a7debff0e2	http	/api/levels/cleric-11
-rest	200	fffda7167955f8e3	http	/api/levels/cleric-12
-rest	200	f60b614c75398c7d	http	/api/levels/cleric-13
-rest	200	73689b589dce36d1	http	/api/levels/cleric-14
-rest	200	126c8fbb5f1599ed	http	/api/levels/cleric-15
-rest	200	8ad0f16a557720f7	http	/api/levels/cleric-16
-rest	200	1ab60a66cc25d0c5	http	/api/levels/cleric-17
-rest	200	4614a21620249229	http	/api/levels/cleric-18
-rest	200	0c89e2a45db574a8	http	/api/levels/cleric-19
-rest	200	67b3b0200c183c6b	http	/api/levels/cleric-20
-rest	200	845c17caa4b7ce7b	http	/api/levels/druid-1
-rest	200	845d200f35562cb4	http	/api/levels/druid-2
-rest	200	c529f9db487ee150	http	/api/levels/druid-3
-rest	200	5303dd8ae4635a80	http	/api/levels/druid-4
-rest	200	c104ea020fcfda16	http	/api/levels/druid-5
-rest	200	da21b74210bda415	http	/api/levels/druid-6
-rest	200	081f710da9d9cf24	http	/api/levels/druid-7
-rest	200	bceb5e1e85b49b67	http	/api/levels/druid-8
-rest	200	f2efebb8e06ce7cc	http	/api/levels/druid-9
-rest	200	957d90bfcece35aa	http	/api/levels/druid-10
-rest	200	e0de30fac91cae1e	http	/api/levels/druid-11
-rest	200	be9aa602fad22db7	http	/api/levels/druid-12
-rest	200	54a231be961e0183	http	/api/levels/druid-13
-rest	200	3c78322bbb05f580	http	/api/levels/druid-14
-rest	200	f0af19a5c5040d7c	http	/api/levels/druid-15
-rest	200	7746e008544fe1d1	http	/api/levels/druid-16
-rest	200	257e17cbea1cf174	http	/api/levels/druid-17
-rest	200	97b48ce1201c5cd3	http	/api/levels/druid-18
-rest	200	dace1d572bd4a9e8	http	/api/levels/druid-19
-rest	200	31b145c1e2b307fd	http	/api/levels/druid-20
+rest	200	201eb40ab35dd60c	http	/api/levels/bard-1
+rest	200	c86a14d59a64a779	http	/api/levels/bard-2
+rest	200	a18745c2387a0697	http	/api/levels/bard-3
+rest	200	090fc8e2bee81661	http	/api/levels/bard-4
+rest	200	d089324fa0a028ea	http	/api/levels/bard-5
+rest	200	305d591734fa47a6	http	/api/levels/bard-6
+rest	200	7b6611f07b03e187	http	/api/levels/bard-7
+rest	200	b7eadf8ee48dda96	http	/api/levels/bard-8
+rest	200	5b2c89ba753dc66e	http	/api/levels/bard-9
+rest	200	4652d6cc2a2eaaf0	http	/api/levels/bard-10
+rest	200	9bf8133c41a6724d	http	/api/levels/bard-11
+rest	200	93ee4f3f4bf736c8	http	/api/levels/bard-12
+rest	200	aeca44c06b64631c	http	/api/levels/bard-13
+rest	200	55a80d9cd808a44e	http	/api/levels/bard-14
+rest	200	6b4175dc493a4891	http	/api/levels/bard-15
+rest	200	f3d4ab1e7e4c97b2	http	/api/levels/bard-16
+rest	200	7b00bc0076970580	http	/api/levels/bard-17
+rest	200	2634782065bfe809	http	/api/levels/bard-18
+rest	200	ea9a378956d4296e	http	/api/levels/bard-19
+rest	200	6da33883a5540830	http	/api/levels/bard-20
+rest	200	e16309007a0aa813	http	/api/levels/cleric-1
+rest	200	e4b2d949a2fc5d6f	http	/api/levels/cleric-2
+rest	200	e6cfc25ea49a9334	http	/api/levels/cleric-3
+rest	200	9433f13f5ac8e242	http	/api/levels/cleric-4
+rest	200	451deeff28d0d7b7	http	/api/levels/cleric-5
+rest	200	85b1dd86680c1067	http	/api/levels/cleric-6
+rest	200	00f102a3275489c3	http	/api/levels/cleric-7
+rest	200	325630180283bb25	http	/api/levels/cleric-8
+rest	200	33a850f93372a976	http	/api/levels/cleric-9
+rest	200	c7d6f295f8b7dc17	http	/api/levels/cleric-10
+rest	200	40b2aed770d6e741	http	/api/levels/cleric-11
+rest	200	28fa6e2385369bb7	http	/api/levels/cleric-12
+rest	200	b3b63cbcfdf19566	http	/api/levels/cleric-13
+rest	200	f428da72291c7ab2	http	/api/levels/cleric-14
+rest	200	a37ec1178b2aeaa5	http	/api/levels/cleric-15
+rest	200	f7b2971d840d3692	http	/api/levels/cleric-16
+rest	200	3917aeadaadedaa6	http	/api/levels/cleric-17
+rest	200	d6ee91320a36f498	http	/api/levels/cleric-18
+rest	200	006c1d8a97f8bf80	http	/api/levels/cleric-19
+rest	200	e28570258f84eb46	http	/api/levels/cleric-20
+rest	200	d96abf30ea06c461	http	/api/levels/druid-1
+rest	200	96bba05dec7a2822	http	/api/levels/druid-2
+rest	200	0c6b3ca09653ab83	http	/api/levels/druid-3
+rest	200	3ea9346377d8649f	http	/api/levels/druid-4
+rest	200	35332bbb93097b16	http	/api/levels/druid-5
+rest	200	844c14b3bc5efbfa	http	/api/levels/druid-6
+rest	200	42433069965ff0d0	http	/api/levels/druid-7
+rest	200	cd1b3ee1e8832529	http	/api/levels/druid-8
+rest	200	fe33828aafad83c2	http	/api/levels/druid-9
+rest	200	a73b26c93c68a492	http	/api/levels/druid-10
+rest	200	105481fc9a5aea53	http	/api/levels/druid-11
+rest	200	1112fed59b1bca70	http	/api/levels/druid-12
+rest	200	6ecce3f42d99e216	http	/api/levels/druid-13
+rest	200	86f2e1d159523c04	http	/api/levels/druid-14
+rest	200	97a7b16030fca87d	http	/api/levels/druid-15
+rest	200	09dd8e926eea5ad4	http	/api/levels/druid-16
+rest	200	790587f7bc780671	http	/api/levels/druid-17
+rest	200	d2656203bcb84cdd	http	/api/levels/druid-18
+rest	200	a9f2acbc9621e046	http	/api/levels/druid-19
+rest	200	1603a31cac68be64	http	/api/levels/druid-20
 rest	200	1c18a3ad9e0e5f10	http	/api/levels/fighter-1
 rest	200	8bf46afc80c38509	http	/api/levels/fighter-2
 rest	200	98d9519602ff1e5b	http	/api/levels/fighter-3
@@ -1835,46 +1835,46 @@ rest	200	34a7e7830c0117c4	http	/api/levels/monk-17
 rest	200	b193e280c992d43a	http	/api/levels/monk-18
 rest	200	7879ac09ef039bf6	http	/api/levels/monk-19
 rest	200	12a475d9b36d0a75	http	/api/levels/monk-20
-rest	200	de95834e09eb2eff	http	/api/levels/paladin-1
-rest	200	0c0e63c64e70dde8	http	/api/levels/paladin-2
-rest	200	3fe33e2b41fd7acb	http	/api/levels/paladin-3
-rest	200	e1f6a4fb41a0073d	http	/api/levels/paladin-4
-rest	200	afaeb5e2b6967506	http	/api/levels/paladin-5
-rest	200	a0b36f52431237fd	http	/api/levels/paladin-6
-rest	200	16fc09ba2a2863eb	http	/api/levels/paladin-7
-rest	200	00ed032b10e296da	http	/api/levels/paladin-8
-rest	200	e866680bf8dfa465	http	/api/levels/paladin-9
-rest	200	441c57c18137a3ae	http	/api/levels/paladin-10
-rest	200	592f7f6624ccd689	http	/api/levels/paladin-11
-rest	200	075331deb5ee54ee	http	/api/levels/paladin-12
-rest	200	958c12f53bacf5fa	http	/api/levels/paladin-13
-rest	200	53b9625a39ce9770	http	/api/levels/paladin-14
-rest	200	57e6eea631c3f993	http	/api/levels/paladin-15
-rest	200	241a4717f576ea47	http	/api/levels/paladin-16
-rest	200	0a92e1975eb77a54	http	/api/levels/paladin-17
-rest	200	8105d509ea48276f	http	/api/levels/paladin-18
-rest	200	5b8bc6c677fec0a4	http	/api/levels/paladin-19
-rest	200	31666a2314a7dd96	http	/api/levels/paladin-20
-rest	200	5e505667261d3ea3	http	/api/levels/ranger-1
-rest	200	5ba13473e5ed6acc	http	/api/levels/ranger-2
-rest	200	f6ff14b3fa97bf3e	http	/api/levels/ranger-3
-rest	200	e81a34a984a48a52	http	/api/levels/ranger-4
-rest	200	02a7a246cd7c8d89	http	/api/levels/ranger-5
-rest	200	e4c5f8982cae63c0	http	/api/levels/ranger-6
-rest	200	d20153d566ce3019	http	/api/levels/ranger-7
-rest	200	5d9159925f7aa6e1	http	/api/levels/ranger-8
-rest	200	3be781d7ea668c70	http	/api/levels/ranger-9
-rest	200	d65d0c51b7fe15f0	http	/api/levels/ranger-10
-rest	200	b86ba7fbf3765c23	http	/api/levels/ranger-11
-rest	200	1dee4eb0cae34e13	http	/api/levels/ranger-12
-rest	200	c1f07e907f0702a1	http	/api/levels/ranger-13
-rest	200	4b6e0f6839cebec8	http	/api/levels/ranger-14
-rest	200	64cd1c8fccd468aa	http	/api/levels/ranger-15
-rest	200	e3002b3e2a1ed1b8	http	/api/levels/ranger-16
-rest	200	47e9deb6797f412b	http	/api/levels/ranger-17
-rest	200	240d9e31fc5ead85	http	/api/levels/ranger-18
-rest	200	4279fc24e2017841	http	/api/levels/ranger-19
-rest	200	02793dc0da323356	http	/api/levels/ranger-20
+rest	200	972c38afaaf0ac15	http	/api/levels/paladin-1
+rest	200	5fa82fec7b73fcf5	http	/api/levels/paladin-2
+rest	200	0f817d02fcdc2bfc	http	/api/levels/paladin-3
+rest	200	d8b3e205cad2c113	http	/api/levels/paladin-4
+rest	200	e73f8c9ae192a7f0	http	/api/levels/paladin-5
+rest	200	1f83e00ddbb09f2c	http	/api/levels/paladin-6
+rest	200	e864bbe99ed40fbb	http	/api/levels/paladin-7
+rest	200	650c6a8cc5eb7712	http	/api/levels/paladin-8
+rest	200	c8f7405f2bfa90ad	http	/api/levels/paladin-9
+rest	200	2f0861fc656a2244	http	/api/levels/paladin-10
+rest	200	be781bb5e5ce8cfd	http	/api/levels/paladin-11
+rest	200	29b9d5b7f1fdf384	http	/api/levels/paladin-12
+rest	200	8ff6dc3bbca456a5	http	/api/levels/paladin-13
+rest	200	f1c3534ccc1a068d	http	/api/levels/paladin-14
+rest	200	6d7c247ab9be78d4	http	/api/levels/paladin-15
+rest	200	bc015e31cb62be5f	http	/api/levels/paladin-16
+rest	200	212890faf1d0c241	http	/api/levels/paladin-17
+rest	200	411c63564bf172cc	http	/api/levels/paladin-18
+rest	200	5ae361de5cd26a67	http	/api/levels/paladin-19
+rest	200	4823b20a56cdf121	http	/api/levels/paladin-20
+rest	200	cad60c070a129be6	http	/api/levels/ranger-1
+rest	200	736121d758d6de79	http	/api/levels/ranger-2
+rest	200	2665dcc3a277a6b7	http	/api/levels/ranger-3
+rest	200	25a1ee22f7771e70	http	/api/levels/ranger-4
+rest	200	683b90fc22c86d28	http	/api/levels/ranger-5
+rest	200	29d8f6a1c355f6e6	http	/api/levels/ranger-6
+rest	200	49be9d424c793373	http	/api/levels/ranger-7
+rest	200	17838e7a7c7b05e9	http	/api/levels/ranger-8
+rest	200	4ecb59d17ed0c54a	http	/api/levels/ranger-9
+rest	200	be45129baa925886	http	/api/levels/ranger-10
+rest	200	efdecd6e575a060f	http	/api/levels/ranger-11
+rest	200	ab20d75eb3374e47	http	/api/levels/ranger-12
+rest	200	1e2dc9e320d52473	http	/api/levels/ranger-13
+rest	200	321b3d6f37d62a2f	http	/api/levels/ranger-14
+rest	200	e09a20008b9a5a9c	http	/api/levels/ranger-15
+rest	200	67c60b8de03c0668	http	/api/levels/ranger-16
+rest	200	83755b6b84185134	http	/api/levels/ranger-17
+rest	200	ef224d36854b33db	http	/api/levels/ranger-18
+rest	200	b64fe5cbaa6c5b73	http	/api/levels/ranger-19
+rest	200	024288485d747aa0	http	/api/levels/ranger-20
 rest	200	30f4d08a9d63a0b8	http	/api/levels/rogue-1
 rest	200	dbd2f75ffd38d7be	http	/api/levels/rogue-2
 rest	200	4245a526cb6ddf7f	http	/api/levels/rogue-3
@@ -1895,66 +1895,66 @@ rest	200	1058b92cd8540ca2	http	/api/levels/rogue-17
 rest	200	4dd073f558532ba1	http	/api/levels/rogue-18
 rest	200	4297c41796e0a525	http	/api/levels/rogue-19
 rest	200	716a531c4355b8a1	http	/api/levels/rogue-20
-rest	200	8f1d9c2e9ae0d0e7	http	/api/levels/sorcerer-1
-rest	200	001bdbba71a41b39	http	/api/levels/sorcerer-2
-rest	200	3fdb5f48c5f6d579	http	/api/levels/sorcerer-3
-rest	200	16befb195f44610c	http	/api/levels/sorcerer-4
-rest	200	788e748bd51b2b01	http	/api/levels/sorcerer-5
-rest	200	c8f5b7df9ae73333	http	/api/levels/sorcerer-6
-rest	200	972c0e224162e46f	http	/api/levels/sorcerer-7
-rest	200	ed4740a9ef621a9b	http	/api/levels/sorcerer-8
-rest	200	0330bd7121cddc57	http	/api/levels/sorcerer-9
-rest	200	c8cfe9c45cfd35ef	http	/api/levels/sorcerer-10
-rest	200	fc4fa1d7633d1fea	http	/api/levels/sorcerer-11
-rest	200	71c25f8ab8dc72a8	http	/api/levels/sorcerer-12
-rest	200	dd3384a7078bb325	http	/api/levels/sorcerer-13
-rest	200	f0be30bd65f28908	http	/api/levels/sorcerer-14
-rest	200	d182685722c9fac2	http	/api/levels/sorcerer-15
-rest	200	0fcda038e9ab8b12	http	/api/levels/sorcerer-16
-rest	200	898077bbe8c38fa2	http	/api/levels/sorcerer-17
-rest	200	1d61198daeb1cf7e	http	/api/levels/sorcerer-18
-rest	200	0f03f0cd91aa149f	http	/api/levels/sorcerer-19
-rest	200	d2df230287205653	http	/api/levels/sorcerer-20
-rest	200	99a41455906e236f	http	/api/levels/warlock-1
-rest	200	ca47118569688597	http	/api/levels/warlock-2
-rest	200	434b25544de8728e	http	/api/levels/warlock-3
-rest	200	9537530c8c451483	http	/api/levels/warlock-4
-rest	200	372b15ec5725bffd	http	/api/levels/warlock-5
-rest	200	1d4f4661731c946a	http	/api/levels/warlock-6
-rest	200	d7ef424775b8616b	http	/api/levels/warlock-7
-rest	200	6faa3fec7a0c019b	http	/api/levels/warlock-8
-rest	200	2ecf83ea90ca75ff	http	/api/levels/warlock-9
-rest	200	353bfa19aa38cf03	http	/api/levels/warlock-10
-rest	200	6ac0bb3a01bf6472	http	/api/levels/warlock-11
-rest	200	7ec42ca2fe54196e	http	/api/levels/warlock-12
-rest	200	52dc3596b0a22dc2	http	/api/levels/warlock-13
-rest	200	571ba1c3434fd55b	http	/api/levels/warlock-14
-rest	200	b13b797d2531db84	http	/api/levels/warlock-15
-rest	200	773ba8b675874c12	http	/api/levels/warlock-16
-rest	200	cc9e010272353fca	http	/api/levels/warlock-17
-rest	200	13a4f2656b2b2015	http	/api/levels/warlock-18
-rest	200	08f6f9f954c37ab9	http	/api/levels/warlock-19
-rest	200	c6016cf878a2cca8	http	/api/levels/warlock-20
-rest	200	9331073f7ab796e2	http	/api/levels/wizard-1
-rest	200	986c0b96c9f598cf	http	/api/levels/wizard-2
-rest	200	6cf1c94dd3d6b5ee	http	/api/levels/wizard-3
-rest	200	0855cc26e48a7ede	http	/api/levels/wizard-4
-rest	200	7b308ea24fc141b1	http	/api/levels/wizard-5
-rest	200	1fc142806826c866	http	/api/levels/wizard-6
-rest	200	e345e398c01e8c38	http	/api/levels/wizard-7
-rest	200	c207d7c52c9f5a43	http	/api/levels/wizard-8
-rest	200	6940e819adcc03e1	http	/api/levels/wizard-9
-rest	200	a5a2b1e8ce3844be	http	/api/levels/wizard-10
-rest	200	4bf705fd7f4e7f80	http	/api/levels/wizard-11
-rest	200	afb41167b326aa52	http	/api/levels/wizard-12
-rest	200	07cbae5ece87d67e	http	/api/levels/wizard-13
-rest	200	b6b7cc0ba76a1eac	http	/api/levels/wizard-14
-rest	200	e1757699e58737f1	http	/api/levels/wizard-15
-rest	200	a0ac5cb00b5f2cd8	http	/api/levels/wizard-16
-rest	200	c00016b73cb2856f	http	/api/levels/wizard-17
-rest	200	0536f72102cd90ac	http	/api/levels/wizard-18
-rest	200	9823152837413167	http	/api/levels/wizard-19
-rest	200	371212a102e9714b	http	/api/levels/wizard-20
+rest	200	ed6ac6d58a4886bf	http	/api/levels/sorcerer-1
+rest	200	202e7b4355c1e2c2	http	/api/levels/sorcerer-2
+rest	200	d752fa3023a047e4	http	/api/levels/sorcerer-3
+rest	200	a87f5d4c5319d35a	http	/api/levels/sorcerer-4
+rest	200	7c67623db451430c	http	/api/levels/sorcerer-5
+rest	200	18809ac476bcace4	http	/api/levels/sorcerer-6
+rest	200	8a05ce9e62324fbb	http	/api/levels/sorcerer-7
+rest	200	e25051d43a24dcf0	http	/api/levels/sorcerer-8
+rest	200	d998172d0715aee1	http	/api/levels/sorcerer-9
+rest	200	d90f6bc4e37b2de6	http	/api/levels/sorcerer-10
+rest	200	8312eb2adc79a7cf	http	/api/levels/sorcerer-11
+rest	200	62cc756bca01db32	http	/api/levels/sorcerer-12
+rest	200	7f95e77d6dc9b9d1	http	/api/levels/sorcerer-13
+rest	200	37a0944fba7f50fc	http	/api/levels/sorcerer-14
+rest	200	027db6de6cbeae39	http	/api/levels/sorcerer-15
+rest	200	c3fa7c7469889be9	http	/api/levels/sorcerer-16
+rest	200	e031c38243a429ec	http	/api/levels/sorcerer-17
+rest	200	da1cf27f7c8c63cd	http	/api/levels/sorcerer-18
+rest	200	339678816b11333e	http	/api/levels/sorcerer-19
+rest	200	88011e8e3211355d	http	/api/levels/sorcerer-20
+rest	200	f2fbe4d3e2140ec8	http	/api/levels/warlock-1
+rest	200	b23b19c71d52fd77	http	/api/levels/warlock-2
+rest	200	fa3f72c7718d2f1c	http	/api/levels/warlock-3
+rest	200	1b892740f1fa7564	http	/api/levels/warlock-4
+rest	200	ce57866f90a32036	http	/api/levels/warlock-5
+rest	200	2597bb522297c867	http	/api/levels/warlock-6
+rest	200	02a00e78eabd71fc	http	/api/levels/warlock-7
+rest	200	d65046cd39784f69	http	/api/levels/warlock-8
+rest	200	58dd74c31e58bde2	http	/api/levels/warlock-9
+rest	200	9102ad92d3c68e03	http	/api/levels/warlock-10
+rest	200	d31536eacd3c4919	http	/api/levels/warlock-11
+rest	200	e3d7d8c4b626971f	http	/api/levels/warlock-12
+rest	200	8b7e2992fa2d7265	http	/api/levels/warlock-13
+rest	200	c2b54fc428ffc1e4	http	/api/levels/warlock-14
+rest	200	2cb2ae87f9d9238f	http	/api/levels/warlock-15
+rest	200	d7c08bfd2ecf37ea	http	/api/levels/warlock-16
+rest	200	4d4d2f3abe340ce8	http	/api/levels/warlock-17
+rest	200	36662bf9a085eca3	http	/api/levels/warlock-18
+rest	200	3840c3ac5a68df9b	http	/api/levels/warlock-19
+rest	200	9be6313a20799d2a	http	/api/levels/warlock-20
+rest	200	8c7636e523695f59	http	/api/levels/wizard-1
+rest	200	ad1f32e00e47fdf5	http	/api/levels/wizard-2
+rest	200	377747a51b686b21	http	/api/levels/wizard-3
+rest	200	5f8c4e2bc13e35f5	http	/api/levels/wizard-4
+rest	200	757903d020f4d83b	http	/api/levels/wizard-5
+rest	200	c624cf66f472d775	http	/api/levels/wizard-6
+rest	200	249a23606df9b3d6	http	/api/levels/wizard-7
+rest	200	06c7530eabf30820	http	/api/levels/wizard-8
+rest	200	28c5cd70425a94f0	http	/api/levels/wizard-9
+rest	200	225520106b5a6e5d	http	/api/levels/wizard-10
+rest	200	3d206dadb02bc46b	http	/api/levels/wizard-11
+rest	200	0fae94295ea31e0d	http	/api/levels/wizard-12
+rest	200	3a25ab2baf003fa0	http	/api/levels/wizard-13
+rest	200	6113508e3c8de458	http	/api/levels/wizard-14
+rest	200	80b4de8484197ee3	http	/api/levels/wizard-15
+rest	200	b9c150419997a796	http	/api/levels/wizard-16
+rest	200	c2e3592e2fbe1b72	http	/api/levels/wizard-17
+rest	200	0cf81e32b457b386	http	/api/levels/wizard-18
+rest	200	9cd90b0c2d0525a3	http	/api/levels/wizard-19
+rest	200	5e33ffe64d59bf2b	http	/api/levels/wizard-20
 rest	200	6b525c22b415f52b	http	/api/levels/berserker-3
 rest	200	18a0c3117ecafebd	http	/api/levels/berserker-6
 rest	200	226922a5e02af3f3	http	/api/levels/berserker-10
@@ -2005,11 +2005,11 @@ rest	200	12bb84409b556278	http	/api/levels/evocation-2
 rest	200	b9f47f02ef19afcb	http	/api/levels/evocation-6
 rest	200	cfcd985953c19a8e	http	/api/levels/evocation-10
 rest	200	ca6834a447259a18	http	/api/levels/evocation-14
-mcp	0	7a423655b6d4f0dc	mcp-call	getLevels {"pageNumber": 0, "pageSize": 2000}
+mcp	0	46fc5562a38d7c48	mcp-call	getLevels {"pageNumber": 0, "pageSize": 2000}
 mcp	0	56ff62b70ff3a1a4	mcp-call	getLevels {"pageNumber": 1, "pageSize": 3}
-mcp	0	06dc568d167ae4a2	mcp-call	getLevels {"page": {"page": 0, "size": 2000}}
-mcp	0	06dc568d167ae4a2	mcp-call	getLevels {"page": {"page": 1, "size": 3}}
-mcp	0	06dc568d167ae4a2	mcp-call	getLevels {}
+mcp	0	84e97268c0f75fbb	mcp-call	getLevels {"page": {"page": 0, "size": 2000}}
+mcp	0	84e97268c0f75fbb	mcp-call	getLevels {"page": {"page": 1, "size": 3}}
+mcp	0	84e97268c0f75fbb	mcp-call	getLevels {}
 mcp	1	c9c9063c5e4b0987	mcp-call	getLevel {"index": "not-found"}
 mcp	0	da27ab61cbede722	mcp-call	getLevel {"index": "barbarian-1"}
 mcp	0	d812dbcf3a2e1985	mcp-call	getLevel {"index": "barbarian-2"}
@@ -2031,66 +2031,66 @@ mcp	0	cec3f29af58b98dd	mcp-call	getLevel {"index": "barbarian-17"}
 mcp	0	a8d6c7c501cfb6a6	mcp-call	getLevel {"index": "barbarian-18"}
 mcp	0	0a3c2ac6c6bce1ac	mcp-call	getLevel {"index": "barbarian-19"}
 mcp	0	bf3df1932c1d271d	mcp-call	getLevel {"index": "barbarian-20"}
-mcp	0	27da9cb5cd4ee6cd	mcp-call	getLevel {"index": "bard-1"}
-mcp	0	349b9bfd1cc538e3	mcp-call	getLevel {"index": "bard-2"}
-mcp	0	734d372fdb6b6548	mcp-call	getLevel {"index": "bard-3"}
-mcp	0	afd11b3b76a99b74	mcp-call	getLevel {"index": "bard-4"}
-mcp	0	2abdb679e7edfb0e	mcp-call	getLevel {"index": "bard-5"}
-mcp	0	5a193a47a1cca279	mcp-call	getLevel {"index": "bard-6"}
-mcp	0	061bd0a20503b254	mcp-call	getLevel {"index": "bard-7"}
-mcp	0	469d9103eb0f9a84	mcp-call	getLevel {"index": "bard-8"}
-mcp	0	965e50ab899eba81	mcp-call	getLevel {"index": "bard-9"}
-mcp	0	d4c4ed749db5df6e	mcp-call	getLevel {"index": "bard-10"}
-mcp	0	44edce6e450bdce1	mcp-call	getLevel {"index": "bard-11"}
-mcp	0	8a59ed58eb0e5d7d	mcp-call	getLevel {"index": "bard-12"}
-mcp	0	34f8c01725f47142	mcp-call	getLevel {"index": "bard-13"}
-mcp	0	de799c929f6b0ea1	mcp-call	getLevel {"index": "bard-14"}
-mcp	0	c88bfa13c0e3ae19	mcp-call	getLevel {"index": "bard-15"}
-mcp	0	73ccf79634599097	mcp-call	getLevel {"index": "bard-16"}
-mcp	0	16a1d081cf78221e	mcp-call	getLevel {"index": "bard-17"}
-mcp	0	dbcf58751d44370d	mcp-call	getLevel {"index": "bard-18"}
-mcp	0	2ee621169cc8e646	mcp-call	getLevel {"index": "bard-19"}
-mcp	0	0472193adebe7c87	mcp-call	getLevel {"index": "bard-20"}
-mcp	0	319f7cc829fb530d	mcp-call	getLevel {"index": "cleric-1"}
-mcp	0	83bd85a8266f4751	mcp-call	getLevel {"index": "cleric-2"}
-mcp	0	59cf6736c7950bc4	mcp-call	getLevel {"index": "cleric-3"}
-mcp	0	acde274d3bf2c49f	mcp-call	getLevel {"index": "cleric-4"}
-mcp	0	aa04238bbdfa8e64	mcp-call	getLevel {"index": "cleric-5"}
-mcp	0	9af3d1c01b21bdf0	mcp-call	getLevel {"index": "cleric-6"}
-mcp	0	418c360e3d4030fa	mcp-call	getLevel {"index": "cleric-7"}
-mcp	0	79049a612be7b909	mcp-call	getLevel {"index": "cleric-8"}
-mcp	0	390abfa234e3768d	mcp-call	getLevel {"index": "cleric-9"}
-mcp	0	7158f4cf74225904	mcp-call	getLevel {"index": "cleric-10"}
-mcp	0	e5d5432af494950f	mcp-call	getLevel {"index": "cleric-11"}
-mcp	0	4cc1cbb260a9e93c	mcp-call	getLevel {"index": "cleric-12"}
-mcp	0	15f195bf620f067d	mcp-call	getLevel {"index": "cleric-13"}
-mcp	0	d8196a47caf6345c	mcp-call	getLevel {"index": "cleric-14"}
-mcp	0	0084a10b2a4e1173	mcp-call	getLevel {"index": "cleric-15"}
-mcp	0	2192d020694ea02b	mcp-call	getLevel {"index": "cleric-16"}
-mcp	0	5e52257f2d9151ac	mcp-call	getLevel {"index": "cleric-17"}
-mcp	0	f94b6a0f962ac515	mcp-call	getLevel {"index": "cleric-18"}
-mcp	0	07c49194e0487668	mcp-call	getLevel {"index": "cleric-19"}
-mcp	0	80b8b1e89a98af00	mcp-call	getLevel {"index": "cleric-20"}
-mcp	0	859160e4a8cbb702	mcp-call	getLevel {"index": "druid-1"}
-mcp	0	62c1bb8ab510727b	mcp-call	getLevel {"index": "druid-2"}
-mcp	0	695b39ea8f9ee1e2	mcp-call	getLevel {"index": "druid-3"}
-mcp	0	dd53c8e54da555fa	mcp-call	getLevel {"index": "druid-4"}
-mcp	0	48d6b8f410e08c65	mcp-call	getLevel {"index": "druid-5"}
-mcp	0	87f4bd6eca914223	mcp-call	getLevel {"index": "druid-6"}
-mcp	0	8d04ed4e88ad7b16	mcp-call	getLevel {"index": "druid-7"}
-mcp	0	b077808f464dfd72	mcp-call	getLevel {"index": "druid-8"}
-mcp	0	4503a545ce4492d8	mcp-call	getLevel {"index": "druid-9"}
-mcp	0	39d3732cf4c9869b	mcp-call	getLevel {"index": "druid-10"}
-mcp	0	6f86aed5545757fb	mcp-call	getLevel {"index": "druid-11"}
-mcp	0	e90b6bb981ec6ab8	mcp-call	getLevel {"index": "druid-12"}
-mcp	0	14d7ff204d5bd3a6	mcp-call	getLevel {"index": "druid-13"}
-mcp	0	d1b8f5ede5f3de27	mcp-call	getLevel {"index": "druid-14"}
-mcp	0	a2c485f433287263	mcp-call	getLevel {"index": "druid-15"}
-mcp	0	c3c67d333b3fa6f9	mcp-call	getLevel {"index": "druid-16"}
-mcp	0	3b83ea33e8bb62e8	mcp-call	getLevel {"index": "druid-17"}
-mcp	0	ea3e7f5f3f68d5b2	mcp-call	getLevel {"index": "druid-18"}
-mcp	0	0990cf9799f8012d	mcp-call	getLevel {"index": "druid-19"}
-mcp	0	57e6509798636357	mcp-call	getLevel {"index": "druid-20"}
+mcp	0	3961fd51696b3863	mcp-call	getLevel {"index": "bard-1"}
+mcp	0	0b285f5878c8a2ef	mcp-call	getLevel {"index": "bard-2"}
+mcp	0	388c39dad566bfc4	mcp-call	getLevel {"index": "bard-3"}
+mcp	0	3ba1a2b66b19c19d	mcp-call	getLevel {"index": "bard-4"}
+mcp	0	04b2a9f3b8f3131b	mcp-call	getLevel {"index": "bard-5"}
+mcp	0	32e2e3cc9b2a7416	mcp-call	getLevel {"index": "bard-6"}
+mcp	0	2b66e1fd8dc15c58	mcp-call	getLevel {"index": "bard-7"}
+mcp	0	ccbbff7dbb3f4a4e	mcp-call	getLevel {"index": "bard-8"}
+mcp	0	40ece3ca115cb27d	mcp-call	getLevel {"index": "bard-9"}
+mcp	0	672a2ed0fdde0195	mcp-call	getLevel {"index": "bard-10"}
+mcp	0	4cfee5f8da951c4c	mcp-call	getLevel {"index": "bard-11"}
+mcp	0	0fac0720ca2691e9	mcp-call	getLevel {"index": "bard-12"}
+mcp	0	6941b891c85f1939	mcp-call	getLevel {"index": "bard-13"}
+mcp	0	9a6e8772aeb10c40	mcp-call	getLevel {"index": "bard-14"}
+mcp	0	0b73305b79c8c392	mcp-call	getLevel {"index": "bard-15"}
+mcp	0	e52c36057aaa6d8d	mcp-call	getLevel {"index": "bard-16"}
+mcp	0	47be05af22ac885c	mcp-call	getLevel {"index": "bard-17"}
+mcp	0	e9043e160f7fdd80	mcp-call	getLevel {"index": "bard-18"}
+mcp	0	1931f2be9fdf36c2	mcp-call	getLevel {"index": "bard-19"}
+mcp	0	cd70b0b1716a0f07	mcp-call	getLevel {"index": "bard-20"}
+mcp	0	2cd1b3424da0a17c	mcp-call	getLevel {"index": "cleric-1"}
+mcp	0	c951fd5368d9256f	mcp-call	getLevel {"index": "cleric-2"}
+mcp	0	2048cd0831d55472	mcp-call	getLevel {"index": "cleric-3"}
+mcp	0	49d78a9955216b04	mcp-call	getLevel {"index": "cleric-4"}
+mcp	0	62bf9fb45455e88b	mcp-call	getLevel {"index": "cleric-5"}
+mcp	0	e890980e675fe63a	mcp-call	getLevel {"index": "cleric-6"}
+mcp	0	a891faf167336d3d	mcp-call	getLevel {"index": "cleric-7"}
+mcp	0	a4f14ccd4d35d075	mcp-call	getLevel {"index": "cleric-8"}
+mcp	0	a9a499c4a1105e73	mcp-call	getLevel {"index": "cleric-9"}
+mcp	0	fb1a704b7342f699	mcp-call	getLevel {"index": "cleric-10"}
+mcp	0	6b4558febeb4df7b	mcp-call	getLevel {"index": "cleric-11"}
+mcp	0	3328d624d30002a6	mcp-call	getLevel {"index": "cleric-12"}
+mcp	0	433c50375b5afeff	mcp-call	getLevel {"index": "cleric-13"}
+mcp	0	f6632947d8e09c01	mcp-call	getLevel {"index": "cleric-14"}
+mcp	0	ace1c2a6ec50c7d9	mcp-call	getLevel {"index": "cleric-15"}
+mcp	0	3c7c16fda2245fd3	mcp-call	getLevel {"index": "cleric-16"}
+mcp	0	5562502425a05ca5	mcp-call	getLevel {"index": "cleric-17"}
+mcp	0	1c7279060450ab89	mcp-call	getLevel {"index": "cleric-18"}
+mcp	0	c2ef3920ca930583	mcp-call	getLevel {"index": "cleric-19"}
+mcp	0	9a6a4301a5f8ff3a	mcp-call	getLevel {"index": "cleric-20"}
+mcp	0	61c2d92a9052c416	mcp-call	getLevel {"index": "druid-1"}
+mcp	0	c753f0d825e69efe	mcp-call	getLevel {"index": "druid-2"}
+mcp	0	46b828fa0a4ccda2	mcp-call	getLevel {"index": "druid-3"}
+mcp	0	533194c0023434d5	mcp-call	getLevel {"index": "druid-4"}
+mcp	0	e7a7d85b43c80325	mcp-call	getLevel {"index": "druid-5"}
+mcp	0	17428285e0cdfd15	mcp-call	getLevel {"index": "druid-6"}
+mcp	0	840589e9f687f304	mcp-call	getLevel {"index": "druid-7"}
+mcp	0	f39e0a79341b80f1	mcp-call	getLevel {"index": "druid-8"}
+mcp	0	8b9cabd490bec45e	mcp-call	getLevel {"index": "druid-9"}
+mcp	0	123f291e99eed70d	mcp-call	getLevel {"index": "druid-10"}
+mcp	0	00484e87913413ce	mcp-call	getLevel {"index": "druid-11"}
+mcp	0	f4141ad0e1359e7e	mcp-call	getLevel {"index": "druid-12"}
+mcp	0	83ad83a5ae4ac27d	mcp-call	getLevel {"index": "druid-13"}
+mcp	0	a67d41778726e207	mcp-call	getLevel {"index": "druid-14"}
+mcp	0	86fae93ae046f43a	mcp-call	getLevel {"index": "druid-15"}
+mcp	0	dae6d973502b2afa	mcp-call	getLevel {"index": "druid-16"}
+mcp	0	090e0651489fd456	mcp-call	getLevel {"index": "druid-17"}
+mcp	0	bfa24644ea996e1b	mcp-call	getLevel {"index": "druid-18"}
+mcp	0	43408989ce054243	mcp-call	getLevel {"index": "druid-19"}
+mcp	0	c3f7049868307ed9	mcp-call	getLevel {"index": "druid-20"}
 mcp	0	93e2f4cdc13956c5	mcp-call	getLevel {"index": "fighter-1"}
 mcp	0	33665b1791c0bce7	mcp-call	getLevel {"index": "fighter-2"}
 mcp	0	c73c692a268960fd	mcp-call	getLevel {"index": "fighter-3"}
@@ -2131,46 +2131,46 @@ mcp	0	dbd2a4ee4c72fc5b	mcp-call	getLevel {"index": "monk-17"}
 mcp	0	da668114cd864013	mcp-call	getLevel {"index": "monk-18"}
 mcp	0	288582a4c6b054fd	mcp-call	getLevel {"index": "monk-19"}
 mcp	0	0c88a29e1203cf63	mcp-call	getLevel {"index": "monk-20"}
-mcp	0	d76483acebc5973d	mcp-call	getLevel {"index": "paladin-1"}
-mcp	0	dc44444cdbb14765	mcp-call	getLevel {"index": "paladin-2"}
-mcp	0	b1cbc7c199d6e973	mcp-call	getLevel {"index": "paladin-3"}
-mcp	0	b00c11abc2f479a3	mcp-call	getLevel {"index": "paladin-4"}
-mcp	0	acfa5ad73e1b81d2	mcp-call	getLevel {"index": "paladin-5"}
-mcp	0	cdceeed805e58bbc	mcp-call	getLevel {"index": "paladin-6"}
-mcp	0	98bca5a0f7403749	mcp-call	getLevel {"index": "paladin-7"}
-mcp	0	fffc88b5bea62945	mcp-call	getLevel {"index": "paladin-8"}
-mcp	0	cfa2964afd977ea7	mcp-call	getLevel {"index": "paladin-9"}
-mcp	0	05ffc1493cb32f7e	mcp-call	getLevel {"index": "paladin-10"}
-mcp	0	ac48ca1325e82b05	mcp-call	getLevel {"index": "paladin-11"}
-mcp	0	a4d5dabf2fd7ed11	mcp-call	getLevel {"index": "paladin-12"}
-mcp	0	46f352281bb414b6	mcp-call	getLevel {"index": "paladin-13"}
-mcp	0	4d077cefe88a1575	mcp-call	getLevel {"index": "paladin-14"}
-mcp	0	b21fbd9a7d0d4bc2	mcp-call	getLevel {"index": "paladin-15"}
-mcp	0	3b0e1d77d902d17c	mcp-call	getLevel {"index": "paladin-16"}
-mcp	0	34ad4fe386cead06	mcp-call	getLevel {"index": "paladin-17"}
-mcp	0	587ce66d0d3519ec	mcp-call	getLevel {"index": "paladin-18"}
-mcp	0	101461ba2811defd	mcp-call	getLevel {"index": "paladin-19"}
-mcp	0	b4ae92ba925c28b4	mcp-call	getLevel {"index": "paladin-20"}
-mcp	0	4261a21991400d30	mcp-call	getLevel {"index": "ranger-1"}
-mcp	0	02ccef9af51c36f0	mcp-call	getLevel {"index": "ranger-2"}
-mcp	0	6865e92aafd6ad4b	mcp-call	getLevel {"index": "ranger-3"}
-mcp	0	2bb9c622e0f47bf0	mcp-call	getLevel {"index": "ranger-4"}
-mcp	0	7c46e328ee8a3483	mcp-call	getLevel {"index": "ranger-5"}
-mcp	0	5b2d46fb957a52fb	mcp-call	getLevel {"index": "ranger-6"}
-mcp	0	7f976497f7bfb43a	mcp-call	getLevel {"index": "ranger-7"}
-mcp	0	6dfa591aa47853fb	mcp-call	getLevel {"index": "ranger-8"}
-mcp	0	7bf7b92ed078de9e	mcp-call	getLevel {"index": "ranger-9"}
-mcp	0	3c146848d5bf0005	mcp-call	getLevel {"index": "ranger-10"}
-mcp	0	274b0d69fec7e548	mcp-call	getLevel {"index": "ranger-11"}
-mcp	0	dbebe27e58274e0e	mcp-call	getLevel {"index": "ranger-12"}
-mcp	0	26ea2aeda075743c	mcp-call	getLevel {"index": "ranger-13"}
-mcp	0	16e59c59b2269f2a	mcp-call	getLevel {"index": "ranger-14"}
-mcp	0	68cb00698c6c2f76	mcp-call	getLevel {"index": "ranger-15"}
-mcp	0	2d529177d0bd3346	mcp-call	getLevel {"index": "ranger-16"}
-mcp	0	84ccdef9815089f3	mcp-call	getLevel {"index": "ranger-17"}
-mcp	0	d324a18733a4fa2a	mcp-call	getLevel {"index": "ranger-18"}
-mcp	0	c6aa14d9b5a1a9a0	mcp-call	getLevel {"index": "ranger-19"}
-mcp	0	80dc420c7f350861	mcp-call	getLevel {"index": "ranger-20"}
+mcp	0	4522060ff07fa35f	mcp-call	getLevel {"index": "paladin-1"}
+mcp	0	6bbedf27b6ba1b4e	mcp-call	getLevel {"index": "paladin-2"}
+mcp	0	a83c6ce7a6cb2b9a	mcp-call	getLevel {"index": "paladin-3"}
+mcp	0	217a311b107eb78b	mcp-call	getLevel {"index": "paladin-4"}
+mcp	0	b9d1edf8ee078558	mcp-call	getLevel {"index": "paladin-5"}
+mcp	0	092aa1deb991a255	mcp-call	getLevel {"index": "paladin-6"}
+mcp	0	7e15c8893d6a1f2d	mcp-call	getLevel {"index": "paladin-7"}
+mcp	0	c9a5fff2d82b3d8e	mcp-call	getLevel {"index": "paladin-8"}
+mcp	0	1a7609e4f3eb894d	mcp-call	getLevel {"index": "paladin-9"}
+mcp	0	f017849c12a71f7e	mcp-call	getLevel {"index": "paladin-10"}
+mcp	0	a07be73136ecd428	mcp-call	getLevel {"index": "paladin-11"}
+mcp	0	5dcdbee9b881d9ec	mcp-call	getLevel {"index": "paladin-12"}
+mcp	0	0f3ecfdfeee2627d	mcp-call	getLevel {"index": "paladin-13"}
+mcp	0	1756712fc2084bbd	mcp-call	getLevel {"index": "paladin-14"}
+mcp	0	cf5de8a98b5c657a	mcp-call	getLevel {"index": "paladin-15"}
+mcp	0	16d718ea36e47514	mcp-call	getLevel {"index": "paladin-16"}
+mcp	0	ab257729795bdf17	mcp-call	getLevel {"index": "paladin-17"}
+mcp	0	10fb10ff92f3bb5d	mcp-call	getLevel {"index": "paladin-18"}
+mcp	0	6bc89e57e663bb32	mcp-call	getLevel {"index": "paladin-19"}
+mcp	0	054ed3f8664a8ac4	mcp-call	getLevel {"index": "paladin-20"}
+mcp	0	dacf93fd127d3f5a	mcp-call	getLevel {"index": "ranger-1"}
+mcp	0	631b27d067669ba2	mcp-call	getLevel {"index": "ranger-2"}
+mcp	0	c1b0a2ff9b6663b6	mcp-call	getLevel {"index": "ranger-3"}
+mcp	0	edeca127e1d22610	mcp-call	getLevel {"index": "ranger-4"}
+mcp	0	38c64c026c320e55	mcp-call	getLevel {"index": "ranger-5"}
+mcp	0	4e568baaac9cc46b	mcp-call	getLevel {"index": "ranger-6"}
+mcp	0	b3907e7c746a16fa	mcp-call	getLevel {"index": "ranger-7"}
+mcp	0	d63c876c252c2f27	mcp-call	getLevel {"index": "ranger-8"}
+mcp	0	bec34f08f555851f	mcp-call	getLevel {"index": "ranger-9"}
+mcp	0	0bf5099f97a5182a	mcp-call	getLevel {"index": "ranger-10"}
+mcp	0	bb3bdfdd97a5ac5d	mcp-call	getLevel {"index": "ranger-11"}
+mcp	0	48f0adb39beba2ca	mcp-call	getLevel {"index": "ranger-12"}
+mcp	0	32c5e3c18a9ba17a	mcp-call	getLevel {"index": "ranger-13"}
+mcp	0	5482b498727749ef	mcp-call	getLevel {"index": "ranger-14"}
+mcp	0	a044777e767fe821	mcp-call	getLevel {"index": "ranger-15"}
+mcp	0	b46619354879f9b7	mcp-call	getLevel {"index": "ranger-16"}
+mcp	0	59e04704894aeb74	mcp-call	getLevel {"index": "ranger-17"}
+mcp	0	e42dc66a657d7e4f	mcp-call	getLevel {"index": "ranger-18"}
+mcp	0	52b8c94570d650be	mcp-call	getLevel {"index": "ranger-19"}
+mcp	0	08be9339b09b7e32	mcp-call	getLevel {"index": "ranger-20"}
 mcp	0	ff26a2f540b69bbb	mcp-call	getLevel {"index": "rogue-1"}
 mcp	0	220d56cbabb6d99e	mcp-call	getLevel {"index": "rogue-2"}
 mcp	0	c1f0a0ea3d899eaf	mcp-call	getLevel {"index": "rogue-3"}
@@ -2191,66 +2191,66 @@ mcp	0	15553a89e8674559	mcp-call	getLevel {"index": "rogue-17"}
 mcp	0	d6f3210410d971e6	mcp-call	getLevel {"index": "rogue-18"}
 mcp	0	2d560f84de9b0afe	mcp-call	getLevel {"index": "rogue-19"}
 mcp	0	139678404ca89842	mcp-call	getLevel {"index": "rogue-20"}
-mcp	0	f62dd8da0b395931	mcp-call	getLevel {"index": "sorcerer-1"}
-mcp	0	54a68b315a7c64e7	mcp-call	getLevel {"index": "sorcerer-2"}
-mcp	0	452bae70c4788d8a	mcp-call	getLevel {"index": "sorcerer-3"}
-mcp	0	044a9eebabbfd15e	mcp-call	getLevel {"index": "sorcerer-4"}
-mcp	0	83f07a94ab940251	mcp-call	getLevel {"index": "sorcerer-5"}
-mcp	0	c28e2f609a8abe90	mcp-call	getLevel {"index": "sorcerer-6"}
-mcp	0	8d20fe3c57f62424	mcp-call	getLevel {"index": "sorcerer-7"}
-mcp	0	7243ec18b1288d0c	mcp-call	getLevel {"index": "sorcerer-8"}
-mcp	0	6875b6279b73d4e4	mcp-call	getLevel {"index": "sorcerer-9"}
-mcp	0	f4df500e03044e59	mcp-call	getLevel {"index": "sorcerer-10"}
-mcp	0	fcd3e66715ad5d62	mcp-call	getLevel {"index": "sorcerer-11"}
-mcp	0	fe43bf8677e9c370	mcp-call	getLevel {"index": "sorcerer-12"}
-mcp	0	b1265632b2352cd9	mcp-call	getLevel {"index": "sorcerer-13"}
-mcp	0	84028ee508002fb9	mcp-call	getLevel {"index": "sorcerer-14"}
-mcp	0	321ae3bc28945a14	mcp-call	getLevel {"index": "sorcerer-15"}
-mcp	0	df701c41ff6876ef	mcp-call	getLevel {"index": "sorcerer-16"}
-mcp	0	4f74c5203eddac2b	mcp-call	getLevel {"index": "sorcerer-17"}
-mcp	0	76d3a4b4b3dc0943	mcp-call	getLevel {"index": "sorcerer-18"}
-mcp	0	cf5d3a95455634dd	mcp-call	getLevel {"index": "sorcerer-19"}
-mcp	0	99e9e6b71603af4b	mcp-call	getLevel {"index": "sorcerer-20"}
-mcp	0	3e0a89903bb3b61a	mcp-call	getLevel {"index": "warlock-1"}
-mcp	0	525de917a12a3cb1	mcp-call	getLevel {"index": "warlock-2"}
-mcp	0	64ddb2f74b7d65eb	mcp-call	getLevel {"index": "warlock-3"}
-mcp	0	a036a83dae821041	mcp-call	getLevel {"index": "warlock-4"}
-mcp	0	d35b6bb3fa075089	mcp-call	getLevel {"index": "warlock-5"}
-mcp	0	6037306ba51698dc	mcp-call	getLevel {"index": "warlock-6"}
-mcp	0	83f4aa8ba12c68ad	mcp-call	getLevel {"index": "warlock-7"}
-mcp	0	7ed5075f898a2470	mcp-call	getLevel {"index": "warlock-8"}
-mcp	0	407757226fe0aa6b	mcp-call	getLevel {"index": "warlock-9"}
-mcp	0	13668ff1c44f0151	mcp-call	getLevel {"index": "warlock-10"}
-mcp	0	e3e83939eb2163ce	mcp-call	getLevel {"index": "warlock-11"}
-mcp	0	7e9cfe389302a7b5	mcp-call	getLevel {"index": "warlock-12"}
-mcp	0	1da8fceeb7828112	mcp-call	getLevel {"index": "warlock-13"}
-mcp	0	a9fa1a8f1c267692	mcp-call	getLevel {"index": "warlock-14"}
-mcp	0	c0fdf97157f0fd08	mcp-call	getLevel {"index": "warlock-15"}
-mcp	0	48d1104f90fbf248	mcp-call	getLevel {"index": "warlock-16"}
-mcp	0	6be6c475379720ec	mcp-call	getLevel {"index": "warlock-17"}
-mcp	0	17373dd2b2991519	mcp-call	getLevel {"index": "warlock-18"}
-mcp	0	7cb2152acd920ebd	mcp-call	getLevel {"index": "warlock-19"}
-mcp	0	d9c3ba10404747cf	mcp-call	getLevel {"index": "warlock-20"}
-mcp	0	a03179615af94a04	mcp-call	getLevel {"index": "wizard-1"}
-mcp	0	bf06272f0fedf329	mcp-call	getLevel {"index": "wizard-2"}
-mcp	0	ab8fb7ce1f00d3e2	mcp-call	getLevel {"index": "wizard-3"}
-mcp	0	7db7996914a882c1	mcp-call	getLevel {"index": "wizard-4"}
-mcp	0	762fa0b716555568	mcp-call	getLevel {"index": "wizard-5"}
-mcp	0	f8d4c2c61a205e48	mcp-call	getLevel {"index": "wizard-6"}
-mcp	0	e8a7828304d8db8d	mcp-call	getLevel {"index": "wizard-7"}
-mcp	0	fae9c63c88a5d582	mcp-call	getLevel {"index": "wizard-8"}
-mcp	0	41c0cbace5d77346	mcp-call	getLevel {"index": "wizard-9"}
-mcp	0	5e6de94f90753839	mcp-call	getLevel {"index": "wizard-10"}
-mcp	0	559d8f545c078f99	mcp-call	getLevel {"index": "wizard-11"}
-mcp	0	af9d4c3a8e09b7f4	mcp-call	getLevel {"index": "wizard-12"}
-mcp	0	7bc66ad74672d9c8	mcp-call	getLevel {"index": "wizard-13"}
-mcp	0	90392f41dd48730d	mcp-call	getLevel {"index": "wizard-14"}
-mcp	0	96334b363c23205f	mcp-call	getLevel {"index": "wizard-15"}
-mcp	0	5113a45bcafa88f6	mcp-call	getLevel {"index": "wizard-16"}
-mcp	0	26fb1b1848eae11f	mcp-call	getLevel {"index": "wizard-17"}
-mcp	0	13eadec4df316710	mcp-call	getLevel {"index": "wizard-18"}
-mcp	0	eb2243a6b66fe9c7	mcp-call	getLevel {"index": "wizard-19"}
-mcp	0	2266f7bd5b720ab2	mcp-call	getLevel {"index": "wizard-20"}
+mcp	0	f9225956a7711035	mcp-call	getLevel {"index": "sorcerer-1"}
+mcp	0	3b2c01d39b5de977	mcp-call	getLevel {"index": "sorcerer-2"}
+mcp	0	136cae11aec9e028	mcp-call	getLevel {"index": "sorcerer-3"}
+mcp	0	e4df0cdd997aede0	mcp-call	getLevel {"index": "sorcerer-4"}
+mcp	0	531bf1372caaa4e3	mcp-call	getLevel {"index": "sorcerer-5"}
+mcp	0	37d067be72cab19d	mcp-call	getLevel {"index": "sorcerer-6"}
+mcp	0	5b4d6e9ffefae9ae	mcp-call	getLevel {"index": "sorcerer-7"}
+mcp	0	23236c8316305447	mcp-call	getLevel {"index": "sorcerer-8"}
+mcp	0	76c97826737d0641	mcp-call	getLevel {"index": "sorcerer-9"}
+mcp	0	a9efd25790c8b82d	mcp-call	getLevel {"index": "sorcerer-10"}
+mcp	0	4aaba3becc845079	mcp-call	getLevel {"index": "sorcerer-11"}
+mcp	0	eb0c7e33fc3a09a7	mcp-call	getLevel {"index": "sorcerer-12"}
+mcp	0	5a3d146300424bdc	mcp-call	getLevel {"index": "sorcerer-13"}
+mcp	0	b8f1d12969deca4d	mcp-call	getLevel {"index": "sorcerer-14"}
+mcp	0	233bfc523cd4ee38	mcp-call	getLevel {"index": "sorcerer-15"}
+mcp	0	90597b7cfb1590ef	mcp-call	getLevel {"index": "sorcerer-16"}
+mcp	0	62dcb69f3703d9a9	mcp-call	getLevel {"index": "sorcerer-17"}
+mcp	0	a49ca86a755268de	mcp-call	getLevel {"index": "sorcerer-18"}
+mcp	0	0269640f118fa8b4	mcp-call	getLevel {"index": "sorcerer-19"}
+mcp	0	d050d76102888281	mcp-call	getLevel {"index": "sorcerer-20"}
+mcp	0	8e7d501f839c143f	mcp-call	getLevel {"index": "warlock-1"}
+mcp	0	2dcb14cf65edfdcd	mcp-call	getLevel {"index": "warlock-2"}
+mcp	0	5fab2539deb56bb4	mcp-call	getLevel {"index": "warlock-3"}
+mcp	0	fe9f166dd17bdfd7	mcp-call	getLevel {"index": "warlock-4"}
+mcp	0	7bef58f072c654cd	mcp-call	getLevel {"index": "warlock-5"}
+mcp	0	f896489b5449d0ca	mcp-call	getLevel {"index": "warlock-6"}
+mcp	0	a4b4fb68507160ae	mcp-call	getLevel {"index": "warlock-7"}
+mcp	0	3077d2fbdbd787b7	mcp-call	getLevel {"index": "warlock-8"}
+mcp	0	42338eb1940231a2	mcp-call	getLevel {"index": "warlock-9"}
+mcp	0	39aa0a8e5aa8331d	mcp-call	getLevel {"index": "warlock-10"}
+mcp	0	df794273e1e1a4b9	mcp-call	getLevel {"index": "warlock-11"}
+mcp	0	42cc46e8c0017128	mcp-call	getLevel {"index": "warlock-12"}
+mcp	0	76f69a898a4389d9	mcp-call	getLevel {"index": "warlock-13"}
+mcp	0	6257a9d4d0cc21c1	mcp-call	getLevel {"index": "warlock-14"}
+mcp	0	e7f8e579cd9aadc3	mcp-call	getLevel {"index": "warlock-15"}
+mcp	0	d5481a80a9db165a	mcp-call	getLevel {"index": "warlock-16"}
+mcp	0	bc6b7e77899ed956	mcp-call	getLevel {"index": "warlock-17"}
+mcp	0	2647579e25e09610	mcp-call	getLevel {"index": "warlock-18"}
+mcp	0	02e4e84ddb9692ad	mcp-call	getLevel {"index": "warlock-19"}
+mcp	0	6faaf9c60893ce1c	mcp-call	getLevel {"index": "warlock-20"}
+mcp	0	90424ea6f4786673	mcp-call	getLevel {"index": "wizard-1"}
+mcp	0	7493536e45893f17	mcp-call	getLevel {"index": "wizard-2"}
+mcp	0	9b8f4ea188a09a0d	mcp-call	getLevel {"index": "wizard-3"}
+mcp	0	0da8fddb6a999bda	mcp-call	getLevel {"index": "wizard-4"}
+mcp	0	a4e771690a31cca2	mcp-call	getLevel {"index": "wizard-5"}
+mcp	0	5b732ff94e88f20c	mcp-call	getLevel {"index": "wizard-6"}
+mcp	0	959a6e9e2db4dc2a	mcp-call	getLevel {"index": "wizard-7"}
+mcp	0	267a4ad3b7780098	mcp-call	getLevel {"index": "wizard-8"}
+mcp	0	53147dfefc4db2eb	mcp-call	getLevel {"index": "wizard-9"}
+mcp	0	0323b23e1276c053	mcp-call	getLevel {"index": "wizard-10"}
+mcp	0	ee5889c2533773e9	mcp-call	getLevel {"index": "wizard-11"}
+mcp	0	184860858faae4cd	mcp-call	getLevel {"index": "wizard-12"}
+mcp	0	6490f4bc9e2b3b6b	mcp-call	getLevel {"index": "wizard-13"}
+mcp	0	a1ef5105b75ec2cd	mcp-call	getLevel {"index": "wizard-14"}
+mcp	0	b4f3b3fb1f4835ec	mcp-call	getLevel {"index": "wizard-15"}
+mcp	0	8c83c72f47022c91	mcp-call	getLevel {"index": "wizard-16"}
+mcp	0	2c74a75a667c4c4c	mcp-call	getLevel {"index": "wizard-17"}
+mcp	0	36d8855732e04cc5	mcp-call	getLevel {"index": "wizard-18"}
+mcp	0	d5b3df33a8a58052	mcp-call	getLevel {"index": "wizard-19"}
+mcp	0	2a1f272cf8bfeaf6	mcp-call	getLevel {"index": "wizard-20"}
 mcp	0	3afbd76cb8b87250	mcp-call	getLevel {"index": "berserker-3"}
 mcp	0	feb2fd41e8fa2241	mcp-call	getLevel {"index": "berserker-6"}
 mcp	0	e6d142887acccf41	mcp-call	getLevel {"index": "berserker-10"}

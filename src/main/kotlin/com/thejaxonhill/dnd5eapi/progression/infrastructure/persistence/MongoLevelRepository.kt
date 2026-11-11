@@ -4,6 +4,7 @@ import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.progression.domain.Level
 import com.thejaxonhill.dnd5eapi.progression.domain.LevelExample
 import com.thejaxonhill.dnd5eapi.progression.domain.LevelRepository
+import com.thejaxonhill.dnd5eapi.progression.domain.SpellcastingSlots
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Page
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPageable
@@ -30,10 +31,24 @@ fun LevelDocument.toDomain() = Level(
     index = Index.of(index!!),
     level = level!!,
     profBonus = profBonus,
-    spellcasting = spellcasting,
+    spellcasting = spellcasting?.toDomain(),
     subclass = subclass,
     subclassSpecific = subclassSpecific,
     url = url!!,
+)
+
+fun SpellcastingSlotsDocument.toDomain() = SpellcastingSlots(
+    cantripsKnown = cantripsKnown,
+    spellSlotsLevel1 = spellSlotsLevel1,
+    spellSlotsLevel2 = spellSlotsLevel2,
+    spellSlotsLevel3 = spellSlotsLevel3,
+    spellSlotsLevel4 = spellSlotsLevel4,
+    spellSlotsLevel5 = spellSlotsLevel5,
+    spellSlotsLevel6 = spellSlotsLevel6,
+    spellSlotsLevel7 = spellSlotsLevel7,
+    spellSlotsLevel8 = spellSlotsLevel8,
+    spellSlotsLevel9 = spellSlotsLevel9,
+    spellsKnown = spellsKnown,
 )
 
 fun LevelExample.toLevelDocument(): LevelDocument = LevelDocument(
