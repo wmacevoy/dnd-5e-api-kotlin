@@ -35,3 +35,4 @@ build/
 ### Local environment ###
 .pixi/
 .mongo/
+.golden/

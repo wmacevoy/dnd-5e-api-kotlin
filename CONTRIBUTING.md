@@ -32,6 +32,11 @@ the wrapper finds its own directory from that path.
   database of their own.
 - **Success prints:** `BUILD SUCCESS`
 - **Instruments:** none yet. `pom.xml` configures no coverage tool or linter.
+- **Golden master:** with the server on port 18080 (`pixi run serve`, or the built jar with
+  `--server.port=18080`) and the seeded database, `pixi run golden` replays 5,075 recorded REST and
+  MCP requests. Success prints `GOLDEN MATCH`. It compares against `golden/manifest.tsv`, recorded on
+  `refactor/base` for the experiment in `docs/EXPERIMENT.md`. Re-record it only on purpose; a re-record
+  changes what every branch is held to.
 
 ## Definition of done
 

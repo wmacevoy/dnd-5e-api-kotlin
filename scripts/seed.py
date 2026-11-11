@@ -39,7 +39,7 @@ def load(path):
         json.dump(records, out)
         out.flush()
         subprocess.run(
-            ["mongoimport", "--quiet", "--uri", URI, "--drop", "--jsonArray",
+            ["mongoimport", "--quiet", "--uri", URI, "--drop", "--jsonArray", "--maintainInsertionOrder",
              "--collection", collection_name(path), "--file", out.name],
             check=True,
         )

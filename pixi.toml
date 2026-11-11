@@ -14,3 +14,6 @@ db-start = "mkdir -p .mongo/data && mongod --dbpath .mongo/data --bind_ip 127.0.
 db-stop = "mongod --dbpath .mongo/data --shutdown"
 seed = "python scripts/seed.py"
 check = "sh ./mvnw -B verify"
+serve = "sh ./mvnw -B spring-boot:run -Dspring-boot.run.arguments=--server.port=18080"
+golden-record = "python scripts/golden.py record"
+golden = "python scripts/golden.py compare"

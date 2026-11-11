@@ -6,8 +6,9 @@ Nothing enters without a *done* sentence that can be checked from outside — "i
 An item that contradicts the requirements is a question for the client, not a task; mark it blocked,
 and say on what. Only a human sets *done*.
 
-Built on 2026-11-11 from the gaps found adopting the guide. Running the check confirmed items 3 and
-4. Items 5 to 7 come from reading the code and have not been reproduced.
+Built on 2026-11-11 from the gaps found adopting the guide. Running the server confirmed items 3, 4,
+5, 7, 11, and 12. Item 6 comes from reading the code. The golden master preserves these defects on
+purpose, for the experiment in `EXPERIMENT.md`, so a fix to one re-records that case.
 
 | # | Item | Versioned requirement IDs (or *chore*) | Owner | Done when | Estimate (number / range / time box) | Status | Since |
 | - | ---- | -------------------------------------- | ----- | --------- | ------------------------------------ | ------ | ----- |
@@ -21,3 +22,6 @@ Built on 2026-11-11 from the gaps found adopting the guide. Running the check co
 | 8 | Confirm the working set | REQ1/MISSION-1 | repository owner | Client, shape holder, mission, non-goals, and requirements are each confirmed or corrected, and their *(inferred)* marks removed | time box: 1 hour | ready | 2026-11-11 |
 | 9 | Tests name the requirements | *chore* | unassigned | `./se --doctor` shows the trace passing | time box: half a day | blocked: on item 8 | 2026-11-11 |
 | 10 | Tests carry their own database | *chore* | unassigned | `./mvnw -B verify` passes on a machine with no MongoDB running | range: half a day to 2 days | blocked: on the owner's approval of a new test dependency | 2026-11-11 |
+| 11 | MCP list tools have two shapes, and 23 default to the second page | REQ1/MCP-1 | unassigned | All 25 list tools share one input shape, a call with no arguments returns the first page, and a test naming REQ1/MCP-1 fails without the fix | time box: half a day | blocked: on the outcome of the experiment in `EXPERIMENT.md` | 2026-11-11 |
+| 12 | Returned `url` fields and unknown routes misbehave | REQ1/API-3 | unassigned | Following a returned `url` reaches that item, an unknown route returns 404, and a test naming the requirement fails without the fix | time box: half a day | blocked: on the outcome of the experiment in `EXPERIMENT.md` | 2026-11-11 |
+| 13 | Run the refactor experiment | *chore* | repository owner | `EXPERIMENT.md`'s five changes are applied to both branches and the measures are recorded there | range: 3 to 10 days | ready | 2026-11-11 |

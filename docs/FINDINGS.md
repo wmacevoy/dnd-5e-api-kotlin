@@ -43,10 +43,42 @@ release 4.5.1 (b207ac7). An entry says whether running confirmed it or it only c
 - **Findable by:** the existing proficiency test, run against seeded data.
 - **Changed:** queue item 4.
 
-## 2026-11-11 — GraphQL is advertised and has no implementation (from reading only)
+## 2026-11-11 — A recording was only stable against the data it was recorded from
+
+- **What happened:** the first golden master matched itself, then 176 responses differed after a
+  reseed. `mongoimport` does not keep insertion order by default, and an unsorted list follows the
+  stored order. Seeding with `--maintainInsertionOrder` fixed it; the record then survived a reseed
+  and a server restart unchanged.
+- **Kind:** K3 (we were sure, and wrong)
+- **Cost:** one re-recording. Any store that replaces MongoDB must keep upstream's file order.
+- **Findable by:** comparing across a reseed, not only across two runs.
+- **Changed:** `scripts/seed.py`.
+
+## 2026-11-11 — The uniform template has quiet exceptions (confirmed by running)
+
+- **What happened:** of the 25 MCP list tools, 23 take `pageNumber` and `pageSize` with no filter, and
+  2 take a page object and a filter. The 23 default `pageNumber` to 1 on a zero-based API, so a call
+  with no arguments skips the first page.
+- **Kind:** K2 (surprise)
+- **Cost:** an agent gets a different interface by resource, and misses the first page by default.
+- **Findable by:** one test that compares the tools' shapes.
+- **Changed:** queue item 11.
+
+## 2026-11-11 — Links and errors that do not behave (confirmed by running)
+
+- **What happened:** every `url` in a response is upstream's, `/api/2014/...`, and this API answers
+  those paths with HTTP 500. An unknown route returns 500, not 404, and so does a non-numeric value
+  for the `level` filter on `/api/levels`. `GET /api/equipment?query=` ignores `query`.
+- **Kind:** K2 (surprise)
+- **Cost:** a client cannot follow a link the API gives it.
+- **Findable by:** following one returned `url` in a test.
+- **Changed:** queue items 7 and 12.
+
+## 2026-11-11 — GraphQL is advertised and has no implementation (confirmed by running)
 
 - **What happened:** the README and `schema.graphqls` offer GraphQL queries, but a search of the
-  source found no `@QueryMapping`, `@SchemaMapping`, or data fetcher.
+  source found no `@QueryMapping`, `@SchemaMapping`, or data fetcher. `getAlignments` answers HTTP 200
+  with `{"data":{}}`.
 - **Kind:** K2 (surprise)
 - **Cost:** a client relying on the README gets nothing useful from those queries.
 - **Findable by:** one test that issues a GraphQL query and asserts on the data.
