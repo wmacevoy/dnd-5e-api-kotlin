@@ -25,7 +25,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import java.lang.reflect.Method
 import kotlin.reflect.jvm.javaMethod
 
-/** The REST API (REQ1/API-1 to API-6), generated from [RESOURCES]. */
+/** The REST API (REQ3/API-1, REQ1/API-2 to API-6), generated from [RESOURCES]. */
 @Configuration
 class RestApi(
     @Qualifier("requestMappingHandlerMapping") private val mapping: RequestMappingHandlerMapping,

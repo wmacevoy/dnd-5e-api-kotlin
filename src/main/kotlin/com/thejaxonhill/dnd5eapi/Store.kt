@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component
 import java.util.regex.Pattern
 
 /**
- * The only code that reads MongoDB (REQ1/DAT-1). It returns upstream's documents as stored. Names
+ * The only code that reads MongoDB (REQ3/DAT-1). It returns upstream's documents as stored. Names
  * come in camelCase, as clients send them, and are queried in upstream's snake_case.
  */
 @Component

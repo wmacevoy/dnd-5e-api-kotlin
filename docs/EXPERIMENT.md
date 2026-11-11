@@ -92,7 +92,8 @@ Kept current before each step, so a cut session can be resumed from here.
   departure (`Decimal("weight")`) made 445 cases differ, so the departures carry weight.
 - Kotlin: 6,756 lines in 300 files on `refactor/base`; 771 lines in 7 files here, 337 of them the
   registry's rows.
-- **Proposed, not applied:** amend rule 3 so a `rest` or `mcp` case passes when its status matches
-  and the recorded error text names a class under `com.thejaxonhill`. Otherwise neither branch can
-  reach `GOLDEN MATCH`. Until the owner decides, those 7 cases are reported and not counted.
-- **Torn:** nothing in code. The five changes have not started.
+- 2026-11-11 — the owner amended rule 3, so the 7 class-naming cases are held by status only.
+  After merging that from `refactor/base`, this branch prints `GOLDEN MATCH`.
+- 2026-11-11 — change 1 done: one registry row, `pixi run check` 78 of 78, golden re-recorded with
+  33 new cases and `GOLDEN MATCH`. The work of it is in `CHANGE_WORK.md`.
+- **Torn:** nothing. Change 2 has not started.

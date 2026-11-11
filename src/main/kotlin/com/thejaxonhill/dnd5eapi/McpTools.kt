@@ -13,7 +13,7 @@ import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 
-/** The MCP tools (REQ1/MCP-1): a list and a get-by-index for each row of [RESOURCES]. */
+/** The MCP tools (REQ3/MCP-1): a list and a get-by-index for each row of [RESOURCES]. */
 @Configuration
 class McpTools {
     @Bean

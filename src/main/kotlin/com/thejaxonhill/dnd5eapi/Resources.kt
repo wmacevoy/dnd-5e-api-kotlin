@@ -334,4 +334,10 @@ val RESOURCES = listOf(
         "weapon-properties", "2014-weapon-properties", "Weapon Properties", "weapon properties",
         "a weapon property", "getWeaponProperties", "getWeaponProperty",
     ),
+    // From the 2024 SRD; its items' `url`s say /api/2024/, as the 2014 ones say /api/2014/.
+    Resource(
+        "weapon-mastery-properties", "2024-weapon-mastery-properties", "Weapon Mastery Properties",
+        "weapon mastery properties", "a weapon mastery property",
+        "getWeaponMasteryProperties", "getWeaponMasteryProperty",
+    ),
 )

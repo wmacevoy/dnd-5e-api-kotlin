@@ -39,8 +39,8 @@ The application keeps no other state.
 
 ## Essential complexity
 
-- 25 resources served the same way: one row each — `REQ1/API-1`, `REQ1/API-2`, `REQ1/API-3`
-- Two delivery surfaces, generated from the same rows — `REQ1/API-1`, `REQ1/MCP-1`
+- 26 resources served the same way: one row each — `REQ3/API-1`, `REQ1/API-2`, `REQ1/API-3`
+- Two delivery surfaces, generated from the same rows — `REQ3/API-1`, `REQ3/MCP-1`
 - Today's output, which departs from upstream in about 40 ways across 8 resources. Each departure is
   a line in that resource's row, and most of them lose data. They are kept until someone decides to
   fix them, because the golden master holds today's output (`EXPERIMENT.md`, rule 3).
