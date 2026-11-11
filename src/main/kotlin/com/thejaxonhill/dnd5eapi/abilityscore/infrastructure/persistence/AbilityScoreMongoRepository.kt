@@ -1,5 +1,0 @@
-package com.thejaxonhill.dnd5eapi.abilityscore.infrastructure.persistence
-
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.repository.IndexedMongoRepository
-
-interface AbilityScoreMongoRepository : IndexedMongoRepository<AbilityScoreDocument, String>
