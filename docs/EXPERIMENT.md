@@ -90,3 +90,13 @@ request reaches the data.
 `refactor/ddd`) wins change 4. The
 number to watch is how much each wins by, and whether projection can add the rule locally without
 growing a domain layer anyway. If it cannot, the layering was essential early.
+
+## Progress on `refactor/ddd`
+
+Kept current before each step, so a cut session can be resumed from here.
+
+- 2026-11-11 — started from `refactor/base`, at the owner's word ("one more try"), after
+  `refactor/layered` was found to test layering, not DDD. `REQUIREMENTS_v2.md` written (shape only).
+  The Compendium's code will resemble projection's, because the shape conforms to upstream. What
+  differs is where each fact lives.
+- **Torn:** the refactor, in progress.
