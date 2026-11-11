@@ -170,7 +170,7 @@ def rest_cases(base, path, parameters):
         f"{url}/not-found",
     ]
     filters = {}
-    for name in parameters - PAGING:
+    for name in sorted(parameters - PAGING):
         value = next((item[name] for item in items if isinstance(item.get(name), (str, int))), None)
         if value is not None:
             filters[name] = value
