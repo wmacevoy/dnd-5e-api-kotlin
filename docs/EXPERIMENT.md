@@ -100,7 +100,7 @@ worktree, and diffing the three new manifests, not taken from the agents' report
 | `pixi run check` | 79 of 79 | 82 of 82 | 82 of 82 |
 | Golden | `GOLDEN MATCH`; 326 level cases re-recorded, no others | the same | the same |
 | Tool calls, tokens, minutes | 31, 132k, 5.2 | 45, 143k, 8.4 | 34, 132k, 5.8 |
-| Requirement cited | a shape item of its branch's requirements v2, a poor fit | `REQ3/DAT-1` | `REQ1/API-3` |
+| Requirement cited | a shape item of its branch's requirements v2, a poor fit | the data requirement of its branch's requirements v3 | `REQ1/API-3` |
 
 - **The three fixed APIs are identical:** their re-recorded manifests match for all 5,107 `rest` and
   `mcp` cases.
@@ -112,8 +112,9 @@ worktree, and diffing the three new manifests, not taken from the agents' report
   deleted the comment that still explains the fields they left dropped.
 - **Shared friction, on every branch:** the definition of done points to a checklist that is not in
   the repository; there is no command to stop the server, and all three agents killed their own
-  shell trying to (as the session that built the branches had); and the OpenAPI hash is not stable
-  between runs, so each agent saw a `schema` difference that its fix did not cause. See `FINDINGS.md`.
+  shell trying to (as the session that built the branches had); and each agent saw a `schema`
+  difference that its fix did not cause, and nothing said the refactor had caused it on purpose.
+  See `FINDINGS.md`.
 - **Left behind:** layered's agent could not stop its server on port 18082; a permission refusal
   stopped it, and it was not stopped for it. One of its searches reached outside its worktree.
 

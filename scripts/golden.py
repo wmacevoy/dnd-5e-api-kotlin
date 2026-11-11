@@ -298,7 +298,8 @@ def compare(base):
             differing.setdefault(group, []).append(f"{request}  ({note})")
     for group, count in sorted(totals.items()):
         found = differing.get(group, [])
-        print(f"{group}: {count - len(found)} of {count} match")
+        note = "  (measured, not held: a refactor may change it)" if group == "schema" and found else ""
+        print(f"{group}: {count - len(found)} of {count} match{note}")
         for entry in found[:20]:
             print(f"  {entry}")
         if len(found) > 20:

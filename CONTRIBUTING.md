@@ -36,20 +36,23 @@ the wrapper finds its own directory from that path.
   `--server.port=18080`) and the seeded database, `pixi run golden` replays 5,075 recorded REST and
   MCP requests. Success prints `GOLDEN MATCH`. It compares against `golden/manifest.tsv`, recorded on
   `refactor/base` for the experiment in `docs/EXPERIMENT.md`. Re-record it only on purpose; a re-record
-  changes what every branch is held to.
+  changes what every branch is held to. On a refactor branch, `schema: 0 of 1 match` is expected: the
+  OpenAPI document is measured, not held.
+- **Stop the server:** `pixi run stop` stops the java process listening on port 18080. Do not use
+  `pkill -f`: its pattern also matches the shell that runs it, and kills that shell.
 
 ## Definition of done
 
-The list under *Working* in the guide's
-[CHECKLISTS.md](https://github.com/wmacevoy/software-engineering/blob/v1.7/CHECKLISTS.md#working),
-all of it, with no line dropped
+The list under *Working* in the guide's `CHECKLISTS.md`, vendored at
+[vendor/se1/CHECKLISTS.md](vendor/se1/CHECKLISTS.md#working), all of it, with no line dropped
 ([SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w11)).
 
 ## Rules for this repository
 
 - `vendor/se1/` and the root `AGENTS.md`, `se`, `se.ps1`, and `se.py` are copies of guide release
   v1.7. Never edit them. Local rules go here, and this file wins where they disagree. To move to a
-  new release, re-copy as the guide's `ADOPT.md` step 1 says.
+  new release, re-copy as the guide's `ADOPT.md` step 1 says, and copy `CHECKLISTS.md` too: step 1
+  leaves it out, but the definition of done below is in it, and fresh agents could not find it.
 - The database is another project's schema. A collection or field renamed in 5e-database breaks
   this API, so a change to a `@Document(collection = ...)` name is a one-way door (`DESIGN_v1.md`).
 - A change in a requirement's meaning is a new version of the requirements file.
