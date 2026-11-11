@@ -89,7 +89,7 @@ request reaches the data.
 number to watch is how much each wins by, and whether projection can add the rule locally without
 growing a domain layer anyway. If it cannot, the layering was essential early.
 
-## Progress on `refactor/ddd`
+## Progress on `refactor/layered` (named `refactor/ddd` until 2026-11-11)
 
 Kept current before each step, so a cut session can be resumed from here.
 

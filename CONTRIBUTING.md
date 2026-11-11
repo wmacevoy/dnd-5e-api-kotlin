@@ -57,14 +57,14 @@ all of it, with no line dropped
 
 ## Where things are
 
-- **Working set:** `docs/` holds `REQUIREMENTS_v3`, `DESIGN_v2`, `QUEUE`, `FINDINGS`; on this branch,
-  requirements v2 differs from v1 only in its shape, and v3 adds a resource
+- **Working set:** `docs/` holds `REQUIREMENTS_v4`, `DESIGN_v2`, `QUEUE`, `FINDINGS`; on this branch,
+  requirements v2 differs from v1 only in its shape, v3 adds a resource, and v4 corrects the shape
   ([SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w10)).
   Most of it was rebuilt from the code and is marked *(inferred)* until a person confirms it.
 - **Agents:** read `AGENTS.md` in this repository (copied from the
   [guide](https://github.com/wmacevoy/software-engineering/blob/v1.7/AGENTS.md)) and this file
   before acting. `CLAUDE.md` imports `AGENTS.md` and `vendor/se1/QUICKREF.md` at every start.
-- **Code:** one package per bounded context under `src/main/kotlin/com/thejaxonhill/dnd5eapi/`
+- **Code:** one package per subject under `src/main/kotlin/com/thejaxonhill/dnd5eapi/`
   (`character`, `progression`, `spellcasting`, `equipment`, `bestiary`, `rules`), each split into
   `domain`, `application`, and `infrastructure`; what they share is in `shared/`. `DESIGN_v2.md`
   says which resource is in which context, and follows one request from route to data.
@@ -78,4 +78,4 @@ all of it, with no line dropped
 | findings                       | `docs/FINDINGS.md`                                    |
 | the check command              | `pixi run check`; success prints `BUILD SUCCESS`      |
 | the handoff check              | the `SessionStart` hook running `se.py --post`        |
-| `Non-goals`, `Scope decisions` | sections of `docs/REQUIREMENTS_v3.md`                 |
+| `Non-goals`, `Scope decisions` | sections of `docs/REQUIREMENTS_v4.md`                 |
