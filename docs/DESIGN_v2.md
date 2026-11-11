@@ -82,7 +82,7 @@ on 5e-database's collection names and fields.
   shared enums, `@JsonProperty("class")` on `Level` and `Subclass`). Views reuse nested domain types,
   and MCP serializes with Spring AI's own mapper, so moving the annotations out would change MCP
   output, or would need a view type for every nested type. `Page` and `PagedModel` sit in the shared
-  kernel because the repository ports take and return them.
+  model because the repository ports take and return them.
 - **Tests run against a live, seeded MongoDB** — unchanged from v1.
 
 ## Deferred
