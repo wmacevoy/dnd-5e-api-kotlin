@@ -59,7 +59,7 @@ same change are meant to be read side by side.
    - *Is it in the database?* No. `scripts/seed.py` loads only `src/2014`.
    - *What is the collection called?* `2024-weapon-mastery-properties`, by upstream's rule in its
      `scripts/dbUtils.ts`: the prefix is the year's directory.
-   - *Which requirements change?* API-1 (the list of resources), MCP-1 (the count of tools), DAT-1
+   - *Which requirements change?* REQ3/API-1 (the list of resources), REQ3/MCP-1 (the count of tools), REQ3/DAT-1
      (the collections), and the glossary's count. Found by reading the requirements. The code does
      not point there.
    - *How is a resource added?* One `Resource` row. Its KDoc names every field, and the existing 25
