@@ -61,7 +61,15 @@ come after it.
   needed.
 - Files touched.
 - Diff lines a reviewer must read, not counting generated files.
-- Whether a fresh agent, given only the repository and the change's text, finishes it, and how far it gets.
+- **The fresh-agent test.** A smaller model, Claude Haiku, is given only the branch at that commit, in
+  an isolated worktree, and one task's text: add a feature or fix a defect. It gets no hints and no
+  help. Record whether it finishes, whether `pixi run check` and `pixi run golden` pass, which files
+  it touched, its wrong turns, and how much it read before its first edit. Then score its transcript
+  against the items in `CHANGE_WORK.md`. The same task, worded identically, goes to both branches.
+  The agent that built the shapes cannot take this test: its entries are a floor, and this one is
+  the cold start. Tasks: each change below, and fixes drawn from `FINDINGS.md`, such as the levels
+  that lose their spell slots. A fix must change only the golden cases it names. Re-record them, and
+  every other hash must stay the same.
 - Whether `pixi run check` and `pixi run golden` pass afterwards.
 
 Also recorded once per branch: lines of Kotlin, and the time from a cold start to explaining how one
