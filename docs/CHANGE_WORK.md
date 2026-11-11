@@ -110,3 +110,7 @@ No entries yet.
    for the shape, 14 incidental for data and tooling, and 21 incidental for citations. Kotlin
    changed in 10 files (170 lines), against projection's 1 file (6 lines) for behaviour.
    `pixi run check`: 81 of 81. `pixi run golden`: `GOLDEN MATCH` on 5,108 cases.
+
+## refactor/ddd
+
+No entries yet.

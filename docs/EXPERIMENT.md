@@ -5,14 +5,16 @@ The code's structure might be essential to managing its complexity
 might be imposed. Two branches take opposite answers, from the same base, against the same record of
 behaviour. The aim is to see whether there is a difference, not to prove a side.
 
-## The two shapes
+## The three shapes
 
-The question is Jackson Hill's: is his layering essential? One branch keeps it, and one does not.
+The question is Jackson Hill's: is his layering essential? One branch keeps it, one does not, and
+one starts from domain-driven design's purpose rather than its layout.
 
 | Branch | Stance toward 5e-database | Shape |
 | ------ | ------------------------- | ----- |
 | `refactor/layered` | Our model is ours, in name: three copies of each resource's shape (document, model, view), with mappers between them | Jackson's layering kept and tightened: packages grouped by subject, three layers in each, one query service per resource, and `Index` as a value object. |
 | `refactor/projection` | Conformist | The API is a projection of upstream data, and a resource is a row in a table, not a package. One registry, one pure transform, one store, and surfaces generated from the registry. Types only where a rule or an exception earns one. |
+| `refactor/ddd` | Conformist, with upstream's spelling in one adapter; an anticorruption layer only in front of a rules context, from change 4 | Domain-driven by purpose (`PROPOSAL_DDD_SHAPE.md`). The Compendium context's model and ports import no framework. Each fact lives with its owner: kinds and their filters in the model; upstream's spelling in the storage adapter; today's output, with its departures, as the published language; each surface's names in that surface. |
 
 `refactor/layered` should be the version of Jackson's argument its best advocate would defend. Its
 shape sentence goes to Jackson Hill for review. It was built before he saw it, at the owner's word.
@@ -21,8 +23,8 @@ shape sentence goes to Jackson Hill for review. It was built before he saw it, a
 Its shape described packages and layers, not purpose. `PROPOSAL_DDD_SHAPE.md`, written
 independently, argues that DDD done by purpose would conform to upstream for serving entries, close
 to `refactor/projection`. It would place its one anticorruption layer between the entries and a
-rules context, which arrives with change 4. That is a third position, and it is not built. Change 4
-on `refactor/projection` follows it.
+rules context, which arrives with change 4. That third position is now `refactor/ddd`, built
+second, on 2026-11-11, from the same base. Change 4 on `refactor/projection` follows it too.
 
 ## Rules
 
