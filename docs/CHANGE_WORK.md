@@ -49,7 +49,7 @@ same change are meant to be read side by side.
 
 No entries yet.
 
-## refactor/ddd
+## refactor/layered
 
 ### Change 1 — a 26th resource, the 2024 weapon mastery properties
 
