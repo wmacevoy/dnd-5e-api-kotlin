@@ -49,6 +49,6 @@ same change are meant to be read side by side.
 
 No entries yet.
 
-## refactor/ddd
+## refactor/layered
 
 No entries yet.
