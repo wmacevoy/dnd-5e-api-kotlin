@@ -78,7 +78,6 @@ private val DEPARTURES: Map<String, List<Departure>> = mapOf(
     "levels" to listOf(
         Truncated("classSpecific.destroyUndeadCr"),
         Truncated("classSpecific.wildShapeMaxCr"),
-        // Upstream writes spell_slots_level_1; the old reader looked for spell_slots_level1.
         Dropped("classSpecific.magicalSecretsMax5"),
         Dropped("classSpecific.magicalSecretsMax7"),
         Dropped("classSpecific.magicalSecretsMax9"),
@@ -86,7 +85,7 @@ private val DEPARTURES: Map<String, List<Departure>> = mapOf(
         Dropped("classSpecific.mysticArcanumLevel7"),
         Dropped("classSpecific.mysticArcanumLevel8"),
         Dropped("classSpecific.mysticArcanumLevel9"),
-    ) + (1..9).map { Dropped("spellcasting.spellSlotsLevel$it") },
+    ),
     "monsters" to listOf(
         Dropped("desc"),
         Dropped("proficiencyBonus"),
