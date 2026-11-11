@@ -7,15 +7,22 @@ behaviour. The aim is to see whether there is a difference, not to prove a side.
 
 ## The two shapes
 
-Both forks differ in DDD's own terms: whether this project's model may differ from upstream's.
+The question is Jackson Hill's: is his layering essential? One branch keeps it, and one does not.
 
 | Branch | Stance toward 5e-database | Shape |
 | ------ | ------------------------- | ----- |
-| `refactor/ddd` | Anticorruption Layer | Our model is ours, and upstream is translated at the border. Bounded contexts, value objects with invariants, and no framework types in the domain. |
+| `refactor/layered` | Our model is ours, in name: three copies of each resource's shape (document, model, view), with mappers between them | Jackson's layering kept and tightened: packages grouped by subject, three layers in each, one query service per resource, and `Index` as a value object. |
 | `refactor/projection` | Conformist | The API is a projection of upstream data, and a resource is a row in a table, not a package. One registry, one pure transform, one store, and surfaces generated from the registry. Types only where a rule or an exception earns one. |
 
-`refactor/ddd` should be the version of the argument its best advocate would defend. Its shape sentence
-goes to Jackson Hill for review before it is built.
+`refactor/layered` should be the version of Jackson's argument its best advocate would defend. Its
+shape sentence goes to Jackson Hill for review. It was built before he saw it, at the owner's word.
+
+**Renamed on 2026-11-11.** The branch was `refactor/ddd`, but it did not test domain-driven design.
+Its shape described packages and layers, not purpose. `PROPOSAL_DDD_SHAPE.md`, written
+independently, argues that DDD done by purpose would conform to upstream for serving entries, close
+to `refactor/projection`. It would place its one anticorruption layer between the entries and a
+rules context, which arrives with change 4. That is a third position, and it is not built. Change 4
+on `refactor/projection` follows it.
 
 ## Rules
 
@@ -77,7 +84,8 @@ request reaches the data.
 
 ## Prediction, written before either branch exists
 
-`refactor/projection` wins changes 1, 2, 3, and 5 clearly, and `refactor/ddd` wins change 4. The
+`refactor/projection` wins changes 1, 2, 3, and 5 clearly, and `refactor/layered` (then named
+`refactor/ddd`) wins change 4. The
 number to watch is how much each wins by, and whether projection can add the rule locally without
 growing a domain layer anyway. If it cannot, the layering was essential early.
 

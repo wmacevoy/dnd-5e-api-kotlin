@@ -107,6 +107,6 @@ same change are meant to be read side by side.
    `pixi run golden`: `GOLDEN MATCH` on 5,108 cases. Time: a few minutes of wall clock, most of it
    builds and the golden master; an agent's clock says little about a person's.
 
-## refactor/ddd
+## refactor/layered
 
 No entries yet.
