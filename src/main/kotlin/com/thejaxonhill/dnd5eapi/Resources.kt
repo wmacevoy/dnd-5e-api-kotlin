@@ -183,7 +183,6 @@ val RESOURCES = listOf(
         departures = listOf(
             Truncated("classSpecific.destroyUndeadCr"),
             Truncated("classSpecific.wildShapeMaxCr"),
-            // Upstream writes spell_slots_level_1; the old names read spell_slots_level1, so never matched.
             Dropped("classSpecific.magicalSecretsMax5"),
             Dropped("classSpecific.magicalSecretsMax7"),
             Dropped("classSpecific.magicalSecretsMax9"),
@@ -191,7 +190,7 @@ val RESOURCES = listOf(
             Dropped("classSpecific.mysticArcanumLevel7"),
             Dropped("classSpecific.mysticArcanumLevel8"),
             Dropped("classSpecific.mysticArcanumLevel9"),
-        ) + (1..9).map { Dropped("spellcasting.spellSlotsLevel$it") },
+        ),
         mcpNulls = listOf(
             McpNulls(
                 "", "abilityScoreBonuses", "classSpecific", "profBonus", "spellcasting", "subclass",
