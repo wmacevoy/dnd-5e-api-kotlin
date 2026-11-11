@@ -74,6 +74,35 @@ release 4.5.1 (b207ac7). An entry says whether running confirmed it or it only c
 - **Findable by:** following one returned `url` in a test.
 - **Changed:** queue items 7 and 12.
 
+## 2026-11-11 — The typed code changes or loses data in 8 of 25 resources (confirmed by running)
+
+- **What happened:** diffing upstream's JSON against the golden master's bodies showed that 17
+  resources are served as upstream has them, with camelCase keys. The other 8 depart from upstream
+  in about 40 ways. For example, all 290 levels lose their spell slots (`spell_slots_level_1` was
+  read as `spell_slots_level1`). Challenge ratings of 0.5 and 0.25 become 0. 407 features lose
+  their prerequisites. Every "multiple" option's items come out as `[]`. Monsters lose `desc`,
+  `proficiency_bonus`, and the `dc` of their breath options, which were read as `dt`. MCP results
+  also carry a `null` for each declared field an item lacks, where REST leaves it out.
+- **Kind:** K2 (surprise)
+- **Cost:** clients have been getting incomplete rules with no sign that anything is missing. The 75
+  tests pass with all of it, because they check that fields are non-null, not what the fields say.
+- **Findable by:** comparing an item against upstream's document, in one test per resource.
+- **Changed:** nothing is fixed, on purpose, because the experiment holds today's output (rule 3).
+  On `refactor/projection` each departure is a named line in `Resources.kt`, to be fixed or kept
+  when the owner decides.
+
+## 2026-11-11 — The golden master recorded class names as behaviour (confirmed by running)
+
+- **What happened:** the first compare on `refactor/projection` matched all but 7 of 5,075 cases.
+  Each of the 7 had the right status, and an error message that names a class from the old code,
+  such as `AbilityScoreTools.getAbilityScores` or `LevelController.getLevels`. No change of shape can
+  match those messages, on either branch, without reproducing those class names.
+- **Kind:** K3 (we were sure, and wrong): the record was meant to know nothing of the code.
+- **Cost:** 7 cases neither branch can pass, unless the rule is changed.
+- **Findable by:** recording against two implementations before trusting the record.
+- **Changed:** `EXPERIMENT.md` lists them as known. A change to the rule is proposed there, for the
+  owner to decide.
+
 ## 2026-11-11 — GraphQL is advertised and has no implementation (confirmed by running)
 
 - **What happened:** the README and `schema.graphqls` offer GraphQL queries, but a search of the

@@ -61,3 +61,27 @@ request reaches the data.
 `refactor/projection` wins changes 1, 2, 3, and 5 clearly, and `refactor/ddd` wins change 4. The
 number to watch is how much each wins by, and whether projection can add the rule locally without
 growing a domain layer anyway. If it cannot, the layering was essential early.
+
+## Progress on `refactor/projection`
+
+Kept current before each step, so a cut session can be resumed from here.
+
+- 2026-11-11 — started. `REQUIREMENTS_v2.md` written (shape only). The transform's rules were found
+  by diffing upstream's JSON against the recorded bodies, not by reading the 123 classes. 17 of 25
+  resources are upstream's documents with camelCase keys and no nulls. The other 8 depart from
+  upstream in about 40 ways, nearly all of them lost data. MCP output equals REST output plus a
+  `null` for each field the old types declared and an item lacks.
+- Known before starting: 7 recorded cases (1 REST, 6 MCP) have error text that names the old Kotlin
+  classes, such as `AbilityScoreTools.getAbilityScores`. Any change of shape changes that text, on
+  either branch. Their status codes can still match.
+- 2026-11-11 — refactor done and committed. `pixi run check`: 75 of 75, `BUILD SUCCESS`, with no
+  test changed. `pixi run golden`: 2602 of 2603 `rest` and 2465 of 2471 `mcp` match. The 7 that
+  differ are exactly the known ones, each with the same status. `schema` differs: the document keeps
+  all 51 paths, their tags, summaries, and parameters, but has no response schemas. Removing one
+  departure (`Decimal("weight")`) made 445 cases differ, so the departures carry weight.
+- Kotlin: 6,756 lines in 300 files on `refactor/base`; 771 lines in 7 files here, 337 of them the
+  registry's rows.
+- **Proposed, not applied:** amend rule 3 so a `rest` or `mcp` case passes when its status matches
+  and the recorded error text names a class under `com.thejaxonhill`. Otherwise neither branch can
+  reach `GOLDEN MATCH`. Until the owner decides, those 7 cases are reported and not counted.
+- **Torn:** nothing in code. The five changes have not started.

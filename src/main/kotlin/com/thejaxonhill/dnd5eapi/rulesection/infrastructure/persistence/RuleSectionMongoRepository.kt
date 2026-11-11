@@ -1,5 +1,0 @@
-package com.thejaxonhill.dnd5eapi.rulesection.infrastructure.persistence
-
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.repository.IndexedMongoRepository
-
-interface RuleSectionMongoRepository : IndexedMongoRepository<RuleSectionDocument, String>

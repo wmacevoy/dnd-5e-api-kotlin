@@ -1,5 +1,0 @@
-package com.thejaxonhill.dnd5eapi.condition.infrastructure.persistence
-
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.repository.IndexedMongoRepository
-
-interface ConditionMongoRepository : IndexedMongoRepository<ConditionDocument, String>
