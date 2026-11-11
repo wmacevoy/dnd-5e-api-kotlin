@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component
 import java.util.regex.Pattern
 
 /**
- * The Compendium over 5e-database's MongoDB (REQ1/DAT-1). Upstream's spelling lives here and nowhere
+ * The Compendium over 5e-database's MongoDB (REQ3/DAT-1). Upstream's spelling lives here and nowhere
  * else (REQ2/SHAPE-4): its collection names, its snake_case keys, and the fields its loader adds.
  */
 @Component
@@ -42,7 +42,7 @@ class MongoCompendium(private val mongo: MongoTemplate) : Compendium {
 }
 
 /** Upstream's loader names a collection by edition and file: `2014-spells`. */
-private fun collection(kind: Kind) = "2014-${kind.name}"
+private fun collection(kind: Kind) = "${kind.edition}-${kind.name}"
 
 /** Fields upstream's loader adds that are not SRD facts. */
 private val STORAGE_FIELDS = setOf("_id", "updated_at")

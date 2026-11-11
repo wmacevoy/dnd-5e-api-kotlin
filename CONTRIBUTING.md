@@ -11,7 +11,8 @@ it short and true: a change that makes a line here untrue updates it in the same
 - **Prerequisites:** [pixi](https://pixi.sh). `pixi install` provides JDK 21, MongoDB 7, and
   `mongoimport` under `.pixi/`, from `pixi.lock`. Maven comes from the wrapper, which caches in
   `~/.m2`.
-- **Database:** `pixi run db-start`, then `pixi run seed` once. The seed loads the 2014 SRD from
+- **Database:** `pixi run db-start`, then `pixi run seed` once. The seed loads the 2014 SRD, and the
+  2024 files listed in `scripts/seed.py`, from
   [5e-bits/5e-database](https://github.com/5e-bits/5e-database) at a pinned commit, into
   `localhost:27017`. `pixi run db-stop` stops it.
 - **Build:** `pixi run sh ./mvnw -B -DskipTests package`
@@ -57,8 +58,8 @@ all of it, with no line dropped
 
 ## Where things are
 
-- **Working set:** `docs/` holds `REQUIREMENTS_v2`, `DESIGN_v2`, `QUEUE`, `FINDINGS`; on this branch,
-  requirements v2 differs from v1 only in its shape
+- **Working set:** `docs/` holds `REQUIREMENTS_v3`, `DESIGN_v2`, `QUEUE`, `FINDINGS`; on this branch,
+  requirements v2 differs from v1 only in its shape, and v3 adds a resource
   ([SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w10)).
   Most of it was rebuilt from the code and is marked *(inferred)* until a person confirms it.
 - **Agents:** read `AGENTS.md` in this repository (copied from the
@@ -78,4 +79,4 @@ all of it, with no line dropped
 | findings                       | `docs/FINDINGS.md`                                    |
 | the check command              | `pixi run check`; success prints `BUILD SUCCESS`      |
 | the handoff check              | the `SessionStart` hook running `se.py --post`        |
-| `Non-goals`, `Scope decisions` | sections of `docs/REQUIREMENTS_v2.md`                 |
+| `Non-goals`, `Scope decisions` | sections of `docs/REQUIREMENTS_v3.md`                 |

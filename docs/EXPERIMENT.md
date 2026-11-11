@@ -104,4 +104,7 @@ Kept current before each step, so a cut session can be resumed from here.
   on the first run; `schema` differs as on projection, with no response schemas.
 - Kotlin: 6,756 lines in 300 files on `refactor/base`; 806 lines in 11 files here. The model
   (`compendium/`, 118 lines) imports nothing.
-- **Torn:** nothing. Change 1 has not started.
+- 2026-11-11 — change 1 done: one `KINDS` row and an `edition` on `Kind`, `pixi run check` 81 of 81,
+  `GOLDEN MATCH`. Its manifest equals both other branches' for every `rest` and `mcp` case. The work
+  of it is in `CHANGE_WORK.md`.
+- **Torn:** nothing. Change 2 has not started.

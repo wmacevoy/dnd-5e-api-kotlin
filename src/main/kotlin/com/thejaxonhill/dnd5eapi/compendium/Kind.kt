@@ -16,6 +16,12 @@ class Kind(
     val filters: List<Filter> = listOf(Filter("name")),
     /** Entries of this kind can be found by part of their name (REQ1/API-5). */
     val searchableByName: Boolean = false,
+    /**
+     * The SRD the kind comes from. Not yet part of an entry's identity, because no kind is served from
+     * two editions. Upstream's 2024 SRD reuses 2014 names (`weapon-properties`), so serving one of
+     * those would make the edition part of identity: a decision for the owner.
+     */
+    val edition: Int = 2014,
 )
 
 class Filter(val field: String, val isInteger: Boolean = false)
@@ -46,4 +52,5 @@ val KINDS = listOf(
     Kind("subraces", "subrace", "subraces", "a"),
     Kind("traits", "trait", "traits", "a"),
     Kind("weapon-properties", "weapon property", "weapon properties", "a"),
+    Kind("weapon-mastery-properties", "weapon mastery property", "weapon mastery properties", "a", edition = 2024),
 )

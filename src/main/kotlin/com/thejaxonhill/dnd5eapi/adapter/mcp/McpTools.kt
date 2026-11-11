@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.domain.Sort
 
-/** The MCP adapter (REQ1/MCP-1): a list tool and a get tool for each kind. */
+/** The MCP adapter (REQ3/MCP-1): a list tool and a get tool for each kind. */
 @Configuration
 class McpTools {
     @Bean

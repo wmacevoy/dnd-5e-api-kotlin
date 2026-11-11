@@ -38,7 +38,7 @@ import kotlin.reflect.jvm.javaMethod
 /** Kinds whose REST list sorts by name with 10 per page, where the others are unsorted with 20 (REQ1/API-5). */
 private val LISTED_BY_NAME = setOf("equipment")
 
-/** The REST adapter (REQ1/API-1 to API-6): two routes per kind, plus search where a kind allows it. */
+/** The REST adapter (REQ3/API-1, REQ1/API-2 to API-6): two routes per kind, plus search where a kind allows it. */
 @Configuration
 class RestApi(
     @Qualifier("requestMappingHandlerMapping") private val mapping: RequestMappingHandlerMapping,

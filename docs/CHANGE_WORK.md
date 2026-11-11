@@ -55,4 +55,51 @@ No entries yet.
 
 ## refactor/ddd
 
-No entries yet.
+### Change 1 — a 26th resource, the 2024 weapon mastery properties
+
+1. **The change and who made it.** As written in `EXPERIMENT.md`. Made on 2026-11-11 by Claude Opus
+   5.5, which had built all three shapes that day and made this change twice already. Every question
+   outside the code was answered, and the shared edits were applied from projection's. So this
+   entry measures only what the shape adds, and it is a floor.
+2. **Questions before code.**
+   - *Is a weapon mastery property a new kind of entry?* Yes: one row in `KINDS`. The shape asks for
+     the kind's nouns, not its tool names or tag, and those follow from the nouns.
+   - *Where does "2024" belong?* This was the one real question, and it has two owners. That a kind
+     comes from the 2024 SRD is a fact in the Compendium's language, so it goes on `Kind` as
+     `edition`. That the collection is spelled `2024-...` is upstream's spelling, so it stays in the
+     storage adapter, which now reads the edition. Found by asking the shape, not by searching.
+   - *Does any surface need an exception?* No. The tool names, tag, path, and summaries all follow
+     the pattern, so `rest/`, `mcp/`, and `published/` need nothing.
+3. **Held at once.** Three things. The kind's nouns and article. That the edition is both a model fact
+   and part of a collection name. And the shared edits, already done. If forgotten: a wrong noun gives
+   a wrong tool name, which only the golden master's `tools/list` would catch. A missing edition
+   reads an empty `2014-` collection, which the new test catches.
+4. **Decisions.**
+   - *Mine:* `edition` is a field with a default of 2014, rather than a separate list of 2024 kinds.
+   - *The owner's, raised in the code:* whether edition is part of an entry's identity. Upstream's
+     2024 SRD reuses 2014 names, such as `weapon-properties`. Serving one of those would put two
+     kinds under one path. The same collision with the 2014-only scope decision as on the other
+     branches, still open.
+5. **Edits, each tagged.**
+   - *Essential:* the `KINDS` row (1 line). The test (6 lines). `REQUIREMENTS_v3` (20 diff lines
+     against v2).
+   - *Shape:* the `edition` field on `Kind` with its comment (6 lines), and the adapter's collection
+     name reading it (1 line). On projection the collection was a literal in the row, so it needed
+     neither. Here the year is a fact the model owns, and upstream's spelling of it stays in the
+     adapter.
+   - *Incidental:* `seed.py` (13 lines) and `golden.py` (1 line), as on the other branches. Citations
+     in three code comments, a test comment, `QUEUE`, and `CONTRIBUTING` (19 lines).
+6. **Wrong turns.** One. The first comment on `edition` said no two editions share a kind's name.
+   That is false, because upstream's 2024 SRD has its own `weapon-properties`. Caught by checking the
+   claim against upstream's file list before committing; no test or check would have caught it.
+7. **Done.** The new test, seen failing 3 of 3, passes. `pixi run check`: 81 of 81. Before the
+   re-record, `pixi run golden` differed only in `tools/list`. After it, `GOLDEN MATCH`. **The
+   manifest equals both other branches' for all 5,107 `rest` and `mcp` cases.**
+8. **The structure's part.** *For:* one row, because each surface derives its names from the nouns
+   and writes only its exceptions; and the shape asked the one question worth asking, where the year
+   belongs. *Against:* a kind whose noun does not give its tool name would need an exception in
+   `mcp/`, and only the golden master would notice it missing.
+9. **Counts.** 12 files, counting the generated manifest. Lines a reviewer reads: 27 essential, 7 for
+   the shape, 14 incidental for data and tooling, and 19 incidental for citations. Kotlin changed in
+   2 files for behaviour (8 lines) and in 3 for comments. `pixi run check`: 81 of 81.
+   `pixi run golden`: `GOLDEN MATCH` on 5,108 cases.
