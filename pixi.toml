@@ -1,0 +1,16 @@
+[workspace]
+name = "dnd-5e-api-kotlin"
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+openjdk = "21.*"
+mongodb = "7.*"
+mongo-tools = "*"
+python = ">=3.9"
+
+[tasks]
+db-start = "mkdir -p .mongo/data && mongod --dbpath .mongo/data --bind_ip 127.0.0.1 --port 27017 --fork --logpath .mongo/mongod.log"
+db-stop = "mongod --dbpath .mongo/data --shutdown"
+seed = "python scripts/seed.py"
+check = "sh ./mvnw -B verify"
