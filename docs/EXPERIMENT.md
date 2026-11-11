@@ -72,3 +72,20 @@ request reaches the data.
 `refactor/projection` wins changes 1, 2, 3, and 5 clearly, and `refactor/ddd` wins change 4. The
 number to watch is how much each wins by, and whether projection can add the rule locally without
 growing a domain layer anyway. If it cannot, the layering was essential early.
+
+## Progress on `refactor/ddd`
+
+Kept current before each step, so a cut session can be resumed from here.
+
+- 2026-11-11 — started at the owner's word, before Jackson Hill reviewed the shape sentence. That
+  review is still owed, and the code can change after it. `REQUIREMENTS_v2.md` written (shape only).
+- The approach: keep the three representations Jackson chose (upstream's document, our model, the
+  view clients see), and improve the structure around them. Group the 25 packages into 6 bounded
+  contexts. Take storage fields and dead code out of the model. Give each resource one query service
+  in place of two single-function use cases. Remove the sideways import between adapters. Add an
+  `Index` value object with an invariant.
+- Found before coding: the first `Index` invariant guessed, `[a-z0-9]+(-[a-z0-9]+)*`, rejects 10
+  upstream indexes such as `dragon-ancestor-black---acid-damage`. Loosened to lowercase letters,
+  digits, and hyphens, not starting or ending with a hyphen.
+- **Torn:** the refactor, in progress.
+
