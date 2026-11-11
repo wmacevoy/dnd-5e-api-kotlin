@@ -87,5 +87,13 @@ Kept current before each step, so a cut session can be resumed from here.
 - Found before coding: the first `Index` invariant guessed, `[a-z0-9]+(-[a-z0-9]+)*`, rejects 10
   upstream indexes such as `dragon-ancestor-black---acid-damage`. Loosened to lowercase letters,
   digits, and hyphens, not starting or ending with a hyphen.
-- **Torn:** the refactor, in progress.
+- 2026-11-11 — refactor done and committed, in four steps, each checked against the golden master:
+  contexts (moves only), storage fields and unused writes out of the model, one query service per
+  resource with `Index` as a value object, and the page converters out of persistence.
+  `pixi run check`: 78 of 78 (75 old tests unchanged, 3 new for `Index`, seen failing against a
+  broken rule). `pixi run golden`: `GOLDEN MATCH`, with the `schema` group matching too.
+- Kotlin: 6,756 lines in 300 files on `refactor/base`; 5,932 lines in 273 files here.
+- Kept as compromises, in `DESIGN_v2.md`: Jackson annotations on some domain types, because MCP
+  serializes with its own mapper, and paging types in the shared kernel.
+- **Torn:** nothing. Change 1 has not started.
 

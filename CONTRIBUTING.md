@@ -51,19 +51,22 @@ all of it, with no line dropped
   v1.7. Never edit them. Local rules go here, and this file wins where they disagree. To move to a
   new release, re-copy as the guide's `ADOPT.md` step 1 says.
 - The database is another project's schema. A collection or field renamed in 5e-database breaks
-  this API, so a change to a `@Document(collection = ...)` name is a one-way door (`DESIGN_v1.md`).
+  this API, so a change to a `@Document(collection = ...)` name is a one-way door (`DESIGN_v2.md`).
 - A change in a requirement's meaning is a new version of the requirements file.
 
 ## Where things are
 
-- **Working set:** `docs/` holds `REQUIREMENTS_v1`, `DESIGN_v1`, `QUEUE`, `FINDINGS`
+- **Working set:** `docs/` holds `REQUIREMENTS_v2`, `DESIGN_v2`, `QUEUE`, `FINDINGS`; on this branch,
+  requirements v2 differs from v1 only in its shape
   ([SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w10)).
   Most of it was rebuilt from the code and is marked *(inferred)* until a person confirms it.
 - **Agents:** read `AGENTS.md` in this repository (copied from the
   [guide](https://github.com/wmacevoy/software-engineering/blob/v1.7/AGENTS.md)) and this file
   before acting. `CLAUDE.md` imports `AGENTS.md` and `vendor/se1/QUICKREF.md` at every start.
-- **Code:** one package per SRD resource under `src/main/kotlin/com/thejaxonhill/dnd5eapi/`, each
-  split into `domain`, `application`, and `infrastructure`; what they share is in `shared/`.
+- **Code:** one package per bounded context under `src/main/kotlin/com/thejaxonhill/dnd5eapi/`
+  (`character`, `progression`, `spellcasting`, `equipment`, `bestiary`, `rules`), each split into
+  `domain`, `application`, and `infrastructure`; what they share is in `shared/`. `DESIGN_v2.md`
+  says which resource is in which context, and follows one request from route to data.
 
 ## What AGENTS.md's nouns mean here
 
@@ -74,4 +77,4 @@ all of it, with no line dropped
 | findings                       | `docs/FINDINGS.md`                                    |
 | the check command              | `pixi run check`; success prints `BUILD SUCCESS`      |
 | the handoff check              | the `SessionStart` hook running `se.py --post`        |
-| `Non-goals`, `Scope decisions` | sections of `docs/REQUIREMENTS_v1.md`                 |
+| `Non-goals`, `Scope decisions` | sections of `docs/REQUIREMENTS_v2.md`                 |
