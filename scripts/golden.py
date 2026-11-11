@@ -61,6 +61,7 @@ RESOURCES = [
     ("subraces", "getSubraces", "getSubrace"),
     ("traits", "getTraits", "getTrait"),
     ("weapon-properties", "getWeaponProperties", "getWeaponProperty"),
+    ("weapon-mastery-properties", "getWeaponMasteryProperties", "getWeaponMasteryProperty"),
 ]
 
 

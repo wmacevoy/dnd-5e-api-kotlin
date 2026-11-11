@@ -1,4 +1,5 @@
-"""Load the 2014 SRD from 5e-bits/5e-database into the local MongoDB (run with: pixi run seed)."""
+"""Load the 2014 SRD, and the 2024 files this API serves, from 5e-bits/5e-database into the local
+MongoDB (run with: pixi run seed)."""
 import json
 import pathlib
 import re
@@ -11,6 +12,8 @@ COMMIT = "b207ac7b5377c0e6c674ff9fc266d44711dca730"
 UPDATED_AT = "2026-03-29T00:00:00.000Z"
 CHECKOUT = pathlib.Path(".mongo/5e-database")
 URI = "mongodb://127.0.0.1:27017/5e-database"
+# The 2024 files served alongside the 2014 SRD, relative to upstream's src/.
+FROM_2024 = ["2024/5e-SRD-Weapon-Mastery-Properties.json"]
 
 
 def git(*args):
@@ -27,8 +30,10 @@ def checkout():
 
 
 def collection_name(path):
-    # Upstream's rule, from its scripts/dbUtils.ts: 5e-SRD-Damage-Types.json -> 2014-damage-types
-    return "2014-" + re.sub(r"[\s_]+", "-", re.sub(r"^5e-SRD-|\.json$", "", path.name).lower())
+    # Upstream's rule, from its scripts/dbUtils.ts: 2014/5e-SRD-Damage-Types.json -> 2014-damage-types.
+    # The prefix is the year's directory, which a 2014 file under en/ does not name.
+    year = "2024" if path.parent.name == "2024" else "2014"
+    return year + "-" + re.sub(r"[\s_]+", "-", re.sub(r"^5e-SRD-|\.json$", "", path.name).lower())
 
 
 def load(path):
@@ -54,7 +59,7 @@ def main():
     files = sorted(root.glob("5e-SRD-*.json"))
     if not files:
         raise SystemExit(f"no SRD files under {root}")
-    for path in files:
+    for path in files + [CHECKOUT / "src" / name for name in FROM_2024]:
         load(path)
 
 

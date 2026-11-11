@@ -51,4 +51,62 @@ No entries yet.
 
 ## refactor/ddd
 
-No entries yet.
+### Change 1 — a 26th resource, the 2024 weapon mastery properties
+
+1. **The change and who made it.** As written in `EXPERIMENT.md`. Made on 2026-11-11 by Claude Opus
+   5.5, which wrote this branch's refactor that day and had already made change 1 on
+   `refactor/projection`. So every question outside the code was already answered (where the data
+   is, upstream's collection name, which requirements change), and the shared edits were applied from
+   projection's. This entry measures what the shape adds, and it is a floor.
+2. **Questions before code.**
+   - *Which context does it belong to?* `equipment`, beside weapon properties. The shape asks this
+     and projection's does not. `DESIGN_v2.md` lists the contexts, and the answer took judgment, not
+     search.
+   - *Which existing resource is nearest?* Weapon properties, with the same four kinds of field.
+     Copying the nearest neighbour is how this shape grows, and choosing the neighbour is the
+     first decision.
+   - *What differs from the neighbour?* One field. Upstream's 2024 item has a `description` string
+     where a 2014 weapon property has a `desc` list. Found by reading the data.
+   - *Where are resources registered?* In `DeliveryConfig`, which lists every MCP tool object by
+     hand. Known from the refactor. A newcomer would find it only by noticing the MCP tools missing.
+3. **Held at once.** Seven things. The nine files a resource needs, one per role across three layers.
+   Eight forms of the name: `WeaponMasteryProperty`, `WeaponMasteryProperties`,
+   `weaponMasteryProperty`, "weapon mastery properties", "a weapon mastery property", "Weapon
+   Mastery Properties", the path, and the collection, whose prefix is now a different year. The
+   field change in five places across four layers: domain, view, document, and the two mappers.
+   That `!!` in the mapper makes `description` required. The registration in `DeliveryConfig`. The
+   MCP list tool's argument shape, which the copy brought along without anyone choosing it. The
+   shared edits, already done. If forgotten: the compiler catches a missed rename or field, because
+   the types connect the layers. A missing `DeliveryConfig` entry is caught by the golden master's
+   `tools/list`, not by the tests, because the REST tests pass without it.
+4. **Decisions.**
+   - *Mine:* copy weapon properties. Make `description` required, as the neighbour's `desc` is, so a
+     document without one fails as a 500 where projection's shape would leave the field out. Accept
+     the MCP list shape the copy carried.
+   - *The owner's:* the context, `equipment`. And the same path, tool names, and noun as projection,
+     taken from there rather than decided again.
+5. **Edits, each tagged.**
+   - *Essential:* the test (6 lines). `REQUIREMENTS_v3` (19 diff lines against v2). The facts the
+     change needs (path, collection, tag, nouns, two tool names, four fields) are in the new files,
+     spread across 7 of the 10.
+   - *Shape:* 9 new Kotlin files (165 lines) and 3 edits to `DeliveryConfig` (5 diff lines). Most
+     of it repeats the neighbour's lines with a new name in them.
+   - *Incidental:* `seed.py` (13 lines) and `golden.py` (1 line), the same as projection's.
+     Citations and counts in a test comment, `DESIGN_v2`, `QUEUE`, and `CONTRIBUTING` (21 lines).
+     The manifest is re-recorded (generated).
+6. **Wrong turns.** None in the code. In `CONTRIBUTING.md`, two edits made by line number landed on
+   the wrong lines after an earlier insert moved the text. Caught by reading the result, and redone
+   by matching text.
+7. **Done.** The new test, seen failing 3 of 3, passes. `pixi run check`: 81 of 81. Before the
+   re-record, `pixi run golden` differed only in `tools/list`, as on projection. After it, the
+   compare prints `GOLDEN MATCH`. **Both branches' manifests are identical for all 5,107 `rest` and
+   `mcp` cases**, so the two shapes serve the same API, the new resource included. Only the
+   OpenAPI document differs, and that was never held.
+8. **The structure's part.** *For:* the neighbour answered every question of form, the compiler
+   checked the new type across all three layers, and the OpenAPI document gained a response schema
+   for the new resource without being asked. *Against:* ten files and eight forms of one name for
+   a resource with four fields. And one registration that nothing but the golden master checks.
+9. **Counts.** 18 files, counting the generated manifest. Lines a reviewer reads: 25 essential, 170
+   for the shape, 14 incidental for data and tooling, and 21 incidental for citations. Kotlin
+   changed in 10 files (170 lines), against projection's 1 file (6 lines) for behaviour.
+   `pixi run check`: 81 of 81. `pixi run golden`: `GOLDEN MATCH` on 5,108 cases.

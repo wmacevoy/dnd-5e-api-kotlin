@@ -53,10 +53,10 @@ and translates each `SpellDocument` into a `Spell` with `toDomain()`. The query 
 
 ## Essential complexity
 
-- 25 resources served the same way — `REQ1/API-1`, `REQ1/API-2`, `REQ1/API-3`
+- 26 resources served the same way — `REQ3/API-1`, `REQ1/API-2`, `REQ1/API-3`
 - Polymorphic SRD choices and options, translated by the converters in
-  `shared/infrastructure/persistence/converter` — `REQ1/DAT-1`
-- Two delivery surfaces over the same query services — `REQ1/API-1`, `REQ1/MCP-1`
+  `shared/infrastructure/persistence/converter` — `REQ3/DAT-1`
+- Two delivery surfaces over the same query services — `REQ3/API-1`, `REQ3/MCP-1`
 
 ## One-way doors
 

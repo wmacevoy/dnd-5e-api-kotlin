@@ -24,6 +24,7 @@ import com.thejaxonhill.dnd5eapi.spellcasting.infrastructure.delivery.SpellTools
 import com.thejaxonhill.dnd5eapi.progression.infrastructure.delivery.SubclassTools
 import com.thejaxonhill.dnd5eapi.character.infrastructure.delivery.SubraceTools
 import com.thejaxonhill.dnd5eapi.character.infrastructure.delivery.TraitTools
+import com.thejaxonhill.dnd5eapi.equipment.infrastructure.delivery.WeaponMasteryPropertyTools
 import com.thejaxonhill.dnd5eapi.equipment.infrastructure.delivery.WeaponPropertyTools
 import org.springframework.ai.tool.ToolCallbackProvider
 import org.springframework.ai.tool.method.MethodToolCallbackProvider
@@ -58,7 +59,8 @@ class DeliveryConfig {
         subclassTools: SubclassTools,
         subraceTools: SubraceTools,
         traitTools: TraitTools,
-        weaponPropertyTools: WeaponPropertyTools
+        weaponPropertyTools: WeaponPropertyTools,
+        weaponMasteryPropertyTools: WeaponMasteryPropertyTools,
     ): ToolCallbackProvider =
         MethodToolCallbackProvider.builder()
             .toolObjects(
@@ -87,5 +89,6 @@ class DeliveryConfig {
                 subraceTools,
                 traitTools,
                 weaponPropertyTools,
+                weaponMasteryPropertyTools,
             ).build()
 }

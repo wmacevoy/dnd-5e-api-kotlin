@@ -1,5 +1,5 @@
-schema	200	8052722eeb4d73f0	http	/v3/api-docs
-mcp	200	ab8187531d1d8676	mcp-tools	tools/list
+schema	200	2637708e16e5d7ca	http	/v3/api-docs
+mcp	200	7f201b21ffc60509	mcp-tools	tools/list
 rest	200	e466ab4170f21237	http	/api/ability-scores
 rest	200	5af597bc8f151d4e	http	/api/ability-scores?size=2000
 rest	200	37d1a0a29ac32938	http	/api/ability-scores?page=1&size=3
@@ -5064,6 +5064,39 @@ mcp	0	851191807bc2e381	mcp-call	getWeaponProperty {"index": "thrown"}
 mcp	0	718ad87a4b6b6c22	mcp-call	getWeaponProperty {"index": "two-handed"}
 mcp	0	bcc05c40767bea0c	mcp-call	getWeaponProperty {"index": "versatile"}
 mcp	0	5aa67c05388a1f38	mcp-call	getWeaponProperty {"index": "monk"}
+rest	200	e8dccad3cba13ad5	http	/api/weapon-mastery-properties
+rest	200	7fa2f1c24bc64ea4	http	/api/weapon-mastery-properties?size=2000
+rest	200	557759dd31bf0e01	http	/api/weapon-mastery-properties?page=1&size=3
+rest	200	799a34ad31c73e9e	http	/api/weapon-mastery-properties?size=5&sort=name%2Cdesc
+rest	200	e8dccad3cba13ad5	http	/api/weapon-mastery-properties?size=abc
+rest	200	e8dccad3cba13ad5	http	/api/weapon-mastery-properties?page=-1
+rest	200	e8dccad3cba13ad5	http	/api/weapon-mastery-properties?size=0
+rest	200	1792140962cd9180	http	/api/weapon-mastery-properties?sort=nonexistent
+rest	404	12ae32cb1ec02d01	http	/api/weapon-mastery-properties/not-found
+rest	200	e2d57c069ae42d31	http	/api/weapon-mastery-properties?name=Cleave&size=2000
+rest	200	9189a997821ceae3	http	/api/weapon-mastery-properties?name=__no_such_value__
+rest	200	9fd0e34d5b3f6839	http	/api/weapon-mastery-properties/cleave
+rest	200	9dfcafeb951ce7e6	http	/api/weapon-mastery-properties/graze
+rest	200	409a9a92a638786d	http	/api/weapon-mastery-properties/nick
+rest	200	a51533ea38e67286	http	/api/weapon-mastery-properties/push
+rest	200	17d8624dfc18b1fc	http	/api/weapon-mastery-properties/sap
+rest	200	919996fe5992577c	http	/api/weapon-mastery-properties/slow
+rest	200	e626a1cd99c9ba1a	http	/api/weapon-mastery-properties/topple
+rest	200	2cb0374acf9dd711	http	/api/weapon-mastery-properties/vex
+mcp	0	5baaead38e605e87	mcp-call	getWeaponMasteryProperties {"pageNumber": 0, "pageSize": 2000}
+mcp	0	99d62d12a52bd5bf	mcp-call	getWeaponMasteryProperties {"pageNumber": 1, "pageSize": 3}
+mcp	0	eacb9f67653b0a1a	mcp-call	getWeaponMasteryProperties {"page": {"page": 0, "size": 2000}}
+mcp	0	eacb9f67653b0a1a	mcp-call	getWeaponMasteryProperties {"page": {"page": 1, "size": 3}}
+mcp	0	eacb9f67653b0a1a	mcp-call	getWeaponMasteryProperties {}
+mcp	1	c9c9063c5e4b0987	mcp-call	getWeaponMasteryProperty {"index": "not-found"}
+mcp	0	0d1504d44f41b85c	mcp-call	getWeaponMasteryProperty {"index": "cleave"}
+mcp	0	8940402fd38abc75	mcp-call	getWeaponMasteryProperty {"index": "graze"}
+mcp	0	bd4feda83b83b846	mcp-call	getWeaponMasteryProperty {"index": "nick"}
+mcp	0	47bc4dbbcedf0ce9	mcp-call	getWeaponMasteryProperty {"index": "push"}
+mcp	0	ad03aa626ab2f3fe	mcp-call	getWeaponMasteryProperty {"index": "sap"}
+mcp	0	91702635fecaf73e	mcp-call	getWeaponMasteryProperty {"index": "slow"}
+mcp	0	9c646561fe451f8d	mcp-call	getWeaponMasteryProperty {"index": "topple"}
+mcp	0	ed2a21078675b210	mcp-call	getWeaponMasteryProperty {"index": "vex"}
 rest	200	9a5d178dec485415	http	/api/equipment/search
 rest	200	beaff19a3866c51d	http	/api/equipment/search?query=sword
 rest	200	beaff19a3866c51d	http	/api/equipment/search?query=SWORD

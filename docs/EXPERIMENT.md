@@ -95,5 +95,8 @@ Kept current before each step, so a cut session can be resumed from here.
 - Kotlin: 6,756 lines in 300 files on `refactor/base`; 5,932 lines in 273 files here.
 - Kept as compromises, in `DESIGN_v2.md`: Jackson annotations on some domain types, because MCP
   serializes with its own mapper, and paging types in the shared kernel.
-- **Torn:** nothing. Change 1 has not started.
+- 2026-11-11 — change 1 done: 9 new files and a registration, `pixi run check` 81 of 81, `GOLDEN MATCH`.
+  Its manifest equals projection's for every `rest` and `mcp` case. The work of it is in
+  `CHANGE_WORK.md`.
+- **Torn:** nothing. Change 2 has not started.
 
