@@ -2,10 +2,8 @@ package com.thejaxonhill.dnd5eapi.progression.domain
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
-import java.time.LocalDateTime
 
 data class Level(
-    val id: String? = null,
     val abilityScoreBonuses: Long? = null,
     @get:JsonProperty("class")
     val characterClass: ApiReference,
@@ -18,7 +16,6 @@ data class Level(
     val subclass: ApiReference?,
     val subclassSpecific: SubclassSpecific?,
     val url: String,
-    val updatedAt: LocalDateTime,
 )
 
 data class LevelExample(val level: Int?)

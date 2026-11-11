@@ -5,10 +5,8 @@ import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Choice
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Damage
 import com.thejaxonhill.dnd5eapi.shared.domain.model.DifficultyClass
-import java.time.LocalDateTime
 
 data class Monster(
-    val id: String? = null,
     val actions: List<MonsterAction>? = null,
     val alignment: String,
     val armorClass: List<MonsterArmorClass>,
@@ -42,7 +40,6 @@ data class Monster(
     val url: String,
     val wisdom: Int,
     val xp: Long,
-    val updatedAt: LocalDateTime,
 )
 
 data class MonsterExample(val name: String?)

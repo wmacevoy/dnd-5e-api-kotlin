@@ -8,13 +8,10 @@ import com.thejaxonhill.dnd5eapi.character.domain.Subrace
 import com.thejaxonhill.dnd5eapi.character.domain.SubraceExample
 import com.thejaxonhill.dnd5eapi.character.domain.SubraceRepository
 import org.springframework.data.domain.Example
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 
 @Component
 class MongoSubraceRepository(private val repository: SubraceMongoRepository) : SubraceRepository {
-    override fun load(id: String): Subrace? = repository.findByIdOrNull(id)?.toDomain()
-
     override fun loadByIndex(index: String): Subrace? = repository.findByIndex(index)?.toDomain()
 
     override fun loadAll(page: Page, example: SubraceExample?): PagedModel<Subrace> =
@@ -22,12 +19,9 @@ class MongoSubraceRepository(private val repository: SubraceMongoRepository) : S
             Example.of(example?.toSubraceDocument() ?: SubraceDocument()),
             page.toPageable()
         ).toPagedModel().map { it.toDomain() }
-
-    override fun save(subrace: Subrace) = repository.save(subrace.toDocument()).toDomain()
 }
 
 fun SubraceDocument.toDomain() = Subrace(
-    id = id,
     abilityBonuses = abilityBonuses!!,
     desc = desc!!,
     index = index!!,
@@ -38,22 +32,6 @@ fun SubraceDocument.toDomain() = Subrace(
     racialTraits = racialTraits!!,
     startingProficiencies = startingProficiencies,
     url = url!!,
-    updatedAt = updatedAt!!,
-)
-
-fun Subrace.toDocument() = SubraceDocument(
-    id = id,
-    abilityBonuses = abilityBonuses,
-    desc = desc,
-    index = index,
-    languages = languages,
-    languageOptions = languageOptions,
-    name = name,
-    race = race,
-    racialTraits = racialTraits,
-    startingProficiencies = startingProficiencies,
-    url = url,
-    updatedAt = updatedAt,
 )
 
 fun SubraceExample.toSubraceDocument(): SubraceDocument = SubraceDocument(

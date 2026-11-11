@@ -2,10 +2,8 @@ package com.thejaxonhill.dnd5eapi.progression.domain
 
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Choice
-import java.time.LocalDateTime
 
 data class CharacterClass(
-    val id: String? = null,
     val classLevels: String? = null,
     val hitDie: Int? = null,
     val index: String,
@@ -20,7 +18,6 @@ data class CharacterClass(
     val multiClassing: MultiClassing? = null,
     val subclasses: List<ApiReference>? = null,
     val url: String? = null,
-    val updatedAt: LocalDateTime? = null,
 )
 
 data class CharacterClassExample(val name: String?)

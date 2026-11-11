@@ -4,10 +4,8 @@ import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.AreaOfEffect
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Choice
 import com.thejaxonhill.dnd5eapi.shared.domain.model.DifficultyClass
-import java.time.LocalDateTime
 
 data class Trait(
-    val id: String? = null,
     val desc: List<String>,
     val index: String,
     val name: String,
@@ -19,7 +17,6 @@ data class Trait(
     val parent: ApiReference?,
     val traitSpecific: TraitSpecific? = null,
     val url: String,
-    val updatedAt: LocalDateTime,
 )
 
 data class TraitExample(val name: String?)

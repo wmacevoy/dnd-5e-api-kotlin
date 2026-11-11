@@ -8,13 +8,10 @@ import com.thejaxonhill.dnd5eapi.spellcasting.domain.Spell
 import com.thejaxonhill.dnd5eapi.spellcasting.domain.SpellExample
 import com.thejaxonhill.dnd5eapi.spellcasting.domain.SpellRepository
 import org.springframework.data.domain.Example
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 
 @Component
 class MongoSpellRepository(private val repository: SpellMongoRepository) : SpellRepository {
-    override fun load(id: String): Spell? = repository.findByIdOrNull(id)?.toDomain()
-
     override fun loadByIndex(index: String): Spell? = repository.findByIndex(index)?.toDomain()
 
     override fun loadAll(page: Page, example: SpellExample?): PagedModel<Spell> =
@@ -22,12 +19,9 @@ class MongoSpellRepository(private val repository: SpellMongoRepository) : Spell
             Example.of(example?.toSpellDocument() ?: SpellDocument()),
             page.toPageable()
         ).toPagedModel().map { it.toDomain() }
-
-    override fun save(spell: Spell) = repository.save(spell.toDocument()).toDomain()
 }
 
 fun SpellDocument.toDomain() = Spell(
-    id = id,
     areaOfEffect = areaOfEffect,
     attackType = attackType,
     castingTime = castingTime!!,
@@ -49,33 +43,6 @@ fun SpellDocument.toDomain() = Spell(
     school = school!!,
     subclasses = subclasses!!,
     url = url!!,
-    updatedAt = updatedAt!!,
-)
-
-fun Spell.toDocument() = SpellDocument(
-    id = id,
-    areaOfEffect = areaOfEffect,
-    attackType = attackType,
-    castingTime = castingTime,
-    classes = classes,
-    components = components,
-    concentration = concentration,
-    damage = damage,
-    dc = dc,
-    desc = desc,
-    duration = duration,
-    healAtSlotLevel = healAtSlotLevel,
-    higherLevel = higherLevel,
-    index = index,
-    level = level,
-    material = material,
-    name = name,
-    range = range,
-    ritual = ritual,
-    school = school,
-    subclasses = subclasses,
-    url = url,
-    updatedAt = updatedAt,
 )
 
 fun SpellExample.toSpellDocument(): SpellDocument = SpellDocument(

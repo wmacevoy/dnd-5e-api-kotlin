@@ -2,10 +2,8 @@ package com.thejaxonhill.dnd5eapi.equipment.domain
 
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Damage
-import java.time.LocalDateTime
 
 data class Equipment(
-    val id: String? = null,
     val armorCategory: String? = null,
     val armorClass: ArmorClass? = null,
     val capacity: String? = null,
@@ -33,7 +31,6 @@ data class Equipment(
     val weaponRange: String? = null,
     val weight: Double? = null,
     val url: String,
-    val updatedAt: LocalDateTime
 )
 
 data class EquipmentExample(val name: String?)

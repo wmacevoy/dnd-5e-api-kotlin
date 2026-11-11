@@ -3,7 +3,6 @@ package com.thejaxonhill.dnd5eapi.character.domain
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 
 data class Proficiency(
-    val id: String? = null,
     val classes: List<ApiReference>? = null,
     val index: String,
     val name: String,
@@ -11,7 +10,6 @@ data class Proficiency(
     val reference: ApiReference,
     val type: String,
     val url: String,
-    val updatedAt: String,
 )
 
 data class ProficiencyExample(val name: String?)

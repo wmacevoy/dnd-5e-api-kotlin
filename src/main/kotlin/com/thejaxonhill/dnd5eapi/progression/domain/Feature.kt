@@ -3,10 +3,8 @@ package com.thejaxonhill.dnd5eapi.progression.domain
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Choice
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Prerequisite
-import java.time.LocalDateTime
 
 data class Feature(
-    val id: String? = null,
     val characterClass: ApiReference,
     val desc: List<String>,
     val parent: ApiReference? = null,
@@ -18,7 +16,6 @@ data class Feature(
     val subclass: ApiReference?,
     val featureSpecific: FeatureSpecific?,
     val url: String,
-    val updatedAt: LocalDateTime
 )
 
 data class FeatureExample(val name: String?)

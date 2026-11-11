@@ -1,9 +1,7 @@
 package com.thejaxonhill.dnd5eapi.character.domain
 
-import java.time.LocalDateTime
 
 data class Language(
-    val id: String? = null,
     val desc: String? = null,
     val index: String,
     val name: String,
@@ -11,7 +9,6 @@ data class Language(
     val type: String,
     val typicalSpeakers: List<String>,
     val url: String,
-    val updatedAt: LocalDateTime,
 )
 
 data class LanguageExample(val name: String?)

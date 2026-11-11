@@ -2,10 +2,8 @@ package com.thejaxonhill.dnd5eapi.character.domain
 
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Choice
-import java.time.LocalDateTime
 
 class Background(
-    val id: String? = null,
     val index: String,
     val name: String? = null,
     val startingProficiencies: List<ApiReference>? = null,
@@ -18,7 +16,6 @@ class Background(
     val bonds: Choice? = null,
     val flaws: Choice? = null,
     val url: String? = null,
-    val updatedAt: LocalDateTime? = null,
 )
 
 data class Feature(

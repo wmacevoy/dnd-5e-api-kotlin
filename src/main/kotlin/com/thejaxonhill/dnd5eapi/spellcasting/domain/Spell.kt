@@ -2,10 +2,8 @@ package com.thejaxonhill.dnd5eapi.spellcasting.domain
 
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.AreaOfEffect
-import java.time.LocalDateTime
 
 data class Spell(
-    val id: String? = null,
     val areaOfEffect: AreaOfEffect? = null,
     val attackType: String? = null,
     val castingTime: String,
@@ -27,7 +25,6 @@ data class Spell(
     val school: ApiReference,
     val subclasses: List<ApiReference>,
     val url: String,
-    val updatedAt: LocalDateTime,
 )
 
 data class SpellExample(val name: String? )
