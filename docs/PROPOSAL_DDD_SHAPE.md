@@ -4,7 +4,9 @@ shape domain-driven design's best advocate would defend. It read only `refactor/
 seeing either refactor branch. Kept as written. Checked against the code since: `Spell` is defined
 three times, not twice (`spell/`, `subclass/`, and inside `monster/domain/Monster.kt`). The collision
 with the 2014-only scope decision is real, and is still open in both branches' requirements v3.
-A proposal: nobody who can decide has accepted it.
+A proposal: nobody who can decide has accepted it. Two edits since: the mission is cited with its
+version, and the proposed shape items are numbered P1 to P5, so they are not mistaken for
+this repository's `SHAPE` requirements.
 -->
 
 # A domain-driven shape for dnd-5e-api-kotlin
@@ -16,7 +18,7 @@ their identical file names. Paths below are under `src/main/kotlin/com/thejaxonh
 
 ## 1. What the domain is for, and its subdomains
 
-The purpose (MISSION-1) is to let builders of character tools and AI agents ask the SRD questions.
+The purpose (REQ1/MISSION-1) is to let builders of character tools and AI agents ask the SRD questions.
 
 | Subdomain | Class | Why |
 | --------- | ----- | --- |
@@ -114,16 +116,16 @@ field into a crash at request time.
 
 ## 6. Shape statement
 
-- **SHAPE-1** *(judged)* There are two models. The Compendium conforms to 5e-database: an entry is
+- **P1** *(judged, proposed)* There are two models. The Compendium conforms to 5e-database: an entry is
   upstream's entry, served unchanged. Character Rules has its own model and learns of the
   Compendium only through a translation it owns.
-- **SHAPE-2** *(judged)* Upstream's spelling (collection names, field names, type tags) appears in
+- **P2** *(judged, proposed)* Upstream's spelling (collection names, field names, type tags) appears in
   one adapter and nowhere else.
-- **SHAPE-3** *(judged)* The Compendium is one read-only port. Kinds are data given to it, not
+- **P3** *(judged, proposed)* The Compendium is one read-only port. Kinds are data given to it, not
   packages. A type exists for an entry only where a rule or a surface reads its fields.
-- **SHAPE-4** *(judged)* A rule is a pure function over value objects that hold their own
+- **P4** *(judged, proposed)* A rule is a pure function over value objects that hold their own
   invariants. It imports no framework, no storage, and no entry type.
-- **SHAPE-5** *(judged)* Every surface is an adapter over the same driving ports, so the same
+- **P5** *(judged, proposed)* Every surface is an adapter over the same driving ports, so the same
   question gets the same answer on each.
 
 Judge for all five: the shape's holder, not yet named.
@@ -132,9 +134,9 @@ Judge for all five: the shape's holder, not yet named.
 
 1. **26th resource.** One new Kind in the Compendium's list; the surfaces follow. Cost to raise
    first: it is 2024 data, and the scope decision says 2014. Edition becomes part of identity.
-2. **Upstream rename.** Lands only in the driven adapter (SHAPE-2). Our word stays `desc`, because
+2. **Upstream rename.** Lands only in the driven adapter (P2). Our word stays `desc`, because
    the published language is frozen. Today the prefix is in 25 `@Document` annotations.
-3. **GraphQL.** A third driving adapter (SHAPE-5). Cost: GraphQL wants field types, and SHAPE-3
+3. **GraphQL.** A third driving adapter (P5). Cost: GraphQL wants field types, and P3
    withholds them. Either a JSON scalar or generated types; the owner decides. This is the shape's
    weakest point.
 4. **Multiclass eligibility.** Lands whole in Character Rules: two value objects, one function, one
