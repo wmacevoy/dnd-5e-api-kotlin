@@ -6,8 +6,6 @@ nothing
 it short and true: a change that makes a line here untrue updates it in the same change
 ([SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/08-work.md#w11)).
 
-**Status, 2026-11-11:** the check runs and currently fails, 26 of 75 tests (see `docs/FINDINGS.md`).
-
 ## Run it
 
 - **Prerequisites:** [pixi](https://pixi.sh). `pixi install` provides JDK 21, MongoDB 7, and

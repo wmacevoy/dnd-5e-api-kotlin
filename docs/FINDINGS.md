@@ -18,7 +18,9 @@ release 4.5.1 (b207ac7). An entry says whether running confirmed it or it only c
 - **Kind:** K2 (surprise)
 - **Cost:** until now, no one could tell from the repository whether it worked.
 - **Findable by:** CI, which does not exist yet.
-- **Changed:** queue items 1 to 4; `CONTRIBUTING.md` names the real commands.
+- **Changed:** queue items 1 to 4; `CONTRIBUTING.md` names the real commands. With the list test
+  corrected and the collection name fixed, the same check passes, 75 of 75. The list test now also
+  requires a non-empty list, because an empty one had hidden the wrong collection name.
 
 ## 2026-11-11 — The shared list test is out of step with the API (confirmed by running)
 

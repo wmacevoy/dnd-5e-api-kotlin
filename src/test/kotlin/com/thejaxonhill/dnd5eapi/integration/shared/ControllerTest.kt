@@ -21,12 +21,15 @@ abstract class ControllerTest(val endpoint: String, val testIndex: String) {
     @Autowired
     lateinit var mvc: MockMvc
 
+    // REQ1/API-2: a list is a paged object, with its items in `content`.
     @Test
     fun `when get endpoint then returns list with indexed items`() {
         val items = mvc.perform(get(endpoint))
-            .andReturn().response.contentAsString.let { om.readTree(it) }
+            .andReturn().response.contentAsString.let { om.readTree(it) }.path("content")
 
-        assertEquals(items.nodeType, JsonNodeType.ARRAY)
+        assertEquals(JsonNodeType.ARRAY, items.nodeType)
+        // An empty list would pass the loop below, and hid a wrong collection name.
+        assertTrue(items.size() > 0)
         for (item in items) {
             val fieldNames = item.fieldNames().asSequence().toList()
             assertTrue(fieldNames.contains("index"))
