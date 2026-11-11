@@ -8,6 +8,10 @@ the same record. The manifest stores status codes and hashes, not responses, whi
 out of this repository; full bodies go to .golden/, which is ignored and can be recorded again.
 The "schema" group (the OpenAPI document) is reported but cannot fail a compare: how much of it a
 design keeps is one of the things being measured.
+
+A case whose recorded answer names a class of this code (an error's message) is written with
+"unchecked" in place of its hash, and only its status is compared (EXPERIMENT.md, rule 3). A
+re-record keeps that mark, since another implementation's text will not name those classes.
 """
 import argparse
 import hashlib
@@ -26,6 +30,8 @@ BODIES = pathlib.Path(".golden/bodies")
 ACTUAL = pathlib.Path(".golden/actual")
 PAGING = {"page", "size", "sort"}
 MISSING_VALUE = "__no_such_value__"
+UNCHECKED = "unchecked"
+CODE_NAMES = "com.thejaxonhill"
 LARGEST_PAGE = 2000  # Spring's limit on a requested page size
 
 # REST path, MCP list tool, MCP get-by-index tool. The tool names are not derivable from the paths.
@@ -224,15 +230,25 @@ def save_body(directory, sha, value):
     (directory / f"{sha}.json").write_text(text, encoding="utf-8")
 
 
+def unchecked_before():
+    if not MANIFEST.exists():
+        return set()
+    lines = (line.split("\t", 4) for line in MANIFEST.read_text(encoding="utf-8").splitlines())
+    return {request for group, status, sha, kind, request in lines if sha == UNCHECKED}
+
+
 def record(base):
     session = McpSession(base)
     cases = all_cases(base, session)
+    unchecked = unchecked_before()
     MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     with MANIFEST.open("w", encoding="utf-8") as out:
         for group, kind, request in cases:
             status, value = run_case(base, session, kind, request)
             sha = digest(value)
             save_body(BODIES, sha, value)
+            if request in unchecked or CODE_NAMES in canonical(value):
+                sha = UNCHECKED
             out.write(f"{group}\t{status}\t{sha}\t{kind}\t{request}\n")
     print(f"recorded {len(cases)} cases in {MANIFEST}")
 
@@ -275,9 +291,10 @@ def compare(base):
         actual_status, value = run_case(base, session, kind, request)
         actual_sha = digest(value)
         totals[group] = totals.get(group, 0) + 1
-        if str(actual_status) != status or actual_sha != sha:
+        if str(actual_status) != status or (sha != UNCHECKED and actual_sha != sha):
             save_body(ACTUAL, actual_sha, value)
-            note = f"status {status} became {actual_status}; {explain(sha, value)}"
+            detail = "only its status is held" if sha == UNCHECKED else explain(sha, value)
+            note = f"status {status} became {actual_status}; {detail}"
             differing.setdefault(group, []).append(f"{request}  ({note})")
     for group, count in sorted(totals.items()):
         found = differing.get(group, [])
