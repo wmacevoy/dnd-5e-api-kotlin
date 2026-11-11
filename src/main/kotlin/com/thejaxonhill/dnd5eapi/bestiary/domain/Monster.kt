@@ -1,5 +1,6 @@
 package com.thejaxonhill.dnd5eapi.bestiary.domain
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ActionType
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Choice
@@ -23,7 +24,7 @@ data class Monster(
     val hitPoints: Int,
     val hitPointsRoll: String,
     val image: String? = null,
-    val index: String,
+    val index: Index,
     val intelligence: Int,
     val languages: String,
     val legendaryActions: List<LegendaryAction>? = null,

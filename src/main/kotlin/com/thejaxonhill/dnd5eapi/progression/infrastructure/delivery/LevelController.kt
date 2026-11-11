@@ -1,11 +1,10 @@
 package com.thejaxonhill.dnd5eapi.progression.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.progression.application.LevelQueries
 import com.thejaxonhill.dnd5eapi.progression.application.dto.LevelView
-import com.thejaxonhill.dnd5eapi.progression.application.usecase.LoadLevelByIndex
-import com.thejaxonhill.dnd5eapi.progression.application.usecase.LoadLevels
 import com.thejaxonhill.dnd5eapi.progression.domain.LevelExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/levels")
 class LevelController(
-    private val loadLevelByIndex: LoadLevelByIndex,
-    private val loadLevels: LoadLevels
+    private val queries: LevelQueries
 ) {
     @Operation(summary = "Get a paginated list of levels")
     @GetMapping
@@ -29,10 +27,10 @@ class LevelController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: LevelExample?
     ): ResponseEntity<PagedModel<LevelView>> =
-        ResponseEntity.ok(loadLevels.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a level by index")
     @GetMapping("/{index}")
     fun getLevel(@PathVariable index: String): ResponseEntity<LevelView> =
-        ResponseEntity.ok(loadLevelByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

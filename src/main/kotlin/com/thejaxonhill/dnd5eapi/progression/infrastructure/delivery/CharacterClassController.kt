@@ -1,11 +1,10 @@
 package com.thejaxonhill.dnd5eapi.progression.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.progression.application.CharacterClassQueries
 import com.thejaxonhill.dnd5eapi.progression.application.dto.CharacterClassView
-import com.thejaxonhill.dnd5eapi.progression.application.usecase.LoadCharacterClassByIndex
-import com.thejaxonhill.dnd5eapi.progression.application.usecase.LoadCharacterClasses
 import com.thejaxonhill.dnd5eapi.progression.domain.CharacterClassExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/classes")
 class CharacterClassController(
-    private val loadCharacterClassByIndex: LoadCharacterClassByIndex,
-    private val loadCharacterClasses: LoadCharacterClasses
+    private val queries: CharacterClassQueries
 ) {
     @Operation(summary = "Get a paginated list of character classes")
     @GetMapping
@@ -29,10 +27,10 @@ class CharacterClassController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: CharacterClassExample?
     ): ResponseEntity<PagedModel<CharacterClassView>> =
-        ResponseEntity.ok(loadCharacterClasses.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a character class by index")
     @GetMapping("/{index}")
     fun getCharacterClass(@PathVariable index: String): ResponseEntity<CharacterClassView> =
-        ResponseEntity.ok(loadCharacterClassByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

@@ -14,7 +14,7 @@ data class SkillView(
 fun Skill.toView() = SkillView(
     abilityScore = abilityScore,
     desc = desc,
-    index = index,
+    index = index.value,
     name = name,
     url = url,
 )

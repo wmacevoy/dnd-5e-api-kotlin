@@ -11,7 +11,7 @@ data class MagicSchoolView(
 
 fun MagicSchool.toView() = MagicSchoolView(
     desc = desc,
-    index = index,
+    index = index.value,
     name = name,
     url = url,
 )

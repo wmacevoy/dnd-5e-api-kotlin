@@ -1,10 +1,11 @@
 package com.thejaxonhill.dnd5eapi.character.domain
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Choice
 
 class Background(
-    val index: String,
+    val index: Index,
     val name: String? = null,
     val startingProficiencies: List<ApiReference>? = null,
     val languageOptions: Choice? = null,

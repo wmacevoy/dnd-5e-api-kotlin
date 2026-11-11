@@ -1,11 +1,10 @@
 package com.thejaxonhill.dnd5eapi.rules.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.rules.application.RuleSectionQueries
 import com.thejaxonhill.dnd5eapi.rules.application.dto.RuleSectionView
-import com.thejaxonhill.dnd5eapi.rules.application.usecase.LoadRuleSectionByIndex
-import com.thejaxonhill.dnd5eapi.rules.application.usecase.LoadRuleSections
 import com.thejaxonhill.dnd5eapi.rules.domain.RuleSectionExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/rule-sections")
 class RuleSectionController(
-    private val loadRuleSectionByIndex: LoadRuleSectionByIndex,
-    private val loadRuleSections: LoadRuleSections
+    private val queries: RuleSectionQueries
 ) {
     @Operation(summary = "Get a paginated list of rule sections")
     @GetMapping
@@ -29,10 +27,10 @@ class RuleSectionController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: RuleSectionExample?
     ): ResponseEntity<PagedModel<RuleSectionView>> =
-        ResponseEntity.ok(loadRuleSections.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a rule section by index")
     @GetMapping("/{index}")
     fun getRuleSection(@PathVariable index: String): ResponseEntity<RuleSectionView> =
-        ResponseEntity.ok(loadRuleSectionByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

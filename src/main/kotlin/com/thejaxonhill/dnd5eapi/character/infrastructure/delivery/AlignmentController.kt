@@ -1,11 +1,10 @@
 package com.thejaxonhill.dnd5eapi.character.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.character.application.AlignmentQueries
 import com.thejaxonhill.dnd5eapi.character.application.dto.AlignmentView
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadAlignmentByIndex
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadAlignments
 import com.thejaxonhill.dnd5eapi.character.domain.AlignmentExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/alignments")
 class AlignmentController(
-    private val loadAlignmentByIndex: LoadAlignmentByIndex,
-    private val loadAlignments: LoadAlignments
+    private val queries: AlignmentQueries
 ) {
     @Operation(summary = "Get a paginated list of alignments")
     @GetMapping
@@ -29,10 +27,10 @@ class AlignmentController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: AlignmentExample?
     ): ResponseEntity<PagedModel<AlignmentView>> =
-        ResponseEntity.ok(loadAlignments.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get an alignment by index")
     @GetMapping("/{index}")
     fun getAlignment(@PathVariable index: String): ResponseEntity<AlignmentView> =
-        ResponseEntity.ok(loadAlignmentByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

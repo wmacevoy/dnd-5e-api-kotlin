@@ -1,12 +1,10 @@
 package com.thejaxonhill.dnd5eapi.equipment.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.equipment.application.EquipmentQueries
 import com.thejaxonhill.dnd5eapi.equipment.application.dto.EquipmentView
-import com.thejaxonhill.dnd5eapi.equipment.application.usecase.LoadAllEquipment
-import com.thejaxonhill.dnd5eapi.equipment.application.usecase.LoadEquipmentByIndex
-import com.thejaxonhill.dnd5eapi.equipment.application.usecase.SearchEquipment
 import com.thejaxonhill.dnd5eapi.equipment.domain.EquipmentExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -24,9 +22,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/equipment")
 class EquipmentController(
-    private val loadEquipmentByIndex: LoadEquipmentByIndex,
-    private val loadAllEquipment: LoadAllEquipment,
-    private val searchEquipment: SearchEquipment
+    private val queries: EquipmentQueries
 ) {
     @Operation(summary = "Get a paginated list of equipment")
     @GetMapping
@@ -36,7 +32,7 @@ class EquipmentController(
         @RequestParam(required = false) query: String? = null,
         @ParameterObject example: EquipmentExample?
     ): ResponseEntity<PagedModel<EquipmentView>> =
-        ResponseEntity.ok(loadAllEquipment.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a paginated list of equipment")
     @GetMapping("/search")
@@ -45,10 +41,10 @@ class EquipmentController(
         @ParameterObject pageable: Pageable,
         @RequestParam(required = false) query: String? = null,
     ): ResponseEntity<PagedModel<EquipmentView>> =
-        ResponseEntity.ok(searchEquipment.search(pageable.toPage(), query))
+        ResponseEntity.ok(queries.search(pageable.toPage(), query))
 
     @Operation(summary = "Get equipment by index")
     @GetMapping("/{index}")
     fun getEquipment(@PathVariable index: String): ResponseEntity<EquipmentView> =
-        ResponseEntity.ok(loadEquipmentByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

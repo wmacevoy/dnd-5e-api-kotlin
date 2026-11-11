@@ -1,12 +1,13 @@
 package com.thejaxonhill.dnd5eapi.equipment.domain
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 
 data class MagicItem(
     val desc: List<String>,
     val equipmentCategory: ApiReference,
     val image: String? = null,
-    val index: String,
+    val index: Index,
     val name: String,
     val rarity: Rarity,
     val url: String,

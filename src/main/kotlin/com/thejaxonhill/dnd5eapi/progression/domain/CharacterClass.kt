@@ -1,12 +1,13 @@
 package com.thejaxonhill.dnd5eapi.progression.domain
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Choice
 
 data class CharacterClass(
     val classLevels: String? = null,
     val hitDie: Int? = null,
-    val index: String,
+    val index: Index,
     val name: String? = null,
     val proficiencies: List<ApiReference>? = null,
     val proficiencyChoices: List<Choice>? = null,

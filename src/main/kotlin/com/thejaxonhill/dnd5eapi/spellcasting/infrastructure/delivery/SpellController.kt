@@ -1,10 +1,9 @@
 package com.thejaxonhill.dnd5eapi.spellcasting.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.spellcasting.application.SpellQueries
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import com.thejaxonhill.dnd5eapi.spellcasting.application.dto.SpellView
-import com.thejaxonhill.dnd5eapi.spellcasting.application.usecase.LoadSpellByIndex
-import com.thejaxonhill.dnd5eapi.spellcasting.application.usecase.LoadSpells
 import com.thejaxonhill.dnd5eapi.spellcasting.domain.SpellExample
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/spells")
 class SpellController(
-    private val loadSpellByIndex: LoadSpellByIndex,
-    private val loadSpells: LoadSpells
+    private val queries: SpellQueries
 ) {
     @Operation(summary = "Get a paginated list of spells")
     @GetMapping
@@ -29,10 +27,10 @@ class SpellController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: SpellExample?
     ): ResponseEntity<PagedModel<SpellView>> =
-        ResponseEntity.ok(loadSpells.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a spell by index")
     @GetMapping("/{index}")
     fun getSpell(@PathVariable index: String): ResponseEntity<SpellView> =
-        ResponseEntity.ok(loadSpellByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

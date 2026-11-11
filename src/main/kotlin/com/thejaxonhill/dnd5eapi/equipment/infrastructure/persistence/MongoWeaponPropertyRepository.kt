@@ -1,8 +1,9 @@
 package com.thejaxonhill.dnd5eapi.equipment.infrastructure.persistence
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Page
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPageable
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPageable
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPagedModel
 import com.thejaxonhill.dnd5eapi.equipment.domain.WeaponProperty
 import com.thejaxonhill.dnd5eapi.equipment.domain.WeaponPropertyExample
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class MongoWeaponPropertyRepository(private val repository: WeaponPropertyMongoRepository) : WeaponPropertyRepository {
-    override fun loadByIndex(index: String): WeaponProperty? = repository.findByIndex(index)?.toDomain()
+    override fun loadByIndex(index: Index): WeaponProperty? = repository.findByIndex(index.value)?.toDomain()
 
     override fun loadAll(page: Page, example: WeaponPropertyExample?): PagedModel<WeaponProperty> =
         repository.findAll(
@@ -23,7 +24,7 @@ class MongoWeaponPropertyRepository(private val repository: WeaponPropertyMongoR
 
 fun WeaponPropertyDocument.toDomain() = WeaponProperty(
     desc = desc!!,
-    index = index!!,
+    index = Index.of(index!!),
     name = name!!,
     url = url!!,
 )

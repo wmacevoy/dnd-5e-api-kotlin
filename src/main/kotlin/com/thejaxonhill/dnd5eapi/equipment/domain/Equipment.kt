@@ -1,5 +1,6 @@
 package com.thejaxonhill.dnd5eapi.equipment.domain
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Damage
 
@@ -14,7 +15,7 @@ data class Equipment(
     val desc: String? = null,
     val equipmentCategory: ApiReference,
     val gearCategory: ApiReference? = null,
-    val index: String,
+    val index: Index,
     val name: String,
     val properties: List<ApiReference>? = null,
     val quantity: Int? = null,

@@ -1,11 +1,10 @@
 package com.thejaxonhill.dnd5eapi.character.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.character.application.ProficiencyQueries
 import com.thejaxonhill.dnd5eapi.character.application.dto.ProficiencyView
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadProficiencyByIndex
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadProficiencies
 import com.thejaxonhill.dnd5eapi.character.domain.ProficiencyExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/proficiencies")
 class ProficiencyController(
-    private val loadProficiencyByIndex: LoadProficiencyByIndex,
-    private val loadProficiencies: LoadProficiencies
+    private val queries: ProficiencyQueries
 ) {
     @Operation(summary = "Get a paginated list of proficiencies")
     @GetMapping
@@ -29,10 +27,10 @@ class ProficiencyController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: ProficiencyExample?
     ): ResponseEntity<PagedModel<ProficiencyView>> =
-        ResponseEntity.ok(loadProficiencies.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a proficiency by index")
     @GetMapping("/{index}")
     fun getProficiency(@PathVariable index: String): ResponseEntity<ProficiencyView> =
-        ResponseEntity.ok(loadProficiencyByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

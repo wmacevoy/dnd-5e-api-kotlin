@@ -15,7 +15,7 @@ data class AbilityScoreView(
 fun AbilityScore.toView() = AbilityScoreView(
     desc = desc,
     fullName = fullName,
-    index = index,
+    index = index.value,
     name = name,
     skills = skills,
     url = url,

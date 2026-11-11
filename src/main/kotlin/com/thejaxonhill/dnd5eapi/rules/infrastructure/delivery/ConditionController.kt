@@ -1,11 +1,10 @@
 package com.thejaxonhill.dnd5eapi.rules.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.rules.application.ConditionQueries
 import com.thejaxonhill.dnd5eapi.rules.application.dto.ConditionView
-import com.thejaxonhill.dnd5eapi.rules.application.usecase.LoadConditionByIndex
-import com.thejaxonhill.dnd5eapi.rules.application.usecase.LoadConditions
 import com.thejaxonhill.dnd5eapi.rules.domain.ConditionExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/conditions")
 class ConditionController(
-    private val loadConditionByIndex: LoadConditionByIndex,
-    private val loadConditions: LoadConditions
+    private val queries: ConditionQueries
 ) {
     @Operation(summary = "Get a paginated list of conditions")
     @GetMapping
@@ -29,10 +27,10 @@ class ConditionController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: ConditionExample?
     ): ResponseEntity<PagedModel<ConditionView>> =
-        ResponseEntity.ok(loadConditions.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a condition by index")
     @GetMapping("/{index}")
     fun getCondition(@PathVariable index: String): ResponseEntity<ConditionView> =
-        ResponseEntity.ok(loadConditionByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

@@ -1,5 +1,6 @@
 package com.thejaxonhill.dnd5eapi.spellcasting.domain
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.AreaOfEffect
 
@@ -16,7 +17,7 @@ data class Spell(
     val duration: String,
     val healAtSlotLevel: Map<Int, String>? = null,
     val higherLevel: List<String>? = null,
-    val index: String,
+    val index: Index,
     val level: Int,
     val material: String? = null,
     val name: String,

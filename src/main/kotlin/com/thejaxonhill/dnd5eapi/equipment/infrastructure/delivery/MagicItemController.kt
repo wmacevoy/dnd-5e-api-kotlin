@@ -1,11 +1,10 @@
 package com.thejaxonhill.dnd5eapi.equipment.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.equipment.application.MagicItemQueries
 import com.thejaxonhill.dnd5eapi.equipment.application.dto.MagicItemView
-import com.thejaxonhill.dnd5eapi.equipment.application.usecase.LoadMagicItemByIndex
-import com.thejaxonhill.dnd5eapi.equipment.application.usecase.LoadMagicItems
 import com.thejaxonhill.dnd5eapi.equipment.domain.MagicItemExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/magic-items")
 class MagicItemController(
-    private val loadMagicItemByIndex: LoadMagicItemByIndex,
-    private val loadMagicItems: LoadMagicItems
+    private val queries: MagicItemQueries
 ) {
     @Operation(summary = "Get a paginated list of magic items")
     @GetMapping
@@ -29,10 +27,10 @@ class MagicItemController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: MagicItemExample?
     ): ResponseEntity<PagedModel<MagicItemView>> =
-        ResponseEntity.ok(loadMagicItems.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a magic item by index")
     @GetMapping("/{index}")
     fun getMagicItem(@PathVariable index: String): ResponseEntity<MagicItemView> =
-        ResponseEntity.ok(loadMagicItemByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

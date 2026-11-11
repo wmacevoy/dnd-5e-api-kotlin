@@ -22,7 +22,7 @@ data class BackgroundView(
 )
 
 fun Background.toView() = BackgroundView(
-    index = index,
+    index = index.value,
     name = name,
     startingProficiencies = startingProficiencies,
     languageOptions = languageOptions,

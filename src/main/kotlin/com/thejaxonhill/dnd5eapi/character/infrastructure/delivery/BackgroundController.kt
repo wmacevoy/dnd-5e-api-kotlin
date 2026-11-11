@@ -1,11 +1,10 @@
 package com.thejaxonhill.dnd5eapi.character.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.character.application.BackgroundQueries
 import com.thejaxonhill.dnd5eapi.character.application.dto.BackgroundView
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadBackgroundByIndex
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadBackgrounds
 import com.thejaxonhill.dnd5eapi.character.domain.BackgroundExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/backgrounds")
 class BackgroundController(
-    private val loadBackgroundByIndex: LoadBackgroundByIndex,
-    private val loadBackgrounds: LoadBackgrounds
+    private val queries: BackgroundQueries
 ) {
     @Operation(summary = "Get a paginated list of backgrounds")
     @GetMapping
@@ -29,10 +27,10 @@ class BackgroundController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: BackgroundExample?
     ): ResponseEntity<PagedModel<BackgroundView>> =
-        ResponseEntity.ok(loadBackgrounds.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a background by index")
     @GetMapping("/{index}")
     fun getBackground(@PathVariable index: String): ResponseEntity<BackgroundView> =
-        ResponseEntity.ok(loadBackgroundByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

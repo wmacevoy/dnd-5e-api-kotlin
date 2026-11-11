@@ -1,5 +1,6 @@
 package com.thejaxonhill.dnd5eapi.character.domain
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.AreaOfEffect
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Choice
@@ -7,7 +8,7 @@ import com.thejaxonhill.dnd5eapi.shared.domain.model.DifficultyClass
 
 data class Trait(
     val desc: List<String>,
-    val index: String,
+    val index: Index,
     val name: String,
     val proficiencies: List<TraitProficiency>? = null,
     val proficiencyChoices: Choice?,
@@ -26,7 +27,7 @@ data class ActionDamage(
 )
 
 data class TraitProficiency(
-    val index: String,
+    val index: Index,
     val name: String,
     val url: String,
 )

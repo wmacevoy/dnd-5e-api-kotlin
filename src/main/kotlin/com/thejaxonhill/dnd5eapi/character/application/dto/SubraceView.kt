@@ -21,7 +21,7 @@ data class SubraceView(
 fun Subrace.toView() = SubraceView(
     abilityBonuses = abilityBonuses,
     desc = desc,
-    index = index,
+    index = index.value,
     languages = languages,
     languageOptions = languageOptions,
     name = name,

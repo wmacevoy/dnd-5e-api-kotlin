@@ -12,7 +12,7 @@ data class EquipmentCategoryView(
 
 fun EquipmentCategory.toView() = EquipmentCategoryView(
     equipment = equipment,
-    index = index,
+    index = index.value,
     name = name,
     url = url,
 )

@@ -1,8 +1,9 @@
 package com.thejaxonhill.dnd5eapi.progression.infrastructure.persistence
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Page
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPageable
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPageable
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPagedModel
 import com.thejaxonhill.dnd5eapi.progression.domain.Subclass
 import com.thejaxonhill.dnd5eapi.progression.domain.SubclassExample
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class MongoSubclassRepository(private val repository: SubclassMongoRepository) : SubclassRepository {
-    override fun loadByIndex(index: String): Subclass? = repository.findByIndex(index)?.toDomain()
+    override fun loadByIndex(index: Index): Subclass? = repository.findByIndex(index.value)?.toDomain()
 
     override fun loadAll(page: Page, example: SubclassExample?): PagedModel<Subclass> =
         repository.findAll(
@@ -24,7 +25,7 @@ class MongoSubclassRepository(private val repository: SubclassMongoRepository) :
 fun SubclassDocument.toDomain() = Subclass(
     characterClass = characterClass!!,
     desc = desc!!,
-    index = index!!,
+    index = Index.of(index!!),
     name = name!!,
     spells = spells,
     subclassFlavor = subclassFlavor!!,

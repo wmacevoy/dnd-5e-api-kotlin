@@ -1,11 +1,10 @@
 package com.thejaxonhill.dnd5eapi.character.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.character.application.RaceQueries
 import com.thejaxonhill.dnd5eapi.character.application.dto.RaceView
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadRaceByIndex
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadRaces
 import com.thejaxonhill.dnd5eapi.character.domain.RaceExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/races")
 class RaceController(
-    private val loadRaceByIndex: LoadRaceByIndex,
-    private val loadRaces: LoadRaces
+    private val queries: RaceQueries
 ) {
     @Operation(summary = "Get a paginated list of races")
     @GetMapping
@@ -29,10 +27,10 @@ class RaceController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: RaceExample?
     ): ResponseEntity<PagedModel<RaceView>> =
-        ResponseEntity.ok(loadRaces.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a race by index")
     @GetMapping("/{index}")
     fun getRace(@PathVariable index: String): ResponseEntity<RaceView> =
-        ResponseEntity.ok(loadRaceByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

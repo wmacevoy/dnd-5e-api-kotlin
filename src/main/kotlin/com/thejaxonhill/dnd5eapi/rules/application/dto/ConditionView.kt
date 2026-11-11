@@ -10,7 +10,7 @@ data class ConditionView(
 )
 
 fun Condition.toView() = ConditionView(
-    index = index,
+    index = index.value,
     name = name,
     desc = desc,
     url = url,

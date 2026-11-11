@@ -12,7 +12,7 @@ data class FeatView(
 )
 
 fun Feat.toView() = FeatView(
-    index = index,
+    index = index.value,
     name = name,
     prerequisites = prerequisites,
     desc = desc,

@@ -27,7 +27,7 @@ data class CharacterClassView(
 fun CharacterClass.toView() = CharacterClassView(
     classLevels = classLevels,
     hitDie = hitDie,
-    index = index,
+    index = index.value,
     name = name,
     proficiencies = proficiencies,
     proficiencyChoices = proficiencyChoices,

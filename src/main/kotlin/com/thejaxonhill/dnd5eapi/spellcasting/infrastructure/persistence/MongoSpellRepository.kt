@@ -1,8 +1,9 @@
 package com.thejaxonhill.dnd5eapi.spellcasting.infrastructure.persistence
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Page
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPageable
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPageable
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPagedModel
 import com.thejaxonhill.dnd5eapi.spellcasting.domain.Spell
 import com.thejaxonhill.dnd5eapi.spellcasting.domain.SpellExample
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class MongoSpellRepository(private val repository: SpellMongoRepository) : SpellRepository {
-    override fun loadByIndex(index: String): Spell? = repository.findByIndex(index)?.toDomain()
+    override fun loadByIndex(index: Index): Spell? = repository.findByIndex(index.value)?.toDomain()
 
     override fun loadAll(page: Page, example: SpellExample?): PagedModel<Spell> =
         repository.findAll(
@@ -34,7 +35,7 @@ fun SpellDocument.toDomain() = Spell(
     duration = duration!!,
     healAtSlotLevel = healAtSlotLevel,
     higherLevel = higherLevel,
-    index = index!!,
+    index = Index.of(index!!),
     level = level!!,
     material = material,
     name = name!!,

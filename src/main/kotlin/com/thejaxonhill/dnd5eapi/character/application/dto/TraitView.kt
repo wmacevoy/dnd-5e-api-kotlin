@@ -22,7 +22,7 @@ data class TraitView(
 
 fun Trait.toView() = TraitView(
     desc = desc,
-    index = index,
+    index = index.value,
     name = name,
     proficiencies = proficiencies,
     proficiencyChoices = proficiencyChoices,

@@ -11,7 +11,7 @@ data class RuleSectionView(
 
 fun RuleSection.toView() = RuleSectionView(
     desc = desc,
-    index = index,
+    index = index.value,
     name = name,
     url = url,
 )

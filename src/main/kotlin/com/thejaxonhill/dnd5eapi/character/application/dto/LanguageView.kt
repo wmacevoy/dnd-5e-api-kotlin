@@ -14,7 +14,7 @@ data class LanguageView(
 
 fun Language.toView() = LanguageView(
     desc = desc,
-    index = index,
+    index = index.value,
     name = name,
     script = script,
     type = type,

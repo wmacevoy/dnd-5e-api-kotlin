@@ -1,11 +1,10 @@
 package com.thejaxonhill.dnd5eapi.equipment.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.equipment.application.EquipmentCategoryQueries
 import com.thejaxonhill.dnd5eapi.equipment.application.dto.EquipmentCategoryView
-import com.thejaxonhill.dnd5eapi.equipment.application.usecase.LoadEquipmentCategories
-import com.thejaxonhill.dnd5eapi.equipment.application.usecase.LoadEquipmentCategoryByIndex
 import com.thejaxonhill.dnd5eapi.equipment.domain.EquipmentCategoryExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/equipment-categories")
 class EquipmentCategoryController(
-    private val loadEquipmentCategoryByIndex: LoadEquipmentCategoryByIndex,
-    private val loadEquipmentCategories: LoadEquipmentCategories
+    private val queries: EquipmentCategoryQueries
 ) {
     @Operation(summary = "Get a paginated list of equipment categories")
     @GetMapping
@@ -29,10 +27,10 @@ class EquipmentCategoryController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: EquipmentCategoryExample?
     ): ResponseEntity<PagedModel<EquipmentCategoryView>> =
-        ResponseEntity.ok(loadEquipmentCategories.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get an equipment category by index")
     @GetMapping("/{index}")
     fun getEquipmentCategory(@PathVariable index: String): ResponseEntity<EquipmentCategoryView> =
-        ResponseEntity.ok(loadEquipmentCategoryByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

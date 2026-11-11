@@ -1,18 +1,19 @@
 package com.thejaxonhill.dnd5eapi.progression.infrastructure.persistence
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.progression.domain.Feature
 import com.thejaxonhill.dnd5eapi.progression.domain.FeatureExample
 import com.thejaxonhill.dnd5eapi.progression.domain.FeatureRepository
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Page
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPageable
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPageable
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPagedModel
 import org.springframework.data.domain.Example
 import org.springframework.stereotype.Component
 
 @Component
 class MongoFeatureRepository(private val repository: FeatureMongoRepository) : FeatureRepository {
-    override fun loadByIndex(index: String): Feature? = repository.findByIndex(index)?.toDomain()
+    override fun loadByIndex(index: Index): Feature? = repository.findByIndex(index.value)?.toDomain()
 
     override fun loadAll(page: Page, example: FeatureExample?): PagedModel<Feature> =
         repository.findAll(
@@ -25,7 +26,7 @@ fun FeatureDocument.toDomain() = Feature(
     characterClass = characterClass!!,
     desc = desc!!,
     parent = parent,
-    index = index!!,
+    index = Index.of(index!!),
     level = level!!,
     name = name!!,
     prerequisite = prerequisite,

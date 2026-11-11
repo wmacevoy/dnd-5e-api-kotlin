@@ -1,5 +1,6 @@
 package com.thejaxonhill.dnd5eapi.progression.domain
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Choice
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Prerequisite
@@ -8,7 +9,7 @@ data class Feature(
     val characterClass: ApiReference,
     val desc: List<String>,
     val parent: ApiReference? = null,
-    val index: String,
+    val index: Index,
     val level: Int,
     val name: String,
     val prerequisite: List<Prerequisite>?,

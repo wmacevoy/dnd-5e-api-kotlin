@@ -1,20 +1,18 @@
 package com.thejaxonhill.dnd5eapi.spellcasting.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.spellcasting.application.SpellQueries
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Page
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.stereotype.McpTools
-import com.thejaxonhill.dnd5eapi.spellcasting.application.usecase.LoadSpellByIndex
-import com.thejaxonhill.dnd5eapi.spellcasting.application.usecase.LoadSpells
 import org.springframework.ai.tool.annotation.Tool
 
 @McpTools
 class SpellTools(
-    private val loadSpellByIndex: LoadSpellByIndex,
-    private val loadSpells: LoadSpells
+    private val queries: SpellQueries
 ) {
     @Tool
     fun getSpells(pageNumber: Int? = 1, pageSize: Int? = 20) =
-        loadSpells.load(Page(pageNumber ?: 1, pageSize ?: 20), null)
+        queries.list(Page(pageNumber ?: 1, pageSize ?: 20), null)
 
     @Tool
-    fun getSpell(index: String) = loadSpellByIndex.load(index)
+    fun getSpell(index: String) = queries.byIndex(index)
 }

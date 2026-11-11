@@ -13,7 +13,7 @@ data class RuleView(
 
 fun Rule.toView() = RuleView(
     desc = desc,
-    index = index,
+    index = index.value,
     name = name,
     subsections = subsections,
     url = url,

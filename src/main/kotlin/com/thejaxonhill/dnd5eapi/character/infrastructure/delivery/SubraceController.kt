@@ -1,10 +1,9 @@
 package com.thejaxonhill.dnd5eapi.character.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.character.application.SubraceQueries
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import com.thejaxonhill.dnd5eapi.character.application.dto.SubraceView
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadSubraceByIndex
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadSubraces
 import com.thejaxonhill.dnd5eapi.character.domain.SubraceExample
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/subraces")
 class SubraceController(
-    private val loadSubraceByIndex: LoadSubraceByIndex,
-    private val loadSubraces: LoadSubraces
+    private val queries: SubraceQueries
 ) {
     @Operation(summary = "Get a paginated list of subraces")
     @GetMapping
@@ -29,10 +27,10 @@ class SubraceController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: SubraceExample?
     ): ResponseEntity<PagedModel<SubraceView>> =
-        ResponseEntity.ok(loadSubraces.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a subrace by index")
     @GetMapping("/{index}")
     fun getSubrace(@PathVariable index: String): ResponseEntity<SubraceView> =
-        ResponseEntity.ok(loadSubraceByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

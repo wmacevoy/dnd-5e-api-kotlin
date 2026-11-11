@@ -1,11 +1,10 @@
 package com.thejaxonhill.dnd5eapi.character.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.character.application.LanguageQueries
 import com.thejaxonhill.dnd5eapi.character.application.dto.LanguageView
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadLanguageByIndex
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadLanguages
 import com.thejaxonhill.dnd5eapi.character.domain.LanguageExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/languages")
 class LanguageController(
-    private val loadLanguageByIndex: LoadLanguageByIndex,
-    private val loadLanguages: LoadLanguages
+    private val queries: LanguageQueries
 ) {
     @Operation(summary = "Get a paginated list of languages")
     @GetMapping
@@ -29,10 +27,10 @@ class LanguageController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: LanguageExample?
     ): ResponseEntity<PagedModel<LanguageView>> =
-        ResponseEntity.ok(loadLanguages.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a language by index")
     @GetMapping("/{index}")
     fun getLanguage(@PathVariable index: String): ResponseEntity<LanguageView> =
-        ResponseEntity.ok(loadLanguageByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

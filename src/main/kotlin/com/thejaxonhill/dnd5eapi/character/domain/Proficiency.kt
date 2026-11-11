@@ -1,10 +1,11 @@
 package com.thejaxonhill.dnd5eapi.character.domain
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 
 data class Proficiency(
     val classes: List<ApiReference>? = null,
-    val index: String,
+    val index: Index,
     val name: String,
     val races: List<ApiReference>? = null,
     val reference: ApiReference,

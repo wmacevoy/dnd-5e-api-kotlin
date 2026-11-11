@@ -10,7 +10,7 @@ data class DamageTypeView(
 )
 
 fun DamageType.toView() = DamageTypeView(
-    index = index,
+    index = index.value,
     name = name,
     desc = desc,
     url = url,

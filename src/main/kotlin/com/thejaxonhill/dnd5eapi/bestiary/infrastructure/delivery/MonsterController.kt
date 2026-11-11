@@ -1,11 +1,10 @@
 package com.thejaxonhill.dnd5eapi.bestiary.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.bestiary.application.MonsterQueries
 import com.thejaxonhill.dnd5eapi.bestiary.application.dto.MonsterView
-import com.thejaxonhill.dnd5eapi.bestiary.application.usecase.LoadMonsterByIndex
-import com.thejaxonhill.dnd5eapi.bestiary.application.usecase.LoadMonsters
 import com.thejaxonhill.dnd5eapi.bestiary.domain.MonsterExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/monsters")
 class MonsterController(
-    private val loadMonsterByIndex: LoadMonsterByIndex,
-    private val loadMonsters: LoadMonsters
+    private val queries: MonsterQueries
 ) {
     @Operation(summary = "Get a paginated list of monsters")
     @GetMapping
@@ -29,10 +27,10 @@ class MonsterController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: MonsterExample?
     ): ResponseEntity<PagedModel<MonsterView>> =
-        ResponseEntity.ok(loadMonsters.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a monster by index")
     @GetMapping("/{index}")
     fun getMonster(@PathVariable index: String): ResponseEntity<MonsterView> =
-        ResponseEntity.ok(loadMonsterByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

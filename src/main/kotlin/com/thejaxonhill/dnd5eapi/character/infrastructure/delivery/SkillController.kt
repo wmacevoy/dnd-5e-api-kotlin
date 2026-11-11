@@ -1,10 +1,9 @@
 package com.thejaxonhill.dnd5eapi.character.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.character.application.SkillQueries
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import com.thejaxonhill.dnd5eapi.character.application.dto.SkillView
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadSkillByIndex
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadSkills
 import com.thejaxonhill.dnd5eapi.character.domain.SkillExample
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/skills")
 class SkillController(
-    private val loadSkillByIndex: LoadSkillByIndex,
-    private val loadSkills: LoadSkills
+    private val queries: SkillQueries
 ) {
     @Operation(summary = "Get a paginated list of skills")
     @GetMapping
@@ -29,10 +27,10 @@ class SkillController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: SkillExample?
     ): ResponseEntity<PagedModel<SkillView>> =
-        ResponseEntity.ok(loadSkills.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a skill by index")
     @GetMapping("/{index}")
     fun getSkill(@PathVariable index: String): ResponseEntity<SkillView> =
-        ResponseEntity.ok(loadSkillByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

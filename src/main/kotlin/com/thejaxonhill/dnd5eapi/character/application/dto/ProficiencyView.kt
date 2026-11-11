@@ -15,7 +15,7 @@ data class ProficiencyView(
 
 fun Proficiency.toView() = ProficiencyView(
     classes = classes,
-    index = index,
+    index = index.value,
     name = name,
     races = races,
     reference = reference,

@@ -1,11 +1,10 @@
 package com.thejaxonhill.dnd5eapi.spellcasting.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.spellcasting.application.MagicSchoolQueries
 import com.thejaxonhill.dnd5eapi.spellcasting.application.dto.MagicSchoolView
-import com.thejaxonhill.dnd5eapi.spellcasting.application.usecase.LoadMagicSchoolByIndex
-import com.thejaxonhill.dnd5eapi.spellcasting.application.usecase.LoadMagicSchools
 import com.thejaxonhill.dnd5eapi.spellcasting.domain.MagicSchoolExample
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springdoc.core.annotations.ParameterObject
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/magic-schools")
 class MagicSchoolController(
-    private val loadMagicSchoolByIndex: LoadMagicSchoolByIndex,
-    private val loadMagicSchools: LoadMagicSchools
+    private val queries: MagicSchoolQueries
 ) {
     @Operation(summary = "Get a paginated list of magic schools")
     @GetMapping
@@ -29,10 +27,10 @@ class MagicSchoolController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: MagicSchoolExample?
     ): ResponseEntity<PagedModel<MagicSchoolView>> =
-        ResponseEntity.ok(loadMagicSchools.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a magic school by index")
     @GetMapping("/{index}")
     fun getMagicSchool(@PathVariable index: String): ResponseEntity<MagicSchoolView> =
-        ResponseEntity.ok(loadMagicSchoolByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

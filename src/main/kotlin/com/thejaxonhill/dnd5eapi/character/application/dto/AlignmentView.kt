@@ -11,7 +11,7 @@ data class AlignmentView(
 )
 
 fun Alignment.toView() = AlignmentView(
-    index = index,
+    index = index.value,
     name = name,
     abbreviation = abbreviation,
     desc = desc,

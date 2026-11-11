@@ -1,18 +1,19 @@
 package com.thejaxonhill.dnd5eapi.rules.infrastructure.persistence
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.rules.domain.DamageType
 import com.thejaxonhill.dnd5eapi.rules.domain.DamageTypeExample
 import com.thejaxonhill.dnd5eapi.rules.domain.DamageTypeRepository
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Page
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPageable
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPageable
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPagedModel
 import org.springframework.data.domain.Example
 import org.springframework.stereotype.Component
 
 @Component
 class MongoDamageTypeRepository(private val repository: DamageTypeMongoRepository) : DamageTypeRepository {
-    override fun loadByIndex(index: String): DamageType? = repository.findByIndex(index)?.toDomain()
+    override fun loadByIndex(index: Index): DamageType? = repository.findByIndex(index.value)?.toDomain()
 
     override fun loadAll(page: Page, example: DamageTypeExample?): PagedModel<DamageType> =
         repository.findAll(
@@ -22,7 +23,7 @@ class MongoDamageTypeRepository(private val repository: DamageTypeMongoRepositor
 }
 
 fun DamageTypeDocument.toDomain() = DamageType(
-    index = index!!,
+    index = Index.of(index!!),
     name = name!!,
     desc = desc!!,
     url = url!!,

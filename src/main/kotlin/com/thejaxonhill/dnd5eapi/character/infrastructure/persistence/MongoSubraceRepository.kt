@@ -1,8 +1,9 @@
 package com.thejaxonhill.dnd5eapi.character.infrastructure.persistence
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Page
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPageable
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPageable
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPagedModel
 import com.thejaxonhill.dnd5eapi.character.domain.Subrace
 import com.thejaxonhill.dnd5eapi.character.domain.SubraceExample
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class MongoSubraceRepository(private val repository: SubraceMongoRepository) : SubraceRepository {
-    override fun loadByIndex(index: String): Subrace? = repository.findByIndex(index)?.toDomain()
+    override fun loadByIndex(index: Index): Subrace? = repository.findByIndex(index.value)?.toDomain()
 
     override fun loadAll(page: Page, example: SubraceExample?): PagedModel<Subrace> =
         repository.findAll(
@@ -24,7 +25,7 @@ class MongoSubraceRepository(private val repository: SubraceMongoRepository) : S
 fun SubraceDocument.toDomain() = Subrace(
     abilityBonuses = abilityBonuses!!,
     desc = desc!!,
-    index = index!!,
+    index = Index.of(index!!),
     languages = languages,
     languageOptions = languageOptions,
     name = name!!,

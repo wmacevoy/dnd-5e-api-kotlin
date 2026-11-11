@@ -1,20 +1,18 @@
 package com.thejaxonhill.dnd5eapi.character.infrastructure.delivery
 
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadRaceByIndex
-import com.thejaxonhill.dnd5eapi.character.application.usecase.LoadRaces
+import com.thejaxonhill.dnd5eapi.character.application.RaceQueries
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Page
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.stereotype.McpTools
 import org.springframework.ai.tool.annotation.Tool
 
 @McpTools
 class RaceTools(
-    private val loadRaceByIndex: LoadRaceByIndex,
-    private val loadRaces: LoadRaces
+    private val queries: RaceQueries
 ) {
     @Tool
     fun getRaces(pageNumber: Int? = 1, pageSize: Int? = 20) =
-        loadRaces.load(Page(pageNumber ?: 1, pageSize ?: 20), null)
+        queries.list(Page(pageNumber ?: 1, pageSize ?: 20), null)
 
     @Tool
-    fun getRace(index: String) = loadRaceByIndex.load(index)
+    fun getRace(index: String) = queries.byIndex(index)
 }

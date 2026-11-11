@@ -1,18 +1,19 @@
 package com.thejaxonhill.dnd5eapi.character.infrastructure.persistence
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.character.domain.Background
 import com.thejaxonhill.dnd5eapi.character.domain.BackgroundExample
 import com.thejaxonhill.dnd5eapi.character.domain.BackgroundRepository
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Page
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPageable
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPageable
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPagedModel
 import org.springframework.data.domain.Example
 import org.springframework.stereotype.Component
 
 @Component
 class MongoBackgroundRepository(private val repository: BackgroundMongoRepository) : BackgroundRepository {
-    override fun loadByIndex(index: String): Background? = repository.findByIndex(index)?.toDomain()
+    override fun loadByIndex(index: Index): Background? = repository.findByIndex(index.value)?.toDomain()
 
     override fun loadAll(page: Page, example: BackgroundExample?): PagedModel<Background> =
         repository.findAll(
@@ -22,7 +23,7 @@ class MongoBackgroundRepository(private val repository: BackgroundMongoRepositor
 }
 
 fun BackgroundDocument.toDomain() = Background(
-    index = index!!,
+    index = Index.of(index!!),
     name = name!!,
     startingProficiencies = startingProficiencies!!,
     languageOptions = languageOptions!!,

@@ -1,12 +1,13 @@
 package com.thejaxonhill.dnd5eapi.character.domain
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Choice
 
 data class Subrace(
     val abilityBonuses: List<AbilityBonus>,
     val desc: String,
-    val index: String,
+    val index: Index,
     val languages: List<ApiReference>? = null,
     val languageOptions: Choice? = null,
     val name: String,

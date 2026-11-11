@@ -1,5 +1,6 @@
 package com.thejaxonhill.dnd5eapi.progression.domain
 
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
 
@@ -9,7 +10,7 @@ data class Level(
     val characterClass: ApiReference,
     val classSpecific: ClassSpecific? = null,
     val features: List<ApiReference>,
-    val index: String,
+    val index: Index,
     val level: Int,
     val profBonus: Int? = null,
     val spellcasting: SpellcastingSlots? = null,

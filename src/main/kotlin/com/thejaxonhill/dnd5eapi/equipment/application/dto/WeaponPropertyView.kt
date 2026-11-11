@@ -11,7 +11,7 @@ data class WeaponPropertyView(
 
 fun WeaponProperty.toView() = WeaponPropertyView(
     desc = desc,
-    index = index,
+    index = index.value,
     name = name,
     url = url,
 )

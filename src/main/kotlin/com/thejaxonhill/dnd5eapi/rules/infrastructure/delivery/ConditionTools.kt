@@ -1,20 +1,18 @@
 package com.thejaxonhill.dnd5eapi.rules.infrastructure.delivery
 
-import com.thejaxonhill.dnd5eapi.rules.application.usecase.LoadConditionByIndex
-import com.thejaxonhill.dnd5eapi.rules.application.usecase.LoadConditions
+import com.thejaxonhill.dnd5eapi.rules.application.ConditionQueries
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Page
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.stereotype.McpTools
 import org.springframework.ai.tool.annotation.Tool
 
 @McpTools
 class ConditionTools(
-    private val loadConditionByIndex: LoadConditionByIndex,
-    private val loadConditions: LoadConditions
+    private val queries: ConditionQueries
 ) {
     @Tool
     fun getConditions(pageNumber: Int? = 1, pageSize: Int? = 20) =
-        loadConditions.load(Page(pageNumber ?: 1, pageSize ?: 20), null)
+        queries.list(Page(pageNumber ?: 1, pageSize ?: 20), null)
 
     @Tool
-    fun getCondition(index: String) = loadConditionByIndex.load(index)
+    fun getCondition(index: String) = queries.byIndex(index)
 }

@@ -1,20 +1,18 @@
 package com.thejaxonhill.dnd5eapi.bestiary.infrastructure.delivery
 
-import com.thejaxonhill.dnd5eapi.bestiary.application.usecase.LoadMonsterByIndex
-import com.thejaxonhill.dnd5eapi.bestiary.application.usecase.LoadMonsters
+import com.thejaxonhill.dnd5eapi.bestiary.application.MonsterQueries
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Page
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.stereotype.McpTools
 import org.springframework.ai.tool.annotation.Tool
 
 @McpTools
 class MonsterTools(
-    private val loadMonsterByIndex: LoadMonsterByIndex,
-    private val loadMonsters: LoadMonsters
+    private val queries: MonsterQueries
 ) {
     @Tool
     fun getMonsters(pageNumber: Int? = 1, pageSize: Int? = 20) =
-        loadMonsters.load(Page(pageNumber ?: 1, pageSize ?: 20), null)
+        queries.list(Page(pageNumber ?: 1, pageSize ?: 20), null)
 
     @Tool
-    fun getMonster(index: String) = loadMonsterByIndex.load(index)
+    fun getMonster(index: String) = queries.byIndex(index)
 }

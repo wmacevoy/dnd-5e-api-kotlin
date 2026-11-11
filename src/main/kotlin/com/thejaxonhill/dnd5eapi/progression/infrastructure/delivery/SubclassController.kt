@@ -1,10 +1,9 @@
 package com.thejaxonhill.dnd5eapi.progression.infrastructure.delivery
 
+import com.thejaxonhill.dnd5eapi.progression.application.SubclassQueries
 import com.thejaxonhill.dnd5eapi.shared.domain.model.PagedModel
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.toPage
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.paging.toPage
 import com.thejaxonhill.dnd5eapi.progression.application.dto.SubclassView
-import com.thejaxonhill.dnd5eapi.progression.application.usecase.LoadSubclassByIndex
-import com.thejaxonhill.dnd5eapi.progression.application.usecase.LoadSubclasses
 import com.thejaxonhill.dnd5eapi.progression.domain.SubclassExample
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
@@ -20,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/subclasses")
 class SubclassController(
-    private val loadSubclassByIndex: LoadSubclassByIndex,
-    private val loadSubclasses: LoadSubclasses
+    private val queries: SubclassQueries
 ) {
     @Operation(summary = "Get a paginated list of subclasses")
     @GetMapping
@@ -29,10 +27,10 @@ class SubclassController(
         @ParameterObject pageable: Pageable,
         @ParameterObject example: SubclassExample?
     ): ResponseEntity<PagedModel<SubclassView>> =
-        ResponseEntity.ok(loadSubclasses.load(pageable.toPage(), example))
+        ResponseEntity.ok(queries.list(pageable.toPage(), example))
 
     @Operation(summary = "Get a subclass by index")
     @GetMapping("/{index}")
     fun getSubclass(@PathVariable index: String): ResponseEntity<SubclassView> =
-        ResponseEntity.ok(loadSubclassByIndex.load(index))
+        ResponseEntity.ok(queries.byIndex(index))
 }

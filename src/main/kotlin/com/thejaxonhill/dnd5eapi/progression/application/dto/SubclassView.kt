@@ -20,7 +20,7 @@ data class SubclassView(
 fun Subclass.toView() = SubclassView(
     characterClass = characterClass,
     desc = desc,
-    index = index,
+    index = index.value,
     name = name,
     spells = spells,
     subclassFlavor = subclassFlavor,
