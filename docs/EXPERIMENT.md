@@ -99,4 +99,9 @@ Kept current before each step, so a cut session can be resumed from here.
   `refactor/layered` was found to test layering, not DDD. `REQUIREMENTS_v2.md` written (shape only).
   The Compendium's code will resemble projection's, because the shape conforms to upstream. What
   differs is where each fact lives.
-- **Torn:** the refactor, in progress.
+- 2026-11-11 — refactor done and committed. `pixi run check`: 78 of 78 (75 old tests unchanged, 3 new
+  for the Compendium's values, seen failing against broken rules). `pixi run golden`: `GOLDEN MATCH`
+  on the first run; `schema` differs as on projection, with no response schemas.
+- Kotlin: 6,756 lines in 300 files on `refactor/base`; 806 lines in 11 files here. The model
+  (`compendium/`, 118 lines) imports nothing.
+- **Torn:** nothing. Change 1 has not started.
