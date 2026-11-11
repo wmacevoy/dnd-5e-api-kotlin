@@ -83,3 +83,20 @@ release 4.5.1 (b207ac7). An entry says whether running confirmed it or it only c
 - **Cost:** a client relying on the README gets nothing useful from those queries.
 - **Findable by:** one test that issues a GraphQL query and asserts on the data.
 - **Changed:** queue item 5.
+
+## 2026-11-11 — Every fresh agent tripped on the same three things (confirmed by running)
+
+- **What happened:** three Claude Haiku agents, one per refactor branch, fixed the same defect. All
+  three looked for the *Working* checklist that `CONTRIBUTING.md` names as the definition of done,
+  and did not find it: it is in the guide's `CHECKLISTS.md`, which is not vendored. All three tried
+  to stop the server with `pkill -f` and killed their own shell, because the pattern matched it; the
+  session that built the branches had done the same. And all three saw the OpenAPI document's hash
+  differ before they changed anything: springdoc's output is not byte-stable between runs.
+- **Kind:** K2 (surprise)
+- **Cost:** each agent spent calls on each one, and one left a server running that it could not stop.
+  The `schema` measure cannot be trusted as recorded.
+- **Findable by:** handing the repository to a fresh agent, which is what found it.
+- **Changed:** nothing yet. Proposed: vendor `CHECKLISTS.md` with the guide or copy the *Working*
+  list into `CONTRIBUTING.md`; add a `pixi run stop` that stops the server by its recorded process ID;
+  and make the golden script compare the OpenAPI document in a canonical order, or drop the measure.
+
