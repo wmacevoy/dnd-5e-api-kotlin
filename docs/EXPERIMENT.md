@@ -84,6 +84,39 @@ come after it.
 Also recorded once per branch: lines of Kotlin, and the time from a cold start to explaining how one
 request reaches the data.
 
+## Fresh-agent test 1: the spell-slot fix, 2026-11-11
+
+Task, identical on each branch: make every level's spell slots appear, named as the API names other
+fields; meet the repository's definition of done; re-record the golden master and show that only
+cases the fix explains changed. Each agent was Claude Haiku in its own worktree, with no hints.
+Results below were checked by rebuilding, running `pixi run check` and `pixi run golden` in each
+worktree, and diffing the three new manifests, not taken from the agents' reports.
+
+| | `refactor/projection` | `refactor/layered` | `refactor/ddd` |
+| --- | --- | --- | --- |
+| Finished | yes | yes | yes |
+| Code changed | 1 file: 2 lines removed from the registry | 2 files, 33 lines: a new document type with nine `@Field` names, and its mapper | 1 file: 2 lines removed from the published language |
+| Test | 1, seen red first | 1, seen red first | 1, seen red first |
+| `pixi run check` | 79 of 79 | 82 of 82 | 82 of 82 |
+| Golden | `GOLDEN MATCH`; 326 level cases re-recorded, no others | the same | the same |
+| Tool calls, tokens, minutes | 31, 132k, 5.2 | 45, 143k, 8.4 | 34, 132k, 5.8 |
+| Requirement cited | `REQ2/SHAPE-3` (a shape item, a poor fit) | `REQ3/DAT-1` | `REQ1/API-3` |
+
+- **The three fixed APIs are identical:** their re-recorded manifests match for all 5,107 `rest` and
+  `mcp` cases.
+- **All three fixed only what was asked,** and reported that the magical secrets and mystic arcanum
+  fields are lost by the same cause, as `AGENTS.md` says to.
+- **Judgment differed.** ddd's agent reproduced the defect and read upstream's document before
+  editing, and raised that rule 3 makes changed output a decision for clients. Layered's agent kept
+  storage names out of the domain type, at the cost of a new type. Projection's and ddd's agents
+  deleted the comment that still explains the fields they left dropped.
+- **Shared friction, on every branch:** the definition of done points to a checklist that is not in
+  the repository; there is no command to stop the server, and all three agents killed their own
+  shell trying to (as the session that built the branches had); and the OpenAPI hash is not stable
+  between runs, so each agent saw a `schema` difference that its fix did not cause. See `FINDINGS.md`.
+- **Left behind:** layered's agent could not stop its server on port 18082; a permission refusal
+  stopped it, and it was not stopped for it. One of its searches reached outside its worktree.
+
 ## Prediction, written before either branch exists
 
 `refactor/projection` wins changes 1, 2, 3, and 5 clearly, and `refactor/layered` (then named
