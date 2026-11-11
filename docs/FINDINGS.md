@@ -90,13 +90,19 @@ release 4.5.1 (b207ac7). An entry says whether running confirmed it or it only c
   three looked for the *Working* checklist that `CONTRIBUTING.md` names as the definition of done,
   and did not find it: it is in the guide's `CHECKLISTS.md`, which is not vendored. All three tried
   to stop the server with `pkill -f` and killed their own shell, because the pattern matched it; the
-  session that built the branches had done the same. And all three saw the OpenAPI document's hash
-  differ before they changed anything: springdoc's output is not byte-stable between runs.
-- **Kind:** K2 (surprise)
+  session that built the branches had done the same. And all three saw `schema: 0 of 1 match` before
+  they changed anything, and could not tell why.
+- **Corrected the same day (confirmed by running):** this entry first said springdoc's output is not
+  byte-stable between runs. It is stable: three runs of each of the four branches gave one hash per
+  branch, and base's matches the manifest. The agents saw the difference each refactor makes to the
+  OpenAPI document on purpose, which is what the `schema` measure records. The first claim was read
+  into one agent's report, not run.
+- **Kind:** K2 (surprise); the correction was K3.
 - **Cost:** each agent spent calls on each one, and one left a server running that it could not stop.
-  The `schema` measure cannot be trusted as recorded.
 - **Findable by:** handing the repository to a fresh agent, which is what found it.
-- **Changed:** nothing yet. Proposed: vendor `CHECKLISTS.md` with the guide or copy the *Working*
-  list into `CONTRIBUTING.md`; add a `pixi run stop` that stops the server by its recorded process ID;
-  and make the golden script compare the OpenAPI document in a canonical order, or drop the measure.
+- **Changed:** `CHECKLISTS.md` is vendored at v1.7, and `CONTRIBUTING.md` links to that copy and says
+  to copy it at the next release, since `ADOPT.md` step 1 leaves it out. `pixi run stop` stops the
+  java process listening on port 18080, found by port rather than by command line. The golden compare
+  marks a `schema` difference as measured, not held, and `CONTRIBUTING.md` says it is expected on a
+  refactor branch.
 
