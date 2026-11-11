@@ -24,7 +24,11 @@ goes to Jackson Hill for review before it is built.
    ([SE1/R5](https://github.com/wmacevoy/software-engineering/blob/v1.7/guide/04-requirements.md#r5)).
 3. Before any change below, a branch passes `pixi run golden` with no `rest` or `mcp` difference.
    It preserves today's behaviour, defects included. Defects in the queue are not fixed on either
-   branch, so that neither gains from fixing one.
+   branch, so that neither gains from fixing one. One exception, decided by the owner on
+   2026-11-11: where a recorded error's text names a class under `com.thejaxonhill`, only its
+   status is held. That text describes the old code, not behaviour a client can rely on, and no
+   change of shape can keep it. `golden/manifest.tsv` marks these 7 cases `unchecked` in place of
+   a hash.
 4. The `schema` group (OpenAPI) is measured and reported, and cannot fail a branch.
 5. GraphQL stays out of the refactor itself. It is change 3.
 
@@ -48,6 +52,13 @@ Each is one commit or a short series, starting from that branch's refactor.
 
 ## What is measured, per change
 
+The design pressure under test is ease of change: less how much code a change takes than how
+simple that code is to think about. So the first measure is the work of thinking, and the counts
+come after it.
+
+- The work of making it, recorded in `CHANGE_WORK.md` as it happens: what had to be known, read,
+  held in mind at once, and decided, and which edits the change needed versus which the shape
+  needed.
 - Files touched.
 - Diff lines a reviewer must read, not counting generated files.
 - Whether a fresh agent, given only the repository and the change's text, finishes it, and how far it gets.

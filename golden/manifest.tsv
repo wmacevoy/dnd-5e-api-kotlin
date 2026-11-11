@@ -17,11 +17,11 @@ rest	200	d7253f5a77a0b5b0	http	/api/ability-scores/con
 rest	200	a65b675c45c67e1b	http	/api/ability-scores/int
 rest	200	1b9f9bd664f31244	http	/api/ability-scores/wis
 rest	200	0e88f61f02b40cd5	http	/api/ability-scores/cha
-mcp	1	11f172a633f11a9a	mcp-call	getAbilityScores {"pageNumber": 0, "pageSize": 2000}
-mcp	1	11f172a633f11a9a	mcp-call	getAbilityScores {"pageNumber": 1, "pageSize": 3}
+mcp	1	unchecked	mcp-call	getAbilityScores {"pageNumber": 0, "pageSize": 2000}
+mcp	1	unchecked	mcp-call	getAbilityScores {"pageNumber": 1, "pageSize": 3}
 mcp	0	0562df333a88a2ea	mcp-call	getAbilityScores {"page": {"page": 0, "size": 2000}}
 mcp	0	930ad18567c27b6e	mcp-call	getAbilityScores {"page": {"page": 1, "size": 3}}
-mcp	1	11f172a633f11a9a	mcp-call	getAbilityScores {}
+mcp	1	unchecked	mcp-call	getAbilityScores {}
 mcp	1	c9c9063c5e4b0987	mcp-call	getAbilityScore {"index": "not-found"}
 mcp	0	1056c224170c60c5	mcp-call	getAbilityScores {"abilityScoreExample": {"name": "STR"}, "page": {"page": 0, "size": 2000}}
 mcp	0	b4eb235b659452d7	mcp-call	getAbilityScore {"index": "str"}
@@ -52,11 +52,11 @@ rest	200	a7e540958b4e1c5a	http	/api/alignments/chaotic-neutral
 rest	200	16173c1f9491274e	http	/api/alignments/lawful-evil
 rest	200	5d575a53e0f17548	http	/api/alignments/neutral-evil
 rest	200	a8ba5439c08f4f70	http	/api/alignments/chaotic-evil
-mcp	1	47439cee08ccde00	mcp-call	getAlignments {"pageNumber": 0, "pageSize": 2000}
-mcp	1	47439cee08ccde00	mcp-call	getAlignments {"pageNumber": 1, "pageSize": 3}
+mcp	1	unchecked	mcp-call	getAlignments {"pageNumber": 0, "pageSize": 2000}
+mcp	1	unchecked	mcp-call	getAlignments {"pageNumber": 1, "pageSize": 3}
 mcp	0	162c677cf8b669a9	mcp-call	getAlignments {"page": {"page": 0, "size": 2000}}
 mcp	0	25a25bc51ffe6c1e	mcp-call	getAlignments {"page": {"page": 1, "size": 3}}
-mcp	1	47439cee08ccde00	mcp-call	getAlignments {}
+mcp	1	unchecked	mcp-call	getAlignments {}
 mcp	1	c9c9063c5e4b0987	mcp-call	getAlignment {"index": "not-found"}
 mcp	0	49c9cb083076318e	mcp-call	getAlignments {"example": {"abbreviation": "LG"}, "page": {"page": 0, "size": 2000}}
 mcp	0	49c9cb083076318e	mcp-call	getAlignments {"example": {"name": "Lawful Good"}, "page": {"page": 0, "size": 2000}}
@@ -1714,7 +1714,7 @@ rest	200	3f8e7588ec259e29	http	/api/levels?size=0
 rest	200	28e1de6c75776b3e	http	/api/levels?sort=nonexistent
 rest	404	12ae32cb1ec02d01	http	/api/levels/not-found
 rest	200	a6d59b33c3e7faee	http	/api/levels?level=1&size=2000
-rest	500	7b1fb32137903e8e	http	/api/levels?level=__no_such_value__
+rest	500	unchecked	http	/api/levels?level=__no_such_value__
 rest	200	b1e985dcfd1567e1	http	/api/levels/barbarian-1
 rest	200	7f0875e5b103c6f2	http	/api/levels/barbarian-2
 rest	200	82fd1ffa0e588dc4	http	/api/levels/barbarian-3
