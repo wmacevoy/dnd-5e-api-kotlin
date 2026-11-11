@@ -1,0 +1,5 @@
+package com.thejaxonhill.dnd5eapi.character.infrastructure.persistence
+
+import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.repository.IndexedMongoRepository
+
+interface AlignmentMongoRepository : IndexedMongoRepository<AlignmentDocument, String>

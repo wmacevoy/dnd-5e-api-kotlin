@@ -1,6 +1,6 @@
 package com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence
 
-import com.thejaxonhill.dnd5eapi.monster.infrastructure.persistence.MonsterArmorClassReadingConverter
+import com.thejaxonhill.dnd5eapi.bestiary.infrastructure.persistence.MonsterArmorClassReadingConverter
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.ActionTypeReadingConverter
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.AreaOfEffectTypeReader
 import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.converter.ChoiceReadingConverter

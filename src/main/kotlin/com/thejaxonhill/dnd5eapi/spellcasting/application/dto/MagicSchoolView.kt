@@ -1,0 +1,17 @@
+package com.thejaxonhill.dnd5eapi.spellcasting.application.dto
+
+import com.thejaxonhill.dnd5eapi.spellcasting.domain.MagicSchool
+
+data class MagicSchoolView(
+    val desc: String,
+    val index: String,
+    val name: String,
+    val url: String,
+)
+
+fun MagicSchool.toView() = MagicSchoolView(
+    desc = desc,
+    index = index,
+    name = name,
+    url = url,
+)

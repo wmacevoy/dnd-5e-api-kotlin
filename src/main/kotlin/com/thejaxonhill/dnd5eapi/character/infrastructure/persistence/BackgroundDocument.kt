@@ -1,0 +1,28 @@
+package com.thejaxonhill.dnd5eapi.character.infrastructure.persistence
+
+import com.thejaxonhill.dnd5eapi.character.domain.Feature
+import com.thejaxonhill.dnd5eapi.character.domain.StartingEquipment
+import com.thejaxonhill.dnd5eapi.shared.domain.model.ApiReference
+import com.thejaxonhill.dnd5eapi.shared.domain.model.Choice
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
+import java.time.LocalDateTime
+
+@Document(collection = "2014-backgrounds")
+class BackgroundDocument(
+    @Id
+    var id: String? = null,
+    var index: String? = null,
+    var name: String? = null,
+    var startingProficiencies: List<ApiReference>? = null,
+    var languageOptions: Choice? = null,
+    var startingEquipment: List<StartingEquipment>? = null,
+    var startingEquipmentOptions: List<Choice>? = null,
+    var feature: Feature? = null,
+    var personalityTraits: Choice? = null,
+    var ideals: Choice? = null,
+    var bonds: Choice? = null,
+    var flaws: Choice? = null,
+    var url: String? = null,
+    var updatedAt: LocalDateTime? = null
+)

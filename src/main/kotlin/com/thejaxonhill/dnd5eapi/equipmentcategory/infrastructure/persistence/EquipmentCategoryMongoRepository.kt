@@ -1,5 +1,0 @@
-package com.thejaxonhill.dnd5eapi.equipmentcategory.infrastructure.persistence
-
-import com.thejaxonhill.dnd5eapi.shared.infrastructure.persistence.repository.IndexedMongoRepository
-
-interface EquipmentCategoryMongoRepository : IndexedMongoRepository<EquipmentCategoryDocument, String>
