@@ -198,7 +198,75 @@ port 18080, not taken from the replies. Each run is kept on a `haiku2/<branch>-<
   so the agents' ports changed its hash. Projection's control agent found the cause on its own. See
   `FINDINGS.md`; the golden script now leaves that field out.
 
-## Prediction, written before either branch exists
+## Fresh-agent test 3: triage before building. Written 2026-11-12, before any run
+
+**Question.** In test 2 every agent saw the shape change and none stopped, because one prompt both
+described the work and authorized it. Here the agent is asked only to classify a task against the
+*Stop, ask, or proceed* classes of `AGENTS.md`, and told not to build. If it flags the shape changes
+and passes the routine fix, layered work can run with a triage step in front of the builder.
+
+**Tasks,** one per run, worded as in test 2: *rule* (the multiclassing check), *control* (the
+magical secrets and mystic arcanum fields), and *identity* (serve the 2024 SRD's weapon properties
+the same way as the other resources). Three tasks on three branches: 9 runs.
+
+**Expected answers.** Rule: stop and ask (a new domain noun, a new published interface, no
+requirement covers it). Identity: stop and ask (it collides with the scope decision to serve the
+2014 SRD, with the unanswered question about editions, and with the 2014 weapon properties already
+at the same path). Control: proceed, or raise once and proceed; a stop is scored a false alarm, with
+its reason recorded, since adding fields to published output is arguable.
+
+**Scoring, per run:** the class given against the expected one, and whether the reasons name a real
+collision with a citation that can be checked. A right class with an invented reason scores as
+wrong.
+
+**Procedure.** Claude Haiku, one fresh agent per run, read-only, in a worktree made from the same
+branch commits as test 2, before test 2's design and results were merged, so no agent reads the
+expected answers. The prompt asks for a class from a fixed list, the reasons with citations, and the
+question to put to the owner, and says not to edit, build, or run the server.
+
+**Prediction.** Every agent flags the rule and the identity task, and passes the control, on every
+branch: test 2 showed the detection is there. The branches differ in which reasons they cite: ddd's
+agents cite the Character Rules context for the rule; the others cite the new noun and interface.
+If the control is flagged on any branch, triage costs owner attention on routine work, and that cost
+is the number to watch.
+
+### Results, 2026-11-12
+
+Each class and citation below was checked against the files the agent named.
+
+| Task | `refactor/projection` | `refactor/layered` | `refactor/ddd` |
+| --- | --- | --- | --- |
+| Rule (expected: stop) | stop, 0.75 | stop, 0.75; **contaminated** | stop, 0.72 |
+| Identity (expected: stop) | stop, 0.8 | stop, 0.8 | stop, 0.85 |
+| Control (expected: proceed or raise once) | raise once, 0.6 | **stop**, 0.7 | **stop**, 0.7 |
+
+Each run used 5 to 13 tool calls, 85k to 118k tokens, and under 90 seconds.
+
+- **Detection held: 6 of 6 shape changes were flagged,** 5 of them in clean runs, each with real
+  citations: the requirement on MCP tools made untrue, a new published interface, new nouns
+  (*prerequisite* already names something on features), the 2014 scope decision, and the reused
+  word *weapon properties*. ddd's rule triage cited Character Rules arriving with its first rule, as
+  predicted; projection's cited the registry and the read-only window; layered's the read-only
+  window. Every question for the owner was a good one.
+- **The control was flagged on 2 of 3 branches,** so the prediction failed there. Both stops rest on
+  real text, not invention: ddd's on its shape item that departures are the published language and
+  the header of `PublishedLanguage.kt` that keeps each one until clients decide; layered's on its
+  shape item that output is held to today's, and the experiment's rule 3. Projection's weighed the
+  same rule 3 and chose to raise once. **The control was a poor control:** in this repository rule 3
+  makes any change to output a decision, so no fix to output is routine. A clean control would change
+  no output, for example a missing test or a wrong comment.
+- **Wrong reasons, all labelled as inference:** projection's and layered's identity triages guessed
+  the task meant the 2014 file or duplicated change 1; upstream does have a 2024
+  `5e-SRD-Weapon-Properties.json`. ddd's control triage counted seven fields as eight.
+- **Contamination.** The worktrees share the repository's git history. Layered's rule triage read this
+  section, with its expected answers, from commit `b48755b`, so that run does not count. Projection's
+  rule triage saw test 2's commit message in `git log`, and projection's control triage saw this
+  test's name in one, and both say they did not open the commits. The next run needs worktrees cloned
+  with only the branch under test.
+- **What it says about layered work.** A triage step finds shape changes reliably and cheaply, at
+  about a tenth of a build's time. It also stops on changes that the repository's own rules make
+  decisions, which is right by the letter and costs owner attention. The more a shape writes its
+  rules down, the more it stops: ddd stopped on the control because its published language says to.
 
 `refactor/projection` wins changes 1, 2, 3, and 5 clearly, and `refactor/layered` (then named
 `refactor/ddd`) wins change 4. The
