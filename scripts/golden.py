@@ -129,7 +129,11 @@ def run_case(base, session, kind, request):
     """Returns (status, canonical value) for one recorded request."""
     if kind == "http":
         status, text = http_get(base, request)
-        return status, parsed(text)
+        value = parsed(text)
+        if isinstance(value, dict) and "openapi" in value:
+            # springdoc writes the address it was asked on, so the same code on another port differed.
+            value.pop("servers", None)
+        return status, value
     if kind == "mcp-tools":
         tools = session.call("tools/list", {})["result"]["tools"]
         return 200, sorted(tools, key=lambda tool: tool["name"])

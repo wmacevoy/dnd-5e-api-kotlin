@@ -1,4 +1,4 @@
-schema	200	8052722eeb4d73f0	http	/v3/api-docs
+schema	200	22029188a8c0ce99	http	/v3/api-docs
 mcp	200	ab8187531d1d8676	mcp-tools	tools/list
 rest	200	e466ab4170f21237	http	/api/ability-scores
 rest	200	5af597bc8f151d4e	http	/api/ability-scores?size=2000
