@@ -126,12 +126,18 @@ release 4.5.1 (b207ac7). An entry says whether running confirmed it or it only c
   branch, and base's matches the manifest. The agents saw the difference each refactor makes to the
   OpenAPI document on purpose, which is what the `schema` measure records. The first claim was read
   into one agent's report, not run.
-- **Kind:** K2 (surprise); the correction was K3.
+- **Corrected again, 2026-11-12 (confirmed by running):** the first correction was half right. The
+  document is stable on one port, which is all it tested, but it carries `servers`, the address it was
+  asked on. The agents ran on ports 18081 to 18083 and the manifest was recorded on 18080, so the same
+  code gave a different hash. Found when test 2's agents re-recorded on their ports and my compare on
+  18080 differed from what they had recorded.
+- **Kind:** K2 (surprise); both corrections were K3, each from testing one condition.
 - **Cost:** each agent spent calls on each one, and one left a server running that it could not stop.
 - **Findable by:** handing the repository to a fresh agent, which is what found it.
 - **Changed:** `CHECKLISTS.md` is vendored at v1.7, and `CONTRIBUTING.md` links to that copy and says
   to copy it at the next release, since `ADOPT.md` step 1 leaves it out. `pixi run stop` stops the
   java process listening on port 18080, found by port rather than by command line. The golden compare
   marks a `schema` difference as measured, not held, and `CONTRIBUTING.md` says it is expected on a
-  refactor branch.
+  refactor branch. The golden script drops `servers` from the OpenAPI document before hashing it, so
+  the port no longer changes the hash.
 

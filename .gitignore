@@ -36,3 +36,4 @@ build/
 .pixi/
 .mongo/
 .golden/
+__pycache__/
