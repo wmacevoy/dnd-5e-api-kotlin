@@ -198,6 +198,38 @@ port 18080, not taken from the replies. Each run is kept on a `haiku2/<branch>-<
   so the agents' ports changed its hash. Projection's control agent found the cause on its own. See
   `FINDINGS.md`; the golden script now leaves that field out.
 
+## Fresh-agent test 3: triage before building. Written 2026-11-12, before any run
+
+**Question.** In test 2 every agent saw the shape change and none stopped, because one prompt both
+described the work and authorized it. Here the agent is asked only to classify a task against the
+*Stop, ask, or proceed* classes of `AGENTS.md`, and told not to build. If it flags the shape changes
+and passes the routine fix, layered work can run with a triage step in front of the builder.
+
+**Tasks,** one per run, worded as in test 2: *rule* (the multiclassing check), *control* (the
+magical secrets and mystic arcanum fields), and *identity* (serve the 2024 SRD's weapon properties
+the same way as the other resources). Three tasks on three branches: 9 runs.
+
+**Expected answers.** Rule: stop and ask (a new domain noun, a new published interface, no
+requirement covers it). Identity: stop and ask (it collides with the scope decision to serve the
+2014 SRD, with the unanswered question about editions, and with the 2014 weapon properties already
+at the same path). Control: proceed, or raise once and proceed; a stop is scored a false alarm, with
+its reason recorded, since adding fields to published output is arguable.
+
+**Scoring, per run:** the class given against the expected one, and whether the reasons name a real
+collision with a citation that can be checked. A right class with an invented reason scores as
+wrong.
+
+**Procedure.** Claude Haiku, one fresh agent per run, read-only, in a worktree made from the same
+branch commits as test 2, before test 2's design and results were merged, so no agent reads the
+expected answers. The prompt asks for a class from a fixed list, the reasons with citations, and the
+question to put to the owner, and says not to edit, build, or run the server.
+
+**Prediction.** Every agent flags the rule and the identity task, and passes the control, on every
+branch: test 2 showed the detection is there. The branches differ in which reasons they cite: ddd's
+agents cite the Character Rules context for the rule; the others cite the new noun and interface.
+If the control is flagged on any branch, triage costs owner attention on routine work, and that cost
+is the number to watch.
+
 ## Prediction, written before either branch exists
 
 `refactor/projection` wins changes 1, 2, 3, and 5 clearly, and `refactor/layered` (then named
