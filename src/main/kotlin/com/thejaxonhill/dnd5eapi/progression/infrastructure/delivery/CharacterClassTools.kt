@@ -15,4 +15,8 @@ class CharacterClassTools(
 
     @Tool
     fun getCharacterClass(index: String) = queries.byIndex(index)
+
+    @Tool
+    fun checkMultiClassing(index: String, str: Int?, dex: Int?, con: Int?, int: Int?, wis: Int?, cha: Int?) =
+        queries.multiClassingCheck(index, mapOf("str" to str, "dex" to dex, "con" to con, "int" to int, "wis" to wis, "cha" to cha))
 }
