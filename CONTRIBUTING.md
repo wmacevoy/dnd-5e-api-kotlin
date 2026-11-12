@@ -40,6 +40,12 @@ the wrapper finds its own directory from that path.
   OpenAPI document is measured, not held.
 - **Stop the server:** `pixi run stop` stops the java process listening on port 18080. Do not use
   `pkill -f`: its pattern also matches the shell that runs it, and kills that shell.
+- **Gate for light work:** `pixi run gate --base REF --head DIR --allow REGEX` decides whether a
+  committed change in checkout `DIR`, starting from commit `REF`, is light work: no dependency,
+  build, requirements, or new-package change, the check and the doctor pass, the published surface
+  (OpenAPI document and MCP tool list) is unchanged between builds of both, and every recorded answer
+  that changed matches `REGEX`. It prints `PASS` or `FAIL` with its reasons. A `FAIL` is a possible
+  shape change for the owner, not a verdict that the work is wrong.
 
 ## Definition of done
 
