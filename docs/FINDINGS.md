@@ -141,3 +141,41 @@ release 4.5.1 (b207ac7). An entry says whether running confirmed it or it only c
   refactor branch. The golden script drops `servers` from the OpenAPI document before hashing it, so
   the port no longer changes the hash.
 
+
+## 2026-11-12 — Domain-driven design by purpose retired fears here; by layout it added cost (judged)
+
+- **Claimed by:** Claude Opus 5.5, which built all three shapes and ran the three fresh-agent tests,
+  on 2026-11-12. A judgment from one run per branch and task, not a measurement. What would show it
+  wrong: change 4 or 5, built by a fresh agent, going no better on `refactor/ddd` than on
+  `refactor/projection`.
+- **What happened:** the problem's essential complexity is in the data: upstream's shape and quirks,
+  about 40 departures that clients may depend on, two surfaces, and soon one rule with a branch.
+  Nothing writes state and no invariant needs guarding. Against that:
+  - *By layout* (`refactor/layered`): 5,932 lines where about 800 do the same work. Change 1 needed
+    170 lines for the shape alone. Haiku was slowest there, and its fix in test 2 wrote
+    `ClassSpecific` a third time (domain type, document, mapper). The fear behind the layering,
+    storage leaking into the domain, is real, but there is no domain behaviour yet to protect.
+  - *By purpose* (`refactor/ddd`, 806 lines): it declined most of the machinery. What it kept, and
+    the fear each retires: upstream's spelling in one adapter (an upstream rename breaking many
+    places; upstream has renamed every collection once already); departures written in one published
+    language (changing what clients receive without knowing; real only if clients depend on them,
+    which nobody has confirmed); Character Rules arriving with its first rule and not before (rules
+    tangled with upstream's shape); no aggregates, said plainly (pretended invariants). The storage
+    port with one implementation and the framework-free model retire no present fear; change 5 is
+    their only reason, so they are a bet.
+  - Projection keeps the first two without the vocabulary. What the domain-driven shape added was the
+    questions it forced, not structure. Three times it made a decision visible: where the 2024
+    edition belongs (change 1), where the rule goes (test 2, built exactly as the shape says), and
+    the Character Rules trigger (test 3, cited in triage).
+  - Its cost is attention: its rule that the published language holds every departure made a routine
+    fix a stop in test 3. That is essential only if real clients depend on the departures.
+- **Kind:** K1 made visible: whether clients depend on today's departures is unasked, and both the
+  value and the cost of the published language rest on it.
+- **Cost:** none yet; this is a judgment recorded before changes 4 and 5, where the shapes are
+  claimed to differ most.
+- **Findable by:** for each structural piece, SE1/D8's question: what requirement would have to
+  disappear for it to go away? "None" marks it accidental. Today that is the storage port and the
+  framework-free model on `refactor/ddd`, and most of the layering on `refactor/layered`.
+- **Changed:** nothing yet. Proposed: ask the client whether anything depends on the departures
+  (it settles rule 3's weight and the published language's cost); judge the storage port at change
+  5 and delete it if it does not pay; build change 4 with fresh agents on all three branches.
