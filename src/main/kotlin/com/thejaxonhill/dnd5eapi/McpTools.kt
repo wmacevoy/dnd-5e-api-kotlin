@@ -18,7 +18,12 @@ import org.springframework.data.domain.Sort
 class McpTools {
     @Bean
     fun tools(store: Store): ToolCallbackProvider =
-        ToolCallbackProvider.from(RESOURCES.flatMap { listOf(listTool(it, store), getTool(it, store)) })
+        ToolCallbackProvider.from(
+            RESOURCES.flatMap { resource ->
+                listOf(listTool(resource, store), getTool(resource, store)) +
+                    listOfNotNull(resource.multiclassingTool?.let { multiclassingTool(resource, it, store) })
+            },
+        )
 }
 
 // Includes nulls, unlike Spring's REST mapper; MCP results have always carried them.
@@ -97,6 +102,18 @@ private fun listTool(resource: Resource, store: Store) = when (val shape = resou
         val filters = resource.filters.mapNotNull { filter -> example[filter.name]?.let { filter.name to it } }.toMap()
         list(resource, store, filters, pageable)
     }
+}
+
+private fun multiclassingTool(resource: Resource, name: String, store: Store) = Tool(
+    name,
+    objectSchema(
+        mapOf("index" to mapOf("type" to "string")) + ABILITIES.keys.associateWith { INTEGER },
+        closed = true,
+    ),
+) { arguments ->
+    val index = arguments["index"] as String
+    val document = store.findByIndex(resource, index) ?: throw NoSuchElementException()
+    multiclassingView(index, eligibility(document, scores(arguments - "index")))
 }
 
 private fun list(resource: Resource, store: Store, filters: Map<String, Any>, pageable: Pageable) =

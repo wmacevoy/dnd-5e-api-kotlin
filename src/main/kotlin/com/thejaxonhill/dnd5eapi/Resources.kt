@@ -21,6 +21,8 @@ class Resource(
     val listedByName: Boolean = false,
     /** Only equipment has `/search` (REQ1/API-5). */
     val searchable: Boolean = false,
+    /** The MCP tool that checks a character against this resource's multiclassing prerequisites; the REST route is `{path}/{index}/multiclassing`. Only classes have one. */
+    val multiclassingTool: String? = null,
     val departures: List<Departure> = emptyList(),
     val mcpNulls: List<McpNulls> = emptyList(),
 )
@@ -108,6 +110,7 @@ val RESOURCES = listOf(
     Resource(
         "classes", "2014-classes", "Character Classes", "character classes", "a character class",
         "getClasses", "getCharacterClass",
+        multiclassingTool = "checkMulticlassing",
         departures = listOf(Emptied("startingEquipmentOptions.from.options.items")),
         mcpNulls = listOf(
             McpNulls("", "spellcasting", "spells"),

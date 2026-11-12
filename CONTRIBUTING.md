@@ -67,7 +67,7 @@ The list under *Working* in the guide's `CHECKLISTS.md`, vendored at
 - **Agents:** read `AGENTS.md` in this repository (copied from the
   [guide](https://github.com/wmacevoy/software-engineering/blob/v1.7/AGENTS.md)) and this file
   before acting. `CLAUDE.md` imports `AGENTS.md` and `vendor/se1/QUICKREF.md` at every start.
-- **Code:** seven files in `src/main/kotlin/com/thejaxonhill/dnd5eapi/`. Start at `Resources.kt`, one
+- **Code:** eight files in `src/main/kotlin/com/thejaxonhill/dnd5eapi/`. Start at `Resources.kt`, one
   row per resource; `DESIGN_v2.md` follows one request from route to data.
 
 ## What AGENTS.md's nouns mean here

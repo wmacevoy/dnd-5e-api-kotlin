@@ -39,6 +39,9 @@ class RestApi(
             route("/api/${resource.path}", endpoint, list.javaMethod!!)
             if (resource.searchable) route("/api/${resource.path}/search", endpoint, Endpoint::search.javaMethod!!)
             route("/api/${resource.path}/{index}", endpoint, Endpoint::get.javaMethod!!)
+            if (resource.multiclassingTool != null) {
+                route("/api/${resource.path}/{index}/multiclassing", endpoint, Endpoint::multiclassing.javaMethod!!)
+            }
         }
     }
 
@@ -69,6 +72,13 @@ class RestApi(
             }
             val index = Parameter().name("index").`in`("path").required(true).schema(StringSchema())
             api.path("/api/${resource.path}/{index}", get(resource, "Get ${resource.singular} by index", listOf(index)))
+            if (resource.multiclassingTool != null) {
+                val abilities = ABILITIES.keys.map { query(it, IntegerSchema()).required(true) }
+                api.path(
+                    "/api/${resource.path}/{index}/multiclassing",
+                    get(resource, "Check ${resource.singular} multiclassing prerequisites", listOf(index) + abilities),
+                )
+            }
         }
     }
 
@@ -113,6 +123,12 @@ class Endpoint(private val resource: Resource, private val store: Store) {
 
     fun get(@PathVariable index: String): Map<String, Any?> =
         store.findByIndex(resource, index)?.let { item(resource, it) } ?: throw NoSuchElementException()
+
+    /** Whether the six scores in the request meet the class's multiclassing prerequisites (EXPERIMENT.md change 4). */
+    fun multiclassing(@PathVariable index: String, @RequestParam parameters: Map<String, String>): Map<String, Any?> {
+        val document = store.findByIndex(resource, index) ?: throw NoSuchElementException()
+        return multiclassingView(index, eligibility(document, scores(parameters)))
+    }
 
     /** The resource's filters that the request names; other parameters are ignored. */
     private fun filters(parameters: Map<String, String>): Map<String, Any> {

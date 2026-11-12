@@ -1,5 +1,5 @@
-schema	200	f198e1eed8f91524	http	/v3/api-docs
-mcp	200	7f201b21ffc60509	mcp-tools	tools/list
+schema	200	72db57f269dd36ff	http	/v3/api-docs
+mcp	200	96a613349721f658	mcp-tools	tools/list
 rest	200	e466ab4170f21237	http	/api/ability-scores
 rest	200	5af597bc8f151d4e	http	/api/ability-scores?size=2000
 rest	200	37d1a0a29ac32938	http	/api/ability-scores?page=1&size=3

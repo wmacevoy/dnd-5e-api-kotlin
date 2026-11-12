@@ -13,11 +13,12 @@ All of the code is in one package, `com.thejaxonhill.dnd5eapi`.
 
 | File | Kind | Contract (one line) | Touches I/O? |
 | ---- | ---- | ------------------- | ------------ |
-| `Resources.kt` | Data | One row per resource: path, collection, tag and nouns, tool names, filters, list shape, departures, MCP nulls | No |
+| `Resources.kt` | Data | One row per resource: path, collection, tag and nouns, tool names, filters, list shape, departures, MCP nulls, and the multiclassing tool where a row has one | No |
+| `Eligibility.kt` | Pure functions | Six scores and a stored class to whether the class is open to them, the prerequisites needed, and those unmet; `scores` refuses a bad request | No |
 | `Projection.kt` | Pure functions | A stored document to a REST item (`item`) or an MCP item (`mcpItem`); a page of items to a paged list | No |
 | `Store.kt` | Data access | A page of documents by exact-match filters, one by `index`, or a page by name substring | MongoDB |
-| `RestApi.kt` | REST surface | Registers `GET /api/{path}`, `/{index}`, and equipment's `/search` for each row, and writes their OpenAPI paths | HTTP |
-| `McpTools.kt` | MCP surface | Builds a list tool and a get tool for each row, with the input schemas Spring AI used to generate | MCP |
+| `RestApi.kt` | REST surface | Registers `GET /api/{path}`, `/{index}`, equipment's `/search`, and classes' `/{index}/multiclassing` for each row, and writes their OpenAPI paths | HTTP |
+| `McpTools.kt` | MCP surface | Builds a list tool and a get tool for each row, and the multiclassing tool where a row names one, with the input schemas Spring AI used to generate | MCP |
 | `GlobalExceptionHandler.kt` | Error mapping | `NoSuchElementException` to 404 with an empty body, other runtime exceptions to 400, the rest to 500 | No |
 
 ## How one request reaches the data
