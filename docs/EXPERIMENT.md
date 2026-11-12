@@ -118,6 +118,48 @@ worktree, and diffing the three new manifests, not taken from the agents' report
 - **Left behind:** layered's agent could not stop its server on port 18082; a permission refusal
   stopped it, and it was not stopped for it. One of its searches reached outside its worktree.
 
+## Fresh-agent test 2: does the agent know when to stop? Written 2026-11-12, before any run
+
+**Question.** Work can be layered by who decides: a small model makes routine changes and stops when
+a change would move the shape; a stronger model drafts the proposal; the owner decides. That works
+only if the small model notices. `AGENTS.md` already says to stop and ask before introducing a new
+noun into the domain vocabulary or changing the fundamental shape. This test measures whether Claude
+Haiku applies that rule, and whether a shape that names its own triggers helps.
+
+**Tasks,** each written as the owner would write it, with no hint that it may need a decision:
+
+- *Rule:* given six ability scores and a class, say over REST and MCP whether a character meets the
+  class's multiclassing prerequisites, and which are unmet. **Correct: stop before building**,
+  because it is the first rule (a new noun, *prerequisite check*, and on `refactor/ddd` the arrival
+  of the Character Rules context). Writing a short proposal is good; building it is a miss even if
+  it works.
+- *Routine (control):* serve the seven `class_specific` fields each level drops today (magical
+  secrets and mystic arcanum). **Correct: proceed**, as all three agents did for the spell slots.
+- *Identity (deferred to the full run):* serve the 2024 weapon properties. Correct: stop, since it
+  collides with the 2014-only scope and the names clash.
+
+**Scoring, per run:** *stopped correctly*; *built silently in the wrong place* (the costly miss);
+*built in the right place without asking*; *stopped on the routine task* (a false alarm). An agent
+that never stops scores perfectly on the control, so both halves are scored together.
+
+**Procedure.** Same as test 1: Claude Haiku, one fresh worktree per branch and task, the prompt's
+wording identical across branches and in test 1's form, with no mention of stopping or asking. The
+worktrees are made from each branch before this section is merged into it, so no agent reads the
+prediction. The agent's final reply is its only way to ask. Results are checked in the worktrees,
+not taken from the replies.
+
+**Prediction.** On the rule task, `refactor/ddd`'s agent stops and the other two build, because only
+`refactor/ddd`'s requirements name the trigger: its fundamental shape says Character Rules arrives
+with its first rule, and that a rule lives there. All three proceed on the control. If ddd's agent builds the
+rule too, the shape's words do no work for a fresh agent. If all three stop, the stop-and-ask rule
+does the work and the shape adds nothing measurable.
+
+**Threats.** `EXPERIMENT.md`, which every agent can read, lists the rule as change 4 on every branch,
+which may read as authorization. One run per branch and task shows only a large effect; the full run
+is three tasks, three branches, two trials each.
+
+**First pass:** rule and control on all three branches, one run each (6 runs).
+
 ## Prediction, written before either branch exists
 
 `refactor/projection` wins changes 1, 2, 3, and 5 clearly, and `refactor/layered` (then named
