@@ -12,6 +12,9 @@ import com.thejaxonhill.dnd5eapi.compendium.KINDS
 import com.thejaxonhill.dnd5eapi.compendium.Kind
 import com.thejaxonhill.dnd5eapi.compendium.Order
 import com.thejaxonhill.dnd5eapi.compendium.PageRequest
+import com.thejaxonhill.dnd5eapi.rules.ABILITIES
+import com.thejaxonhill.dnd5eapi.rules.AbilityScores
+import com.thejaxonhill.dnd5eapi.rules.CharacterRules
 import org.springframework.ai.chat.model.ToolContext
 import org.springframework.ai.tool.ToolCallback
 import org.springframework.ai.tool.ToolCallbackProvider
@@ -25,8 +28,17 @@ import org.springframework.data.domain.Sort
 @Configuration
 class McpTools {
     @Bean
-    fun tools(queries: CompendiumQueries): ToolCallbackProvider =
-        ToolCallbackProvider.from(KINDS.flatMap { listOf(listTool(it, queries), getTool(it, queries)) })
+    fun tools(queries: CompendiumQueries, rules: CharacterRules): ToolCallbackProvider =
+        ToolCallbackProvider.from(KINDS.flatMap { listOf(listTool(it, queries), getTool(it, queries)) } + multiclassingTool(rules))
+}
+
+/** EXPERIMENT/CHANGE-4: the question the REST route answers, with the six scores as arguments. */
+private fun multiclassingTool(rules: CharacterRules) = Tool(
+    "checkMulticlassing",
+    objectSchema(mapOf("index" to mapOf("type" to "string")) + ABILITIES.associateWith { INTEGER }, closed = true),
+) { arguments ->
+    val scores = AbilityScores(ABILITIES.associateWith { integer(arguments[it]) })
+    published(rules.multiclassing(arguments["index"] as String, scores))
 }
 
 /** Tool names follow `get` + the kind's nouns, except these, which were named otherwise and are published. */

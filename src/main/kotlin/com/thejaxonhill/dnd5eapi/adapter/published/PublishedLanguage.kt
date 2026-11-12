@@ -3,6 +3,8 @@ package com.thejaxonhill.dnd5eapi.adapter.published
 import com.thejaxonhill.dnd5eapi.compendium.Entry
 import com.thejaxonhill.dnd5eapi.compendium.EntryPage
 import com.thejaxonhill.dnd5eapi.compendium.Kind
+import com.thejaxonhill.dnd5eapi.rules.Eligibility
+import com.thejaxonhill.dnd5eapi.rules.ScoreMinimum
 
 // The open host service's published language (REQ2/SHAPE-4): what REST and MCP clients receive.
 // It is an entry as the Compendium has it, except where today's output departs from upstream. Clients
@@ -15,6 +17,26 @@ fun published(kind: Kind, entry: Entry): MutableMap<String, Any?> {
     for (departure in DEPARTURES[kind.name].orEmpty()) depart(result, departure)
     return result
 }
+
+/**
+ * A multiclassing answer as REST and MCP clients receive it. It is a new shape, so nothing departs from
+ * upstream in it. `unmetChoice` is left out when the choice is met (REQ1/API-7).
+ */
+fun published(eligibility: Eligibility): Map<String, Any?> {
+    val result = linkedMapOf<String, Any?>(
+        "eligible" to eligibility.eligible,
+        "unmetPrerequisites" to eligibility.unmetRequired.map { publishedPrerequisite(it) },
+    )
+    eligibility.unmetChoice?.let {
+        result["unmetChoice"] = mapOf("choose" to it.choose, "options" to it.options.map { option -> publishedPrerequisite(option) })
+    }
+    return result
+}
+
+private fun publishedPrerequisite(prerequisite: ScoreMinimum) = mapOf(
+    "abilityScore" to mapOf("index" to prerequisite.ability, "name" to prerequisite.name),
+    "minimumScore" to prerequisite.minimum,
+)
 
 /** A paged list (REQ1/API-2); `sort` is written as `property,direction`. */
 class Paged(val content: List<Map<String, Any?>>, val page: PageInfo)

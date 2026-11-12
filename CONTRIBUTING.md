@@ -70,7 +70,7 @@ The list under *Working* in the guide's `CHECKLISTS.md`, vendored at
   before acting. `CLAUDE.md` imports `AGENTS.md` and `vendor/se1/QUICKREF.md` at every start.
 - **Code:** under `src/main/kotlin/com/thejaxonhill/dnd5eapi/`, `compendium/` is the model and its
   ports, with no framework imports, and `adapter/` holds `upstream` (MongoDB), `published` (what
-  clients receive), `rest`, and `mcp`. Start at `compendium/Kind.kt`; `DESIGN_v2.md` follows one
+  clients receive), `rest`, and `mcp`. `rules/` is Character Rules, which holds the multiclassing rule. Start at `compendium/Kind.kt`; `DESIGN_v2.md` follows one
   request from route to data.
 
 ## What AGENTS.md's nouns mean here

@@ -13,13 +13,13 @@ only; `DESIGN_v1.md` describes `refactor/base`.
 ```
 5e-database --conformist--> Compendium --open host service--> REST, MCP clients
                                  |
-                                 +--anticorruption layer--> Character Rules   (change 4; not built)
+                                 +--anticorruption layer--> Character Rules   (change 4; `rules/`)
 ```
 
 | Context | Subdomain | Owns | Built |
 | ------- | --------- | ---- | ----- |
 | Compendium | Supporting: serving SRD entries | Nothing: upstream owns the data, and this only reads a copy | Yes |
-| Character Rules | Core, when its first rule arrives | Its own model: ability scores, multiclassing requirements | No |
+| Character Rules | Core, when its first rule arrives | Its own model: ability scores, multiclassing requirements | Yes: multiclassing (change 4) |
 
 ## Components
 
@@ -33,6 +33,10 @@ only; `DESIGN_v1.md` describes `refactor/base`.
 | `adapter/rest/RestApi.kt` | Driving adapter | Registers routes per kind; REST's paths, tags, summaries, and equipment's default order | Spring |
 | `adapter/mcp/McpTools.kt`, `McpNulls.kt` | Driving adapter | A list and a get tool per kind; MCP's tool names, argument shapes, and nulls | Spring AI |
 | `adapter/Wiring.kt` | Wiring | Builds `CompendiumQueries`, so the model needs no annotation | Spring |
+| `rules/Eligibility.kt` | Model | `AbilityScores`, `Multiclassing`, and `evaluate`: the multiclassing rule, pure | No |
+| `rules/FromCompendium.kt` | Anticorruption layer | Reads a class's `multiClassing` as the Compendium spells it; refuses an option type it does not evaluate | No |
+| `rules/CharacterRules.kt` | Query service | `multiclassing(index, scores)`, asked through `CompendiumQueries` as REST and MCP both do | No |
+| `adapter/rest/MulticlassingController.kt` | Driving adapter | `GET /api/classes/{index}/multiclassing`, the six scores as query parameters named by ability index | Spring |
 | `GlobalExceptionHandler.kt` | Error mapping | `NoSuchElementException` to 404 with an empty body, other runtime exceptions to 400, the rest to 500 | Spring |
 
 ## How one request reaches the data
@@ -53,6 +57,8 @@ spelling. `published` applies the kind's departures, and `paged` wraps them. An 
 | Fields that differ from upstream today | `PublishedLanguage.kt` | What clients were promised (`REQ2/SHAPE-4`) |
 | Path, tag, summaries, equipment sorted by name | `RestApi.kt` | REST |
 | Tool names, argument shapes, nulls | `McpTools.kt`, `McpNulls.kt` | MCP |
+| Multiclassing rules as upstream spells them | `rules/FromCompendium.kt` | Upstream's spelling (`REQ2/SHAPE-4`) |
+| Whether a character meets them | `rules/Eligibility.kt` | Character Rules' language (`REQ2/SHAPE-5`) |
 
 A new kind is one row in `KINDS`, when its nouns give its tool names and its edition and name give
 its collection. A fact that breaks a pattern is written where its owner lives.
@@ -80,10 +86,12 @@ No aggregates: nothing here changes state (`REQ2/SHAPE-5`).
   the same question.
 - **`PageRequest` keeps the paging library's rules and words** — `REQ2/SHAPE-5` — a negative page is
   refused as Spring refused it before, now as an invariant of a value the model owns.
+- **Multiclassing is computed per request, not stored** — `REQ2/SHAPE-5` — a pure function over the
+  class's rules and the scores, so nothing can go stale. When a choice is not met, every option is
+  listed as unmet. A prerequisite option of a type the rule does not evaluate is refused, not skipped.
 - **Tests run against a live, seeded MongoDB** — unchanged from v1.
 
 ## Deferred
 
-- Character Rules, its anticorruption layer, and its value objects. Trigger: change 4.
 - Response schemas in the OpenAPI document. Trigger: a client asks, or the experiment's schema
   measure is reported.
