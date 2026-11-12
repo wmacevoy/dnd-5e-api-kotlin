@@ -1,6 +1,7 @@
 package com.thejaxonhill.dnd5eapi.progression.infrastructure.persistence
 
 import com.thejaxonhill.dnd5eapi.shared.domain.model.Index
+import com.thejaxonhill.dnd5eapi.progression.domain.ClassSpecific
 import com.thejaxonhill.dnd5eapi.progression.domain.Level
 import com.thejaxonhill.dnd5eapi.progression.domain.LevelExample
 import com.thejaxonhill.dnd5eapi.progression.domain.LevelRepository
@@ -25,7 +26,7 @@ class MongoLevelRepository(private val repository: LevelMongoRepository) : Level
 fun LevelDocument.toDomain() = Level(
     abilityScoreBonuses = abilityScoreBonuses,
     characterClass = characterClass!!,
-    classSpecific = classSpecific,
+    classSpecific = classSpecific?.toDomain(),
     features = features!!,
     index = Index.of(index!!),
     level = level!!,
@@ -34,6 +35,41 @@ fun LevelDocument.toDomain() = Level(
     subclass = subclass,
     subclassSpecific = subclassSpecific,
     url = url!!,
+)
+
+fun ClassSpecificDocument.toDomain() = ClassSpecific(
+    actionSurges = actionSurges,
+    arcaneRecoveryLevels = arcaneRecoveryLevels,
+    auraRange = auraRange,
+    bardicInspirationDie = bardicInspirationDie,
+    brutalCriticalDice = brutalCriticalDice,
+    channelDivinityCharges = channelDivinityCharges,
+    creatingSpellSlots = creatingSpellSlots,
+    destroyUndeadCr = destroyUndeadCr,
+    extraAttacks = extraAttacks,
+    favoredEnemies = favoredEnemies,
+    favoredTerrain = favoredTerrain,
+    indomitableUses = indomitableUses,
+    invocationsKnown = invocationsKnown,
+    kiPoints = kiPoints,
+    magicalSecretsMax5 = magicalSecretsMax5,
+    magicalSecretsMax7 = magicalSecretsMax7,
+    magicalSecretsMax9 = magicalSecretsMax9,
+    martialArts = martialArts,
+    metamagicKnown = metamagicKnown,
+    mysticArcanumLevel6 = mysticArcanumLevel6,
+    mysticArcanumLevel7 = mysticArcanumLevel7,
+    mysticArcanumLevel8 = mysticArcanumLevel8,
+    mysticArcanumLevel9 = mysticArcanumLevel9,
+    rageCount = rageCount,
+    rageDamageBonus = rageDamageBonus,
+    sneakAttack = sneakAttack,
+    songOfRestDie = songOfRestDie,
+    sorceryPoints = sorceryPoints,
+    unarmoredMovement = unarmoredMovement,
+    wildShapeFly = wildShapeFly,
+    wildShapeMaxCr = wildShapeMaxCr,
+    wildShapeSwim = wildShapeSwim,
 )
 
 fun LevelExample.toLevelDocument(): LevelDocument = LevelDocument(
