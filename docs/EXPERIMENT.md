@@ -268,6 +268,32 @@ Each run used 5 to 13 tool calls, 85k to 118k tokens, and under 90 seconds.
   decisions, which is right by the letter and costs owner attention. The more a shape writes its
   rules down, the more it stops: ddd stopped on the control because its published language says to.
 
+## The gate for light work, run on test 2's six changes, 2026-11-12
+
+`scripts/gate.py` (`pixi run gate`) judges a committed change with no agent in the loop: the files
+it touches, the check and the doctor, the published surface (OpenAPI document and MCP tool list)
+from builds before and after, and which recorded answers changed. Each reason is marked a shape
+change, for the owner, or work not done, back to the builder. Run with each change's parent commit
+as the base; the controls with `--allow level`, the rule tasks with nothing allowed.
+
+| Change | Gate | Reasons |
+| --- | --- | --- |
+| ddd control | PASS | 86 answers changed, all named by the task |
+| layered control | PASS | the same |
+| projection control | FAIL, not done | the doctor fails: the agent's new test cites a requirement without its version |
+| projection rule | FAIL, shape | the OpenAPI document and the MCP tool list changed |
+| layered rule | FAIL, shape | the same |
+| ddd rule | FAIL, shape | the same, and main source in a new package, `rules` |
+
+- **The gate sorted all six as the test intended,** with no judgment: every rule build is a shape
+  change, and every control is not. It also found a defect that no reply mentioned and my own check
+  in the worktrees missed, because I ran the tests and the golden master but not the doctor.
+- **It refuses as well as passes:** projection's control run without `--allow` fails with 86 answers
+  changed outside what the task names.
+- **What it cannot see:** a change in what an existing field means, where no recorded answer covers
+  it. That is for the review that follows a pass.
+- Each run took about two minutes.
+
 `refactor/projection` wins changes 1, 2, 3, and 5 clearly, and `refactor/layered` (then named
 `refactor/ddd`) wins change 4. The
 number to watch is how much each wins by, and whether projection can add the rule locally without
